@@ -76,7 +76,13 @@ const Blog = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {artigos.map((artigo, index) => (
           <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
-            <div className="aspect-video bg-muted rounded-t-lg"></div>
+            <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png" 
+                alt={artigo.titulo}
+                className="w-full h-full object-cover"
+              />
+            </div>
             <CardHeader>
               <div className="flex items-center justify-between mb-2">
                 <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20">

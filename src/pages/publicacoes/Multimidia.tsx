@@ -85,9 +85,14 @@ const Multimidia = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {videos.map((video, index) => (
             <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-muted rounded-t-lg relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Play className="h-12 w-12 text-gold" />
+              <div className="aspect-video bg-muted rounded-t-lg relative overflow-hidden">
+                <img 
+                  src="/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png" 
+                  alt={video.titulo}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                  <Play className="h-12 w-12 text-white" />
                 </div>
                 <Badge className="absolute top-2 right-2 bg-black/70 text-white">
                   {video.duracao}
@@ -123,9 +128,14 @@ const Multimidia = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {podcasts.map((podcast, index) => (
             <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-muted rounded-t-lg relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Play className="h-12 w-12 text-gold" />
+              <div className="aspect-video bg-muted rounded-t-lg relative overflow-hidden">
+                <img 
+                  src="/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png" 
+                  alt={podcast.titulo}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                  <Play className="h-12 w-12 text-white" />
                 </div>
                 <Badge className="absolute top-2 right-2 bg-black/70 text-white">
                   {podcast.duracao}
@@ -161,7 +171,13 @@ const Multimidia = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {fotos.map((foto, index) => (
             <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
-              <div className="aspect-video bg-muted rounded-t-lg"></div>
+              <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
+                <img 
+                  src="/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png" 
+                  alt={foto.titulo}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20">
