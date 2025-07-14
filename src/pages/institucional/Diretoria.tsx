@@ -10,8 +10,8 @@ import { useState } from "react";
 
 const Diretoria = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterCargo, setFilterCargo] = useState("");
-  const [filterMandato, setFilterMandato] = useState("");
+  const [filterCargo, setFilterCargo] = useState("all");
+  const [filterMandato, setFilterMandato] = useState("all");
 
   const diretores = [
     // Mandato 2024-2027
@@ -143,8 +143,8 @@ const Diretoria = () => {
     const matchesSearch = diretor.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          diretor.cargo.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          diretor.area.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCargo = filterCargo === "" || diretor.cargo === filterCargo;
-    const matchesMandato = filterMandato === "" || diretor.mandato === filterMandato;
+    const matchesCargo = filterCargo === "all" || diretor.cargo === filterCargo;
+    const matchesMandato = filterMandato === "all" || diretor.mandato === filterMandato;
     
     return matchesSearch && matchesCargo && matchesMandato;
   });
@@ -190,7 +190,7 @@ const Diretoria = () => {
                   <SelectValue placeholder="Todos os cargos" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Todos os cargos</SelectItem>
+                  <SelectItem value="all">Todos os cargos</SelectItem>
                   {cargos.map(cargo => (
                     <SelectItem key={cargo} value={cargo}>{cargo}</SelectItem>
                   ))}
@@ -205,7 +205,7 @@ const Diretoria = () => {
                   <SelectValue placeholder="Todos os mandatos" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Todos os mandatos</SelectItem>
+                  <SelectItem value="all">Todos os mandatos</SelectItem>
                   {mandatos.map(mandato => (
                     <SelectItem key={mandato} value={mandato}>{mandato}</SelectItem>
                   ))}
@@ -283,8 +283,8 @@ const Diretoria = () => {
               className="mt-4" 
               onClick={() => {
                 setSearchTerm("");
-                setFilterCargo("");
-                setFilterMandato("");
+                setFilterCargo("all");
+                setFilterMandato("all");
               }}
             >
               Limpar Filtros
