@@ -31,7 +31,7 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 border-gold text-gold">
-            Sobre o SINDPOL
+            Sobre o Cobrapol
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Defendendo Policiais há

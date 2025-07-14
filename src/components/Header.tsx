@@ -25,7 +25,7 @@ const Header = () => {
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="h-4 w-4" />
-              <span>contato@sindicato.org.br</span>
+              <span>contato@cobrapol.org.br</span>
             </div>
           </div>
           <div className="text-muted-foreground">
@@ -40,7 +40,7 @@ const Header = () => {
               <Shield className="h-8 w-8 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">SINDPOL</h1>
+              <h1 className="text-2xl font-bold text-foreground">Cobrapol</h1>
               <p className="text-sm text-muted-foreground">Sindicato dos Policiais</p>
             </div>
           </div>

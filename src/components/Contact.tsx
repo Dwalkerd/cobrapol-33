@@ -29,7 +29,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "E-mails",
-      details: ["contato@sindpol.org.br", "juridico@sindpol.org.br"],
+      details: ["contato@cobrapol.org.br", "juridico@cobrapol.org.br"],
       highlight: null
     },
     {
@@ -41,10 +41,10 @@ const Contact = () => {
   ];
 
   const departments = [
-    { name: "Jurídico", phone: "(11) 1234-5679", email: "juridico@sindpol.org.br" },
-    { name: "Administrativo", phone: "(11) 1234-5680", email: "admin@sindpol.org.br" },
-    { name: "Associação", phone: "(11) 1234-5681", email: "associacao@sindpol.org.br" },
-    { name: "Eventos", phone: "(11) 1234-5682", email: "eventos@sindpol.org.br" }
+    { name: "Jurídico", phone: "(11) 1234-5679", email: "juridico@cobrapol.org.br" },
+    { name: "Administrativo", phone: "(11) 1234-5680", email: "admin@cobrapol.org.br" },
+    { name: "Associação", phone: "(11) 1234-5681", email: "associacao@cobrapol.org.br" },
+    { name: "Eventos", phone: "(11) 1234-5682", email: "eventos@cobrapol.org.br" }
   ];
 
   return (

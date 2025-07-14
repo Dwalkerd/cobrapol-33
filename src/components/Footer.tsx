@@ -44,7 +44,7 @@ const Footer = () => {
                 <Shield className="h-8 w-8 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold">SINDPOL</h3>
+                <h3 className="text-2xl font-bold">Cobrapol</h3>
                 <p className="text-sm text-background/70">Sindicato dos Policiais</p>
               </div>
             </div>
@@ -63,7 +63,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <Mail className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>contato@sindpol.org.br</span>
+                <span>contato@cobrapol.org.br</span>
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
               <p className="text-background/60 text-sm">
-                © 2024 SINDPOL - Sindicato dos Policiais. Todos os direitos reservados.
+                © 2024 Cobrapol - Sindicato dos Policiais. Todos os direitos reservados.
               </p>
               <p className="text-background/50 text-xs mt-1">
                 CNPJ: 12.345.678/0001-90 | Fundado em 1993
