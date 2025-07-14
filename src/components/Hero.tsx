@@ -79,24 +79,24 @@ const Hero = () => {
               <div className="space-y-6">
                 <div className="bg-background/10 backdrop-blur-sm border border-gold/20 rounded-2xl p-6 text-center">
                   <Shield className="h-12 w-12 text-gold mx-auto mb-4" />
-                  <h3 className="font-semibold text-lg mb-2">Proteção Legal</h3>
+                  <h3 className="font-semibold text-lg mb-2 text-background">Proteção Legal</h3>
                   <p className="text-sm text-background/70">Assistência jurídica especializada</p>
                 </div>
                 <div className="bg-background/10 backdrop-blur-sm border border-gold/20 rounded-2xl p-6 text-center">
                   <Scale className="h-12 w-12 text-gold mx-auto mb-4" />
-                  <h3 className="font-semibold text-lg mb-2">Defesa de Direitos</h3>
+                  <h3 className="font-semibold text-lg mb-2 text-background">Defesa de Direitos</h3>
                   <p className="text-sm text-background/70">Luta constante por melhores condições</p>
                 </div>
               </div>
               <div className="space-y-6 pt-12">
                 <div className="bg-background/10 backdrop-blur-sm border border-gold/20 rounded-2xl p-6 text-center">
                   <Users className="h-12 w-12 text-gold mx-auto mb-4" />
-                  <h3 className="font-semibold text-lg mb-2">União</h3>
+                  <h3 className="font-semibold text-lg mb-2 text-background">União</h3>
                   <p className="text-sm text-background/70">Força através da união</p>
                 </div>
                 <div className="bg-background/10 backdrop-blur-sm border border-gold/20 rounded-2xl p-6 text-center">
                   <Award className="h-12 w-12 text-gold mx-auto mb-4" />
-                  <h3 className="font-semibold text-lg mb-2">Reconhecimento</h3>
+                  <h3 className="font-semibold text-lg mb-2 text-background">Reconhecimento</h3>
                   <p className="text-sm text-background/70">Valorização do policial</p>
                 </div>
               </div>
