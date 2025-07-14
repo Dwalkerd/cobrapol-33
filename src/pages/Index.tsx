@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import RotatingBanner from "@/components/RotatingBanner";
-import Services from "@/components/Services";
+import QuickAccess from "@/components/QuickAccess";
 import News from "@/components/News";
 import Footer from "@/components/Footer";
 
@@ -9,7 +9,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <RotatingBanner />
-      <Services />
+      <QuickAccess />
       <News />
       <Footer />
     </div>
