@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Menu, X, Shield, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const menuItems = [
     { label: "Home", href: "/" },
@@ -30,6 +31,19 @@ const Header = () => {
     },
     { label: "Sindicatos", href: "/sindicatos" },
   ];
+
+  const handleMouseEnter = (itemLabel: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setActiveDropdown(itemLabel);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 200); // 200ms delay para dar tempo do usuário navegar
+  };
 
   return (
     <header className="bg-background border-b border-gold/20 sticky top-0 z-50">
@@ -71,22 +85,27 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => (
               <div key={item.label} className="relative group">
-                {item.dropdown ? (
+                 {item.dropdown ? (
                   <div
                     className="flex items-center gap-1 text-foreground hover:text-gold transition-colors font-medium cursor-pointer"
-                    onMouseEnter={() => setActiveDropdown(item.label)}
-                    onMouseLeave={() => setActiveDropdown(null)}
+                    onMouseEnter={() => handleMouseEnter(item.label)}
+                    onMouseLeave={handleMouseLeave}
                   >
                     {item.label}
                     <ChevronDown className="h-4 w-4" />
                     
                     {activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-gold/20 rounded-md shadow-lg z-50">
+                      <div 
+                        className="absolute top-full left-0 mt-1 w-56 bg-background border border-gold/20 rounded-md shadow-lg z-50"
+                        onMouseEnter={() => handleMouseEnter(item.label)}
+                        onMouseLeave={handleMouseLeave}
+                      >
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.label}
                             to={subItem.href}
                             className="block px-4 py-2 text-foreground hover:bg-gold/10 hover:text-gold transition-colors"
+                            onClick={() => setActiveDropdown(null)}
                           >
                             {subItem.label}
                           </Link>
