@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Phone, Mail, MapPin } from "lucide-react";
+import { Search, Phone, Mail, MapPin, Building2, Users } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import spBandeira from "@/assets/bandeiras/sao-paulo.jpg";
@@ -91,6 +91,54 @@ const Sindicatos = () => {
     }
   ];
 
+  const federacoes = [
+    {
+      nome: "Federação Norte",
+      regiao: "Norte",
+      estados: ["Acre", "Amapá", "Amazonas", "Pará", "Rondônia", "Roraima", "Tocantins"],
+      coordenador: "Vice-Presidente Regional Norte",
+      email: "norte@cobrapol.org.br",
+      telefone: "Consulte o site oficial",
+      sindicatos: 7
+    },
+    {
+      nome: "Federação Nordeste", 
+      regiao: "Nordeste",
+      estados: ["Alagoas", "Bahia", "Ceará", "Maranhão", "Paraíba", "Pernambuco", "Piauí", "Rio Grande do Norte", "Sergipe"],
+      coordenador: "Vice-Presidente Regional Nordeste",
+      email: "nordeste@cobrapol.org.br",
+      telefone: "Consulte o site oficial",
+      sindicatos: 9
+    },
+    {
+      nome: "Federação Sudeste",
+      regiao: "Sudeste", 
+      estados: ["Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"],
+      coordenador: "Vice-Presidente Regional Sudeste",
+      email: "sudeste@cobrapol.org.br",
+      telefone: "Consulte o site oficial",
+      sindicatos: 4
+    },
+    {
+      nome: "Federação Sul",
+      regiao: "Sul",
+      estados: ["Paraná", "Rio Grande do Sul", "Santa Catarina"],
+      coordenador: "Vice-Presidente Regional Sul", 
+      email: "sul@cobrapol.org.br",
+      telefone: "Consulte o site oficial",
+      sindicatos: 3
+    },
+    {
+      nome: "Federação Centro-Oeste",
+      regiao: "Centro-Oeste",
+      estados: ["Distrito Federal", "Goiás", "Mato Grosso", "Mato Grosso do Sul"],
+      coordenador: "Vice-Presidente Regional Centro-Oeste",
+      email: "centrooeste@cobrapol.org.br", 
+      telefone: "Consulte o site oficial",
+      sindicatos: 4
+    }
+  ];
+
   const regioes = ["Todas", "Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"];
 
   const filteredSindicatos = sindicatos.filter(sindicato => {
@@ -105,8 +153,79 @@ const Sindicatos = () => {
       <Header />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-4">Sindicatos</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-4">Sindicatos e Federações</h1>
           <p className="text-muted-foreground text-lg">
+            Conheça a estrutura organizacional da COBRAPOL: federações regionais coordenando 
+            sindicatos estaduais em todo o Brasil.
+          </p>
+        </div>
+
+        {/* Federações Regionais */}
+        <div className="mb-12">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-foreground mb-2">Federações Regionais</h2>
+            <p className="text-muted-foreground">
+              Cada região possui uma federação que coordena os sindicatos estaduais da área.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {federacoes.map((federacao, index) => (
+              <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="bg-gold/10 p-2 rounded-full">
+                      <Building2 className="h-6 w-6 text-gold" />
+                    </div>
+                    <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20">
+                      {federacao.regiao}
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-lg">{federacao.nome}</CardTitle>
+                  <CardDescription>{federacao.coordenador}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-sm font-medium text-foreground mb-1">Estados Abrangidos:</p>
+                      <div className="flex flex-wrap gap-1">
+                        {federacao.estados.map((estado, idx) => (
+                          <Badge key={idx} variant="secondary" className="text-xs">
+                            {estado}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <Users className="h-4 w-4 text-gold" />
+                        <span className="text-sm text-muted-foreground">{federacao.sindicatos} sindicatos filiados</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-2">
+                        <Phone className="h-4 w-4 text-gold" />
+                        <span className="text-sm text-muted-foreground">{federacao.telefone}</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-2">
+                        <Mail className="h-4 w-4 text-gold" />
+                        <span className="text-sm text-muted-foreground">{federacao.email}</span>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Separador */}
+        <div className="border-t border-gold/20 my-8"></div>
+
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-foreground mb-2">Sindicatos Estaduais</h2>
+          <p className="text-muted-foreground">
             Encontre o sindicato dos policiais do seu estado e entre em contato.
           </p>
         </div>
