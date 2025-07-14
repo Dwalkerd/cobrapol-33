@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 import { 
   MapPin, 
   Phone, 
@@ -9,7 +10,8 @@ import {
   MessageCircle,
   Send,
   Building,
-  Users
+  Users,
+  ArrowRight
 } from "lucide-react";
 
 const Contact = () => {
@@ -188,30 +190,24 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Departments */}
-        <div className="bg-gradient-to-r from-secondary/50 to-secondary/30 rounded-3xl p-8 lg:p-12">
-          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
-            Contatos por Departamento
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {departments.map((dept, index) => (
-              <div key={index} className="bg-background rounded-2xl p-6 text-center border border-gold/20">
-                <Users className="h-8 w-8 text-gold mx-auto mb-4" />
-                <h4 className="font-bold text-foreground mb-3">{dept.name}</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                    <Phone className="h-4 w-4" />
-                    <span>{dept.phone}</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                    <Mail className="h-4 w-4" />
-                    <span className="text-xs">{dept.email}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+        {/* Link para página Fale Conosco */}
+        <Link to="/institucional/fale-conosco">
+          <div className="bg-gradient-to-r from-secondary/50 to-secondary/30 rounded-3xl p-8 lg:p-12 cursor-pointer hover:from-secondary/60 hover:to-secondary/40 transition-all duration-300">
+            <div className="text-center">
+              <Users className="h-16 w-16 text-gold mx-auto mb-4" />
+              <h3 className="text-2xl font-bold mb-4 text-foreground">
+                Contatos por Departamento
+              </h3>
+              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                Acesse nossa página de contatos para encontrar informações detalhadas de cada departamento e enviar mensagens diretamente.
+              </p>
+              <Button className="bg-gold hover:bg-gold-dark text-foreground font-semibold">
+                Fale Conosco
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   );
