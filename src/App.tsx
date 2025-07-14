@@ -7,7 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import FaleConosco from "./pages/institucional/FaleConosco";
 import Diretoria from "./pages/institucional/Diretoria";
-import Historia from "./pages/institucional/Historia";
+import SobreNos from "./pages/institucional/SobreNos";
 import MissaoVisaoValores from "./pages/institucional/MissaoVisaoValores";
 import Noticias from "./pages/publicacoes/Noticias";
 import NoticiaDetalhes from "./pages/publicacoes/NoticiaDetalhes";
@@ -29,7 +29,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/institucional/fale-conosco" element={<FaleConosco />} />
           <Route path="/institucional/diretoria" element={<Diretoria />} />
-          <Route path="/institucional/historia" element={<Historia />} />
+          <Route path="/institucional/sobre-nos" element={<SobreNos />} />
           <Route path="/institucional/missao-visao-valores" element={<MissaoVisaoValores />} />
           <Route path="/publicacoes/noticias" element={<Noticias />} />
           <Route path="/publicacoes/noticia/:id" element={<NoticiaDetalhes />} />
