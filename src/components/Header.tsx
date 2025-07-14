@@ -1,16 +1,34 @@
 import { useState } from "react";
-import { Menu, X, Shield, Phone, Mail } from "lucide-react";
+import { Menu, X, Shield, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const menuItems = [
-    { label: "Início", href: "#inicio" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Serviços", href: "#servicos" },
-    { label: "Notícias", href: "#noticias" },
-    { label: "Contato", href: "#contato" },
+    { label: "Home", href: "/" },
+    { 
+      label: "Institucional", 
+      href: "#",
+      dropdown: [
+        { label: "Fale Conosco", href: "/institucional/fale-conosco" },
+        { label: "Diretoria Executiva", href: "/institucional/diretoria" },
+        { label: "História", href: "/institucional/historia" },
+        { label: "Missão, Visão e Valores", href: "/institucional/missao-visao-valores" },
+      ]
+    },
+    { 
+      label: "Publicações", 
+      href: "#",
+      dropdown: [
+        { label: "Notícias", href: "/publicacoes/noticias" },
+        { label: "Artigos/Blog", href: "/publicacoes/blog" },
+        { label: "Multimídia", href: "/publicacoes/multimidia" },
+      ]
+    },
+    { label: "Sindicatos", href: "/sindicatos" },
   ];
 
   return (
@@ -52,18 +70,46 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-foreground hover:text-gold transition-colors font-medium relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              <div key={item.label} className="relative group">
+                {item.dropdown ? (
+                  <div
+                    className="flex items-center gap-1 text-foreground hover:text-gold transition-colors font-medium cursor-pointer"
+                    onMouseEnter={() => setActiveDropdown(item.label)}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    {item.label}
+                    <ChevronDown className="h-4 w-4" />
+                    
+                    {activeDropdown === item.label && (
+                      <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-gold/20 rounded-md shadow-lg z-50">
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.label}
+                            to={subItem.href}
+                            className="block px-4 py-2 text-foreground hover:bg-gold/10 hover:text-gold transition-colors"
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="text-foreground hover:text-gold transition-colors font-medium relative group"
+                  >
+                    {item.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                )}
+              </div>
             ))}
-            <Button variant="default" className="bg-gold hover:bg-gold-dark">
-              Área do Associado
-            </Button>
+            <Link to="/area-associado">
+              <Button variant="default" className="bg-gold hover:bg-gold-dark">
+                Área do Associado
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile menu button */}
