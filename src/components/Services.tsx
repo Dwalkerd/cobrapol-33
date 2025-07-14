@@ -150,43 +150,6 @@ const Services = () => {
           </div>
         </div>
       </div>
-      
-      {/* Subsections for menu navigation */}
-      <div id="juridica" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Assistência Jurídica</h2>
-          <p className="text-center text-muted-foreground max-w-3xl mx-auto">
-            Oferecemos suporte jurídico completo para todas as questões relacionadas à carreira policial.
-          </p>
-        </div>
-      </div>
-      
-      <div id="beneficios" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Benefícios</h2>
-          <p className="text-center text-muted-foreground max-w-3xl mx-auto">
-            Diversos benefícios exclusivos para nossos associados e suas famílias.
-          </p>
-        </div>
-      </div>
-      
-      <div id="cursos" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Cursos e Treinamentos</h2>
-          <p className="text-center text-muted-foreground max-w-3xl mx-auto">
-            Programas de capacitação e desenvolvimento profissional para policiais.
-          </p>
-        </div>
-      </div>
-      
-      <div id="saude" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Plano de Saúde</h2>
-          <p className="text-center text-muted-foreground max-w-3xl mx-auto">
-            Planos de saúde especializados para policiais e seus familiares.
-          </p>
-        </div>
-      </div>
     </section>
   );
 };

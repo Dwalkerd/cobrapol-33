@@ -115,41 +115,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      
-      {/* Subsections for menu navigation */}
-      <div id="historia" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Nossa História</h2>
-          <p className="text-center text-muted-foreground max-w-3xl mx-auto">
-            Fundado em 1993, o Cobrapol tem uma rica história de lutas e conquistas em defesa dos direitos dos policiais brasileiros.
-          </p>
-        </div>
-      </div>
-      
-      <div id="missao" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Missão e Visão</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold mb-4 text-gold">Missão</h3>
-              <p className="text-muted-foreground">Defender os direitos e interesses dos policiais, promovendo melhores condições de trabalho.</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold mb-4 text-gold">Visão</h3>
-              <p className="text-muted-foreground">Ser referência na representação e defesa dos policiais em todo o país.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div id="diretoria" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Diretoria</h2>
-          <p className="text-center text-muted-foreground max-w-3xl mx-auto">
-            Nossa diretoria é composta por policiais experientes e comprometidos com a defesa da categoria.
-          </p>
-        </div>
-      </div>
     </section>
   );
 };
