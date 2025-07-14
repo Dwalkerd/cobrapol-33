@@ -4,6 +4,15 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Phone, Mail, MapPin } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import spBandeira from "@/assets/bandeiras/sao-paulo.jpg";
+import rjBandeira from "@/assets/bandeiras/rio-janeiro.jpg";
+import baBandeira from "@/assets/bandeiras/bahia.jpg";
+import rsBandeira from "@/assets/bandeiras/rio-grande-sul.jpg";
+import mgBandeira from "@/assets/bandeiras/minas-gerais.jpg";
+import amBandeira from "@/assets/bandeiras/amazonas.jpg";
+import dfBandeira from "@/assets/bandeiras/distrito-federal.jpg";
 
 const Sindicatos = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,7 +27,7 @@ const Sindicatos = () => {
       email: "contato@sinpolsp.org.br",
       endereco: "Rua da Consolação, 1000, São Paulo - SP",
       presidente: "João Silva",
-      bandeira: "🏴"
+      bandeira: spBandeira
     },
     {
       nome: "Sindicato dos Policiais do Rio de Janeiro",
@@ -28,7 +37,7 @@ const Sindicatos = () => {
       email: "contato@sinpolrj.org.br",
       endereco: "Av. Rio Branco, 500, Rio de Janeiro - RJ",
       presidente: "Maria Santos",
-      bandeira: "🏴"
+      bandeira: rjBandeira
     },
     {
       nome: "Sindicato dos Policiais da Bahia",
@@ -38,7 +47,7 @@ const Sindicatos = () => {
       email: "contato@sinpolba.org.br",
       endereco: "Rua Chile, 200, Salvador - BA",
       presidente: "Carlos Oliveira",
-      bandeira: "🏴"
+      bandeira: baBandeira
     },
     {
       nome: "Sindicato dos Policiais do Rio Grande do Sul",
@@ -48,7 +57,7 @@ const Sindicatos = () => {
       email: "contato@sinpolrs.org.br",
       endereco: "Rua dos Andradas, 300, Porto Alegre - RS",
       presidente: "Ana Rodrigues",
-      bandeira: "🏴"
+      bandeira: rsBandeira
     },
     {
       nome: "Sindicato dos Policiais de Minas Gerais",
@@ -58,7 +67,7 @@ const Sindicatos = () => {
       email: "contato@sinpolmg.org.br",
       endereco: "Av. Afonso Pena, 400, Belo Horizonte - MG",
       presidente: "Pedro Costa",
-      bandeira: "🏴"
+      bandeira: mgBandeira
     },
     {
       nome: "Sindicato dos Policiais do Amazonas",
@@ -68,7 +77,7 @@ const Sindicatos = () => {
       email: "contato@sinpolam.org.br",
       endereco: "Rua José Paranaguá, 100, Manaus - AM",
       presidente: "Lucia Fernandes",
-      bandeira: "🏴"
+      bandeira: amBandeira
     },
     {
       nome: "Sindicato dos Policiais do Distrito Federal",
@@ -78,7 +87,7 @@ const Sindicatos = () => {
       email: "contato@sinpoldf.org.br",
       endereco: "SCS Quadra 1, Brasília - DF",
       presidente: "Roberto Silva",
-      bandeira: "🏴"
+      bandeira: dfBandeira
     }
   ];
 
@@ -92,109 +101,119 @@ const Sindicatos = () => {
   });
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground mb-4">Sindicatos</h1>
-        <p className="text-muted-foreground text-lg">
-          Encontre o sindicato dos policiais do seu estado e entre em contato.
-        </p>
-      </div>
-
-      {/* Filtros */}
-      <div className="mb-8 bg-muted/50 p-6 rounded-lg">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
-              Buscar por nome ou estado
-            </label>
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="text"
-                placeholder="Digite o nome do sindicato ou estado..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
-              Filtrar por região
-            </label>
-            <div className="flex gap-2 flex-wrap">
-              {regioes.map((regiao) => (
-                <Button
-                  key={regiao}
-                  variant={selectedRegion === regiao ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedRegion(regiao)}
-                  className={selectedRegion === regiao ? "bg-gold hover:bg-gold-dark" : ""}
-                >
-                  {regiao}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Resultados */}
-      <div className="mb-4">
-        <p className="text-muted-foreground">
-          Mostrando {filteredSindicatos.length} sindicatos
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredSindicatos.map((sindicato, index) => (
-          <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex items-center justify-between mb-2">
-                <div className="text-2xl">{sindicato.bandeira}</div>
-                <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20">
-                  {sindicato.regiao}
-                </Badge>
-              </div>
-              <CardTitle className="text-lg">{sindicato.nome}</CardTitle>
-              <CardDescription>{sindicato.estado}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-sm font-medium text-foreground mb-1">Presidente:</p>
-                  <p className="text-sm text-muted-foreground">{sindicato.presidente}</p>
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4 text-gold" />
-                    <span className="text-sm text-muted-foreground">{sindicato.telefone}</span>
-                  </div>
-                  
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-gold" />
-                    <span className="text-sm text-muted-foreground">{sindicato.email}</span>
-                  </div>
-                  
-                  <div className="flex items-start gap-2">
-                    <MapPin className="h-4 w-4 text-gold mt-0.5" />
-                    <span className="text-sm text-muted-foreground">{sindicato.endereco}</span>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {filteredSindicatos.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">
-            Nenhum sindicato encontrado com os filtros aplicados.
+    <div>
+      <Header />
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground mb-4">Sindicatos</h1>
+          <p className="text-muted-foreground text-lg">
+            Encontre o sindicato dos policiais do seu estado e entre em contato.
           </p>
         </div>
-      )}
+
+        {/* Filtros */}
+        <div className="mb-8 bg-muted/50 p-6 rounded-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">
+                Buscar por nome ou estado
+              </label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Digite o nome do sindicato ou estado..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">
+                Filtrar por região
+              </label>
+              <div className="flex gap-2 flex-wrap">
+                {regioes.map((regiao) => (
+                  <Button
+                    key={regiao}
+                    variant={selectedRegion === regiao ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedRegion(regiao)}
+                    className={selectedRegion === regiao ? "bg-gold hover:bg-gold-dark" : ""}
+                  >
+                    {regiao}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Resultados */}
+        <div className="mb-4">
+          <p className="text-muted-foreground">
+            Mostrando {filteredSindicatos.length} sindicatos
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredSindicatos.map((sindicato, index) => (
+            <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-16 h-10 rounded-md overflow-hidden border border-gold/20">
+                    <img 
+                      src={sindicato.bandeira} 
+                      alt={`Bandeira ${sindicato.estado}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20">
+                    {sindicato.regiao}
+                  </Badge>
+                </div>
+                <CardTitle className="text-lg">{sindicato.nome}</CardTitle>
+                <CardDescription>{sindicato.estado}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-sm font-medium text-foreground mb-1">Presidente:</p>
+                    <p className="text-sm text-muted-foreground">{sindicato.presidente}</p>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Phone className="h-4 w-4 text-gold" />
+                      <span className="text-sm text-muted-foreground">{sindicato.telefone}</span>
+                    </div>
+                    
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-4 w-4 text-gold" />
+                      <span className="text-sm text-muted-foreground">{sindicato.email}</span>
+                    </div>
+                    
+                    <div className="flex items-start gap-2">
+                      <MapPin className="h-4 w-4 text-gold mt-0.5" />
+                      <span className="text-sm text-muted-foreground">{sindicato.endereco}</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {filteredSindicatos.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">
+              Nenhum sindicato encontrado com os filtros aplicados.
+            </p>
+          </div>
+        )}
+      </div>
+      <Footer />
     </div>
   );
 };
