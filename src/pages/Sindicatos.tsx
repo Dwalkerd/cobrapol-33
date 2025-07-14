@@ -280,8 +280,8 @@ const Sindicatos = () => {
           {filteredSindicatos.map((sindicato, index) => (
             <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="w-16 h-10 rounded-md overflow-hidden border border-gold/20">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-24 h-16 rounded-md overflow-hidden border border-gold/20 shadow-sm">
                     <img 
                       src={sindicato.bandeira} 
                       alt={`Bandeira ${sindicato.estado}`}
