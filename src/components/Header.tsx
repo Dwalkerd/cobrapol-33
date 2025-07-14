@@ -1,10 +1,17 @@
-import { Phone, Mail } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, Shield, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
-import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  const { open } = useSidebar();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const menuItems = [
+    { label: "Início", href: "#inicio" },
+    { label: "Sobre", href: "#sobre" },
+    { label: "Serviços", href: "#servicos" },
+    { label: "Notícias", href: "#noticias" },
+    { label: "Contato", href: "#contato" },
+  ];
 
   return (
     <header className="bg-background border-b border-gold/20 sticky top-0 z-50">
@@ -29,7 +36,6 @@ const Header = () => {
         {/* Main header */}
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center gap-3">
-            <SidebarTrigger className="lg:hidden" />
             <div className="bg-gold p-1 rounded-full">
               <img 
                 src="/lovable-uploads/18bd6ef1-312b-49a8-8679-fb0436eb8e48.png" 
@@ -44,24 +50,55 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
-            <SidebarTrigger />
-            <NavLink to="/area-associado">
-              <Button variant="default" className="bg-gold hover:bg-gold-dark">
-                Área do Associado
-              </Button>
-            </NavLink>
-          </div>
+          <nav className="hidden md:flex items-center gap-8">
+            {menuItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-foreground hover:text-gold transition-colors font-medium relative group"
+              >
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            ))}
+            <Button variant="default" className="bg-gold hover:bg-gold-dark">
+              Área do Associado
+            </Button>
+          </nav>
 
-          {/* Mobile Navigation */}
-          <div className="lg:hidden">
-            <NavLink to="/area-associado">
-              <Button variant="default" className="bg-gold hover:bg-gold-dark">
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-foreground" />
+            ) : (
+              <Menu className="h-6 w-6 text-foreground" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <nav className="md:hidden py-4 border-t border-gold/10">
+            <div className="flex flex-col gap-4">
+              {menuItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-foreground hover:text-gold transition-colors font-medium py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <Button variant="default" className="bg-gold hover:bg-gold-dark mt-2">
                 Área do Associado
               </Button>
-            </NavLink>
-          </div>
-        </div>
+            </div>
+          </nav>
+        )}
       </div>
     </header>
   );
