@@ -233,41 +233,41 @@ const Diretoria = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {group.diretores.map((diretor, index) => (
-                  <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
-                    <CardHeader className="text-center">
-                      <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-muted">
-                        <img 
-                          src={diretor.foto} 
-                          alt={diretor.nome}
-                          className="w-full h-full object-cover"
-                        />
+                <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
+                  <CardHeader className="text-center">
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-muted">
+                      <img 
+                        src={diretor.foto} 
+                        alt={diretor.nome}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <Badge variant="outline" className="bg-gold/20 text-gold border-gold/40 mx-auto w-fit mb-3 text-sm font-bold px-3 py-1">
+                      {diretor.cargo}
+                    </Badge>
+                    <CardTitle className="text-lg font-semibold">{diretor.nome}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="text-center">
+                      <p className="text-sm text-muted-foreground font-medium">{diretor.area}</p>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-sm">
+                        <Mail className="h-4 w-4 text-gold" />
+                        <a href={`mailto:${diretor.email}`} className="text-muted-foreground hover:text-gold transition-colors">
+                          {diretor.email}
+                        </a>
                       </div>
-                      <CardTitle className="text-lg">{diretor.nome}</CardTitle>
-                      <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20 mx-auto w-fit">
-                        {diretor.cargo}
-                      </Badge>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <div className="text-center">
-                        <p className="text-sm text-muted-foreground font-medium">{diretor.area}</p>
+                      <div className="flex items-center gap-2 text-sm">
+                        <Phone className="h-4 w-4 text-gold" />
+                        <a href={`tel:${diretor.telefone}`} className="text-muted-foreground hover:text-gold transition-colors">
+                          {diretor.telefone}
+                        </a>
                       </div>
-                      
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-sm">
-                          <Mail className="h-4 w-4 text-gold" />
-                          <a href={`mailto:${diretor.email}`} className="text-muted-foreground hover:text-gold transition-colors">
-                            {diretor.email}
-                          </a>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm">
-                          <Phone className="h-4 w-4 text-gold" />
-                          <a href={`tel:${diretor.telefone}`} className="text-muted-foreground hover:text-gold transition-colors">
-                            {diretor.telefone}
-                          </a>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </CardContent>
+                </Card>
                 ))}
               </div>
             </div>
