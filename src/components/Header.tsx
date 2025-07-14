@@ -36,8 +36,12 @@ const Header = () => {
         {/* Main header */}
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center gap-3">
-            <div className="bg-gold p-2 rounded-full">
-              <Shield className="h-8 w-8 text-primary-foreground" />
+            <div className="bg-gold p-1 rounded-full">
+              <img 
+                src="/lovable-uploads/18bd6ef1-312b-49a8-8679-fb0436eb8e48.png" 
+                alt="Logo Cobrapol" 
+                className="h-10 w-10 rounded-full"
+              />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-foreground">Cobrapol</h1>
