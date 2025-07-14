@@ -15,7 +15,7 @@ const RotatingBanner = () => {
       date: "15/01/2024",
       category: "Conquistas",
       link: "/publicacoes/noticia/1",
-      image: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
+      image: "/assets/hero-police.jpg"
     },
     {
       type: "evento",
@@ -33,7 +33,7 @@ const RotatingBanner = () => {
       date: "10/01/2024",
       category: "Benefícios",
       link: "/publicacoes/noticia/3",
-      image: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=600&fit=crop"
     },
     {
       type: "capacitacao",
@@ -42,7 +42,7 @@ const RotatingBanner = () => {
       date: "08/01/2024",
       category: "Capacitação",
       link: "/publicacoes/noticia/4",
-      image: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop"
     }
   ];
 
