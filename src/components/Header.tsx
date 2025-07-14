@@ -1,17 +1,9 @@
 import { useState } from "react";
 import { Menu, X, Shield, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const menuItems = [
-    { label: "Início", href: "#inicio" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Serviços", href: "#servicos" },
-    { label: "Notícias", href: "#noticias" },
-    { label: "Contato", href: "#contato" },
-  ];
 
   return (
     <header className="bg-background border-b border-gold/20 sticky top-0 z-50">
@@ -50,55 +42,18 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {menuItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-foreground hover:text-gold transition-colors font-medium relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-            <Button variant="default" className="bg-gold hover:bg-gold-dark">
+          <div className="flex items-center gap-4">
+            <SidebarTrigger className="flex items-center gap-2 px-4 py-2 bg-gold hover:bg-gold/90 text-primary-foreground rounded-lg font-medium transition-colors">
+              <Menu className="h-5 w-5" />
+              <span>Menu</span>
+            </SidebarTrigger>
+            
+            <Button variant="default" className="bg-gold hover:bg-gold/90">
               Área do Associado
             </Button>
-          </nav>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? (
-              <X className="h-6 w-6 text-foreground" />
-            ) : (
-              <Menu className="h-6 w-6 text-foreground" />
-            )}
-          </button>
+          </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gold/10">
-            <div className="flex flex-col gap-4">
-              {menuItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-foreground hover:text-gold transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <Button variant="default" className="bg-gold hover:bg-gold-dark mt-2">
-                Área do Associado
-              </Button>
-            </div>
-          </nav>
-        )}
       </div>
     </header>
   );
