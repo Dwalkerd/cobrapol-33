@@ -1,58 +1,65 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const Noticias = () => {
   const noticias = [
     {
+      id: "1",
       titulo: "Nova Conquista: Aumento Salarial Aprovado",
       resumo: "Após intensas negociações, foi aprovado reajuste salarial para a categoria policial.",
       data: "15/01/2024",
       autor: "Redação Cobrapol",
       categoria: "Conquistas",
-      imagem: "/api/placeholder/400/200"
+      imagem: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
     },
     {
+      id: "2",
       titulo: "Congresso Nacional de Policiais 2024",
       resumo: "Evento reunirá representantes de todos os estados para discutir pautas importantes.",
       data: "12/01/2024",
       autor: "Comissão Organizadora",
       categoria: "Eventos",
-      imagem: "/api/placeholder/400/200"
+      imagem: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
     },
     {
+      id: "3",
       titulo: "Plano de Saúde: Novas Coberturas",
       resumo: "Ampliação da cobertura do plano de saúde para familiares dos associados.",
       data: "10/01/2024",
       autor: "Departamento de Benefícios",
       categoria: "Benefícios",
-      imagem: "/api/placeholder/400/200"
+      imagem: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
     },
     {
+      id: "4",
       titulo: "Capacitação Profissional: Novos Cursos",
       resumo: "Lançamento de programa de capacitação com foco em segurança pública moderna.",
       data: "08/01/2024",
       autor: "Área de Educação",
       categoria: "Capacitação",
-      imagem: "/api/placeholder/400/200"
+      imagem: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
     },
     {
+      id: "5",
       titulo: "Reunião com Ministério da Justiça",
       resumo: "Diretoria se reuniu com representantes do governo para discutir melhorias.",
       data: "05/01/2024",
       autor: "Diretoria Executiva",
       categoria: "Institucional",
-      imagem: "/api/placeholder/400/200"
+      imagem: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
     },
     {
+      id: "6",
       titulo: "Novo Acordo Coletivo Assinado",
       resumo: "Acordo garante melhores condições de trabalho para policiais de todo o país.",
       data: "03/01/2024",
       autor: "Departamento Jurídico",
       categoria: "Conquistas",
-      imagem: "/api/placeholder/400/200"
+      imagem: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
     }
   ];
 
@@ -69,34 +76,36 @@ const Noticias = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {noticias.map((noticia, index) => (
-          <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
-            <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
-              <img 
-                src="/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png" 
-                alt={noticia.titulo}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <CardHeader>
-              <div className="flex items-center justify-between mb-2">
-                <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20">
-                  {noticia.categoria}
-                </Badge>
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <Calendar className="h-4 w-4" />
-                  {noticia.data}
+          <Link key={noticia.id} to={`/publicacoes/noticia/${noticia.id}`}>
+            <Card className="border-gold/20 hover:shadow-lg transition-shadow h-full">
+              <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
+                <img 
+                  src="/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png" 
+                  alt={noticia.titulo}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardHeader>
+                <div className="flex items-center justify-between mb-2">
+                  <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20">
+                    {noticia.categoria}
+                  </Badge>
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <Calendar className="h-4 w-4" />
+                    {noticia.data}
+                  </div>
                 </div>
-              </div>
-              <CardTitle className="text-lg">{noticia.titulo}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">{noticia.resumo}</p>
-              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                <User className="h-4 w-4" />
-                {noticia.autor}
-              </div>
-            </CardContent>
-          </Card>
+                <CardTitle className="text-lg">{noticia.titulo}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">{noticia.resumo}</p>
+                <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                  <User className="h-4 w-4" />
+                  {noticia.autor}
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
 

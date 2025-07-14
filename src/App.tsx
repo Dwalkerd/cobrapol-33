@@ -10,7 +10,9 @@ import Diretoria from "./pages/institucional/Diretoria";
 import Historia from "./pages/institucional/Historia";
 import MissaoVisaoValores from "./pages/institucional/MissaoVisaoValores";
 import Noticias from "./pages/publicacoes/Noticias";
+import NoticiaDetalhes from "./pages/publicacoes/NoticiaDetalhes";
 import Blog from "./pages/publicacoes/Blog";
+import ArtigoDetalhes from "./pages/publicacoes/ArtigoDetalhes";
 import Multimidia from "./pages/publicacoes/Multimidia";
 import Sindicatos from "./pages/Sindicatos";
 import AreaAssociado from "./pages/AreaAssociado";
@@ -30,7 +32,9 @@ const App = () => (
           <Route path="/institucional/historia" element={<Historia />} />
           <Route path="/institucional/missao-visao-valores" element={<MissaoVisaoValores />} />
           <Route path="/publicacoes/noticias" element={<Noticias />} />
+          <Route path="/publicacoes/noticia/:id" element={<NoticiaDetalhes />} />
           <Route path="/publicacoes/blog" element={<Blog />} />
+          <Route path="/publicacoes/artigo/:id" element={<ArtigoDetalhes />} />
           <Route path="/publicacoes/multimidia" element={<Multimidia />} />
           <Route path="/sindicatos" element={<Sindicatos />} />
           <Route path="/area-associado" element={<AreaAssociado />} />
