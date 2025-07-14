@@ -16,20 +16,20 @@ const Diretoria = () => {
   const diretores = [
     // Mandato 2024-2027
     {
-      nome: "José Carlos Silva",
+      nome: "Adriano Bandeira",
       cargo: "Presidente",
       mandato: "2024-2027",
-      area: "Administração Geral",
+      area: "Direção Geral",
       email: "presidente@cobrapol.org.br",
       telefone: "(11) 1234-5678",
       foto: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop"
     },
     {
-      nome: "Maria Santos Oliveira",
-      cargo: "Vice-Presidente",
+      nome: "Fábio Nunes Castro",
+      cargo: "Diretor de Promoção Política",
       mandato: "2024-2027",
-      area: "Assuntos Jurídicos",
-      email: "vice@cobrapol.org.br",
+      area: "Articulação Política",
+      email: "politica@cobrapol.org.br",
       telefone: "(11) 1234-5679",
       foto: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=400&fit=crop"
     },

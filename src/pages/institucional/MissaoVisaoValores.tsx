@@ -25,8 +25,9 @@ const MissaoVisaoValores = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground text-center">
-              Defender os direitos e interesses dos policiais brasileiros, promovendo a valorização 
-              profissional e melhores condições de trabalho através da união e representação sindical.
+              Promover a defesa dos direitos dos trabalhadores da segurança pública, garantindo 
+              espaço de negociação coletiva e influenciando políticas que melhorem as condições 
+              de trabalho na Polícia Civil.
             </p>
           </CardContent>
         </Card>
@@ -40,8 +41,8 @@ const MissaoVisaoValores = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground text-center">
-              Ser reconhecida como a principal entidade representativa dos policiais brasileiros, 
-              promovendo a dignidade profissional e contribuindo para uma sociedade mais justa e segura.
+              Tornar-se referência na consolidação de uma Polícia Civil moderna, unificada e 
+              valorizada, com carreiras estruturadas de forma clara e igualitária em todo o país.
             </p>
           </CardContent>
         </Card>
@@ -56,20 +57,16 @@ const MissaoVisaoValores = () => {
           <CardContent>
             <div className="space-y-3">
               <div className="text-center">
-                <h4 className="font-semibold text-foreground">Transparência</h4>
-                <p className="text-sm text-muted-foreground">Atuação clara e honesta</p>
+                <h4 className="font-semibold text-foreground">União e Solidariedade</h4>
+                <p className="text-sm text-muted-foreground">Atuação conjunta com sindicatos estaduais</p>
               </div>
               <div className="text-center">
-                <h4 className="font-semibold text-foreground">Solidariedade</h4>
-                <p className="text-sm text-muted-foreground">Unidos pela categoria</p>
+                <h4 className="font-semibold text-foreground">Transparência e Democracia</h4>
+                <p className="text-sm text-muted-foreground">Decisões em congressos com ampla participação</p>
               </div>
               <div className="text-center">
-                <h4 className="font-semibold text-foreground">Justiça</h4>
-                <p className="text-sm text-muted-foreground">Defesa dos direitos</p>
-              </div>
-              <div className="text-center">
-                <h4 className="font-semibold text-foreground">Ética</h4>
-                <p className="text-sm text-muted-foreground">Conduta exemplar</p>
+                <h4 className="font-semibold text-foreground">Compromisso com a Sociedade</h4>
+                <p className="text-sm text-muted-foreground">Serviço policial eficiente e humanizado</p>
               </div>
             </div>
           </CardContent>
@@ -85,19 +82,19 @@ const MissaoVisaoValores = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <span className="text-gold">•</span>
-                <span className="text-muted-foreground">Defesa intransigente dos direitos dos policiais</span>
+                <span className="text-muted-foreground">Negociação coletiva com governos federal, estaduais e municipais</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-gold">•</span>
-                <span className="text-muted-foreground">Promoção da valorização profissional</span>
+                <span className="text-muted-foreground">Formação e capacitação através de congressos e seminários</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-gold">•</span>
-                <span className="text-muted-foreground">Transparência em todas as ações</span>
+                <span className="text-muted-foreground">Articulação política junto ao Legislativo e Executivo</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-gold">•</span>
-                <span className="text-muted-foreground">Fortalecimento da unidade sindical</span>
+                <span className="text-muted-foreground">Atuação jurídica como amicus curiae no STF</span>
               </li>
             </ul>
           </CardContent>
@@ -111,19 +108,19 @@ const MissaoVisaoValores = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <span className="text-gold">•</span>
-                <span className="text-muted-foreground">Melhoria das condições de trabalho</span>
+                <span className="text-muted-foreground">Aprovação da Lei Orgânica Nacional das Polícias Civis</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-gold">•</span>
-                <span className="text-muted-foreground">Ampliação dos benefícios sociais</span>
+                <span className="text-muted-foreground">Políticas de saúde mental e prevenção ao adoecimento</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-gold">•</span>
-                <span className="text-muted-foreground">Fortalecimento da representação política</span>
+                <span className="text-muted-foreground">Paridade previdenciária e revisão de carreiras</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-gold">•</span>
-                <span className="text-muted-foreground">Modernização dos processos internos</span>
+                <span className="text-muted-foreground">Modernização e unificação das estruturas policiais</span>
               </li>
             </ul>
           </CardContent>

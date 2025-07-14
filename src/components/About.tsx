@@ -34,13 +34,13 @@ const About = () => {
             Sobre o Cobrapol
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Defendendo Policiais há
-            <span className="text-gold"> 30 Anos</span>
+            Defendendo Policiais Civis há
+            <span className="text-gold"> Mais de 30 Anos</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Somos o maior sindicato de policiais do país, com uma trajetória sólida na defesa 
-            dos direitos da categoria. Nossa história é marcada por conquistas importantes e 
-            pelo comprometimento inabalável com nossos associados.
+            Somos a Confederação Brasileira de Trabalhadores Policiais Civis, registrada no 
+            Ministério do Trabalho desde 1991. Nossa história é marcada por conquistas importantes 
+            e pelo comprometimento inabalável com os direitos dos policiais civis brasileiros.
           </p>
         </div>
 
@@ -149,8 +149,8 @@ const About = () => {
                 <div className="flex gap-4">
                   <div className="bg-gold rounded-full w-3 h-3 mt-2 flex-shrink-0"></div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">1993 - Fundação</h4>
-                    <p className="text-muted-foreground">Criação do sindicato com o objetivo de unir e fortalecer a categoria policial.</p>
+                    <h4 className="font-semibold text-foreground mb-2">1991 - Fundação</h4>
+                    <p className="text-muted-foreground">Fundação em 9 de outubro pela iniciativa de sindicalistas para unir os policiais civis do Brasil.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
