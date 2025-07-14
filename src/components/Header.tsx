@@ -36,7 +36,7 @@ const Header = () => {
         {/* Main header */}
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center gap-3">
-            <div className="bg-gradient-to-br from-gold to-gold-dark p-2 rounded-full">
+            <div className="bg-gold p-2 rounded-full">
               <Shield className="h-8 w-8 text-primary-foreground" />
             </div>
             <div>
@@ -57,7 +57,7 @@ const Header = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <Button variant="default" className="bg-gradient-to-r from-gold to-gold-dark hover:from-gold-dark hover:to-gold">
+            <Button variant="default" className="bg-gold hover:bg-gold-dark">
               Área do Associado
             </Button>
           </nav>
@@ -89,7 +89,7 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <Button variant="default" className="bg-gradient-to-r from-gold to-gold-dark hover:from-gold-dark hover:to-gold mt-2">
+              <Button variant="default" className="bg-gold hover:bg-gold-dark mt-2">
                 Área do Associado
               </Button>
             </div>

@@ -48,7 +48,7 @@ const About = () => {
           {values.map((value, index) => (
             <Card key={index} className="text-center group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40">
               <CardContent className="p-8">
-                <div className="bg-gradient-to-br from-gold to-gold-dark p-4 rounded-full w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <div className="bg-gold p-4 rounded-full w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <value.icon className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-foreground">{value.title}</h3>

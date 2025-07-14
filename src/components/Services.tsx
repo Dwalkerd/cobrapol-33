@@ -94,7 +94,7 @@ const Services = () => {
                 </Badge>
               )}
               <CardHeader className="pb-4">
-                <div className="bg-gradient-to-br from-gold to-gold-dark p-4 rounded-2xl w-16 h-16 mb-4 group-hover:scale-110 transition-transform">
+                <div className="bg-gold p-4 rounded-2xl w-16 h-16 mb-4 group-hover:scale-110 transition-transform">
                   <service.icon className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground">

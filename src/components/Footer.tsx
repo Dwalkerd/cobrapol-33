@@ -40,7 +40,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <div className="bg-gradient-to-br from-gold to-gold-dark p-2 rounded-full">
+              <div className="bg-gold p-2 rounded-full">
                 <Shield className="h-8 w-8 text-primary-foreground" />
               </div>
               <div>

@@ -76,7 +76,7 @@ const Contact = () => {
                 )}
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-gradient-to-br from-gold to-gold-dark p-3 rounded-xl group-hover:scale-110 transition-transform">
+                    <div className="bg-gold p-3 rounded-xl group-hover:scale-110 transition-transform">
                       <info.icon className="h-6 w-6 text-primary-foreground" />
                     </div>
                     <div>
@@ -177,7 +177,7 @@ const Contact = () => {
                   ></textarea>
                 </div>
                 <Button 
-                  className="w-full bg-gradient-to-r from-gold to-gold-dark hover:from-gold-dark hover:to-gold text-foreground font-semibold py-3"
+                  className="w-full bg-gold hover:bg-gold-dark text-foreground font-semibold py-3"
                   size="lg"
                 >
                   <Send className="mr-2 h-5 w-5" />
