@@ -32,8 +32,7 @@ const Hero = () => {
                 </span>
               </h1>
               <p className="text-xl text-background/90 max-w-lg">
-                Há mais de 30 anos lutando pelos direitos e bem-estar dos policiais brasileiros. 
-                Unidos pela justiça, fortalecidos pela união.
+                O maior sindicato de policiais do Brasil, defendendo seus direitos há mais de 30 anos.
               </p>
             </div>
 

@@ -44,6 +44,87 @@ const About = () => {
           </p>
         </div>
 
+        {/* What We Do Section */}
+        <div className="bg-card rounded-3xl p-8 lg:p-12 border border-gold/20 mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold mb-6 text-foreground">
+              O Que Fazemos
+            </h3>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Nosso trabalho é abrangente e focado no bem-estar e na proteção dos direitos 
+              dos policiais brasileiros. Confira nossas principais áreas de atuação:
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-gold/10 rounded-full p-6 w-20 h-20 mx-auto mb-4">
+                <Target className="h-8 w-8 text-gold mx-auto" />
+              </div>
+              <h4 className="text-xl font-bold mb-3 text-foreground">Defesa Jurídica</h4>
+              <p className="text-muted-foreground">
+                Prestamos assistência jurídica especializada, defendendo policiais em processos 
+                administrativos e judiciais, garantindo seus direitos constitucionais.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-gold/10 rounded-full p-6 w-20 h-20 mx-auto mb-4">
+                <Handshake className="h-8 w-8 text-gold mx-auto" />
+              </div>
+              <h4 className="text-xl font-bold mb-3 text-foreground">Negociações</h4>
+              <p className="text-muted-foreground">
+                Negociamos melhorias salariais, benefícios e condições de trabalho junto aos 
+                órgãos competentes, sempre em busca do melhor para a categoria.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-gold/10 rounded-full p-6 w-20 h-20 mx-auto mb-4">
+                <Heart className="h-8 w-8 text-gold mx-auto" />
+              </div>
+              <h4 className="text-xl font-bold mb-3 text-foreground">Apoio Social</h4>
+              <p className="text-muted-foreground">
+                Oferecemos suporte psicológico, social e familiar aos associados, 
+                além de programas de assistência em situações emergenciais.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-gold/10 rounded-full p-6 w-20 h-20 mx-auto mb-4">
+                <Trophy className="h-8 w-8 text-gold mx-auto" />
+              </div>
+              <h4 className="text-xl font-bold mb-3 text-foreground">Conquistas</h4>
+              <p className="text-muted-foreground">
+                Trabalhamos incansavelmente para conquistar direitos, melhorias e reconhecimento 
+                profissional para todos os policiais brasileiros.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-gold/10 rounded-full p-6 w-20 h-20 mx-auto mb-4">
+                <Target className="h-8 w-8 text-gold mx-auto" />
+              </div>
+              <h4 className="text-xl font-bold mb-3 text-foreground">Capacitação</h4>
+              <p className="text-muted-foreground">
+                Promovemos cursos, treinamentos e programas de capacitação para o desenvolvimento 
+                profissional contínuo dos associados.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-gold/10 rounded-full p-6 w-20 h-20 mx-auto mb-4">
+                <Heart className="h-8 w-8 text-gold mx-auto" />
+              </div>
+              <h4 className="text-xl font-bold mb-3 text-foreground">Benefícios</h4>
+              <p className="text-muted-foreground">
+                Estabelecemos parcerias e convênios exclusivos, oferecendo descontos e 
+                benefícios especiais para associados e suas famílias.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {values.map((value, index) => (
             <Card key={index} className="text-center group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40">

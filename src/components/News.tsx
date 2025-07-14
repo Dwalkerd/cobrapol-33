@@ -14,12 +14,28 @@ const News = () => {
       image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=400&fit=crop"
     },
     {
+      category: "Blog",
+      title: "Como Funciona a Proteção Jurídica para Policiais",
+      excerpt: "Entenda todos os detalhes sobre como nosso departamento jurídico trabalha para defender os direitos dos associados.",
+      date: "12 Jan 2024",
+      readTime: "6 min",
+      image: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=800&h=400&fit=crop"
+    },
+    {
       category: "Jurídico",
       title: "Vitória Importante no STF sobre Direitos Previdenciários",
       excerpt: "O Supremo Tribunal Federal decidiu favoravelmente sobre a aposentadoria especial dos policiais em todo o território nacional.",
       date: "10 Jan 2024",
       readTime: "5 min",
       image: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=800&h=400&fit=crop"
+    },
+    {
+      category: "Atualização",
+      title: "Novos Benefícios Disponíveis para Associados",
+      excerpt: "Confira as últimas parcerias firmadas e benefícios exclusivos que foram disponibilizados para todos os associados.",
+      date: "9 Jan 2024",
+      readTime: "4 min",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop"
     },
     {
       category: "Evento",
@@ -30,12 +46,36 @@ const News = () => {
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=400&fit=crop"
     },
     {
+      category: "Blog",
+      title: "Direitos do Policial: Guia Completo Atualizado",
+      excerpt: "Um guia completo sobre todos os direitos garantidos por lei aos policiais brasileiros e como exercê-los.",
+      date: "6 Jan 2024",
+      readTime: "8 min",
+      image: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800&h=400&fit=crop"
+    },
+    {
       category: "Benefício",
       title: "Novo Convênio Médico com Desconto Especial",
       excerpt: "Firmamos parceria com a rede hospitalar MedSaúde, oferecendo 40% de desconto para associados e familiares.",
       date: "5 Jan 2024",
       readTime: "4 min",
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop"
+    },
+    {
+      category: "Atualização",
+      title: "Melhorias no Atendimento ao Associado",
+      excerpt: "Implementamos um novo sistema de atendimento 24/7 para dar suporte ainda melhor aos nossos associados.",
+      date: "3 Jan 2024",
+      readTime: "3 min",
+      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=400&fit=crop"
+    },
+    {
+      category: "Blog",
+      title: "A Importância da União na Categoria Policial",
+      excerpt: "Reflexão sobre como a união fortalece a categoria e os resultados positivos que alcançamos trabalhando juntos.",
+      date: "1 Jan 2024",
+      readTime: "5 min",
+      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=400&fit=crop"
     }
   ];
 
@@ -49,6 +89,10 @@ const News = () => {
         return "bg-purple-500/10 text-purple-700 border-purple-500/20";
       case "Benefício":
         return "bg-gold/10 text-gold-dark border-gold/20";
+      case "Blog":
+        return "bg-orange-500/10 text-orange-700 border-orange-500/20";
+      case "Atualização":
+        return "bg-cyan-500/10 text-cyan-700 border-cyan-500/20";
       default:
         return "bg-gray-500/10 text-gray-700 border-gray-500/20";
     }
@@ -59,21 +103,24 @@ const News = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 border-gold text-gold">
-            Notícias e Atualizações
+            Notícias, Blog e Atualizações
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Últimas
             <span className="text-gold"> Notícias</span>
+            <span className="block text-3xl lg:text-4xl mt-2 text-muted-foreground">
+              e Conteúdo do Blog
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Mantenha-se informado sobre as últimas conquistas, eventos e 
-            novidades importantes para a categoria policial.
+            Fique por dentro das últimas conquistas, eventos, artigos do blog e 
+            atualizações importantes para a categoria policial.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          {/* Featured News */}
-          <Card className="lg:row-span-2 group hover:shadow-xl transition-all duration-300 border-gold/20 hover:border-gold/40 overflow-hidden">
+        {/* Featured News */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          <Card className="lg:col-span-2 group hover:shadow-xl transition-all duration-300 border-gold/20 hover:border-gold/40 overflow-hidden">
             <div className="relative h-64 lg:h-80 overflow-hidden">
               <img 
                 src={news[0].image}
@@ -111,48 +158,79 @@ const News = () => {
             </CardContent>
           </Card>
 
-          {/* Other News */}
+          {/* Side Stories */}
           <div className="space-y-6">
-            {news.slice(1).map((article, index) => (
+            {news.slice(1, 4).map((article, index) => (
               <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40 overflow-hidden">
-                <div className="flex">
-                  <div className="w-32 h-24 flex-shrink-0 overflow-hidden">
-                    <img 
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                <div className="relative h-32 overflow-hidden">
+                  <img 
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-2 left-2">
+                    <Badge className={`${getCategoryColor(article.category)} text-xs`}>
+                      {article.category}
+                    </Badge>
                   </div>
-                  <CardContent className="flex-1 p-6">
-                    <div className="flex items-start justify-between mb-2">
-                      <Badge className={`${getCategoryColor(article.category)} text-xs`}>
-                        {article.category}
-                      </Badge>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <Calendar className="h-3 w-3" />
-                        <span>{article.date}</span>
-                      </div>
-                    </div>
-                    <h4 className="font-bold text-foreground mb-2 group-hover:text-gold transition-colors line-clamp-2">
-                      {article.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
-                      {article.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Clock className="h-3 w-3" />
-                        <span>{article.readTime}</span>
-                      </div>
-                      <Button variant="ghost" size="sm" className="text-gold hover:text-gold-dark p-0 h-auto">
-                        Ler mais <ArrowRight className="ml-1 h-3 w-3" />
-                      </Button>
-                    </div>
-                  </CardContent>
                 </div>
+                <CardContent className="p-4">
+                  <h4 className="font-bold text-sm text-foreground mb-2 group-hover:text-gold transition-colors line-clamp-2">
+                    {article.title}
+                  </h4>
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <Calendar className="h-3 w-3" />
+                    <span>{article.date}</span>
+                    <Clock className="h-3 w-3 ml-2" />
+                    <span>{article.readTime}</span>
+                  </div>
+                </CardContent>
               </Card>
             ))}
           </div>
+        </div>
+
+        {/* Additional News Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {news.slice(4).map((article, index) => (
+            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40 overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={article.image}
+                  alt={article.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-4 left-4">
+                  <Badge className={getCategoryColor(article.category)}>
+                    {article.category}
+                  </Badge>
+                </div>
+              </div>
+              <CardContent className="p-6">
+                <h4 className="font-bold text-foreground mb-3 group-hover:text-gold transition-colors line-clamp-2">
+                  {article.title}
+                </h4>
+                <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
+                  {article.excerpt}
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-3 w-3" />
+                      <span>{article.date}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      <span>{article.readTime}</span>
+                    </div>
+                  </div>
+                  <Button variant="ghost" size="sm" className="text-gold hover:text-gold-dark p-0 h-auto">
+                    Ler mais <ArrowRight className="ml-1 h-3 w-3" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         {/* Newsletter */}
