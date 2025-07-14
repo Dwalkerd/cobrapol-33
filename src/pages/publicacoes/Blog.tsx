@@ -1,6 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, Clock } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Blog = () => {
   const artigos = [
@@ -61,7 +63,9 @@ const Blog = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen">
+      <Header />
+      <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-4">Artigos e Blog</h1>
         <p className="text-muted-foreground text-lg">
@@ -121,6 +125,8 @@ const Blog = () => {
           </CardContent>
         </Card>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 };

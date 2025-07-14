@@ -1,10 +1,14 @@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const FaleConosco = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen">
+      <Header />
+      <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-4">Fale Conosco</h1>
         <p className="text-muted-foreground text-lg">
@@ -136,6 +140,8 @@ const FaleConosco = () => {
           </Card>
         </div>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 };

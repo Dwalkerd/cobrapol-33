@@ -1,5 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Diretoria = () => {
   const diretores = [
@@ -34,7 +36,9 @@ const Diretoria = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen">
+      <Header />
+      <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-4">Diretoria Executiva</h1>
         <p className="text-muted-foreground text-lg">
@@ -89,6 +93,8 @@ const Diretoria = () => {
           </CardContent>
         </Card>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 };

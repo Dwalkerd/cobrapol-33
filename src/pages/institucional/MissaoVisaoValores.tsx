@@ -1,9 +1,13 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Target, Eye, Heart } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const MissaoVisaoValores = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen">
+      <Header />
+      <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-4">Missão, Visão e Valores</h1>
         <p className="text-muted-foreground text-lg">
@@ -125,6 +129,8 @@ const MissaoVisaoValores = () => {
           </CardContent>
         </Card>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 };

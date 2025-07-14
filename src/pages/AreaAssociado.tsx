@@ -3,10 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Lock, User, Shield, FileText, CreditCard, Phone } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const AreaAssociado = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen">
+      <Header />
+      <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-4">Área do Associado</h1>
         <p className="text-muted-foreground text-lg">
@@ -185,6 +189,8 @@ const AreaAssociado = () => {
           </CardContent>
         </Card>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 };
