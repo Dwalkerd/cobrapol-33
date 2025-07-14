@@ -11,7 +11,7 @@ import { useState } from "react";
 const Diretoria = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterCargo, setFilterCargo] = useState("all");
-  const [filterMandato, setFilterMandato] = useState("all");
+  const [filterMandato, setFilterMandato] = useState("2024-2027"); // Mandato atual por padrão
 
   const diretores = [
     // Mandato 2024-2027
@@ -161,7 +161,7 @@ const Diretoria = () => {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-4">Diretoria Executiva</h1>
           <p className="text-muted-foreground text-lg">
-            Conheça os membros da diretoria executiva do Cobrapol ao longo dos mandatos.
+            Conheça os membros da diretoria executiva atual do Cobrapol. Use os filtros para ver mandatos anteriores.
           </p>
         </div>
 
@@ -202,12 +202,13 @@ const Diretoria = () => {
               <label className="block text-sm font-medium mb-2">Filtrar por mandato</label>
               <Select value={filterMandato} onValueChange={setFilterMandato}>
                 <SelectTrigger className="border-gold/20">
-                  <SelectValue placeholder="Todos os mandatos" />
+                  <SelectValue placeholder="Mandato Atual" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="2024-2027">Mandato Atual (2024-2027)</SelectItem>
                   <SelectItem value="all">Todos os mandatos</SelectItem>
-                  {mandatos.map(mandato => (
-                    <SelectItem key={mandato} value={mandato}>{mandato}</SelectItem>
+                  {mandatos.filter(m => m !== "2024-2027").map(mandato => (
+                    <SelectItem key={mandato} value={mandato}>Mandato {mandato}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -284,7 +285,7 @@ const Diretoria = () => {
               onClick={() => {
                 setSearchTerm("");
                 setFilterCargo("all");
-                setFilterMandato("all");
+                setFilterMandato("2024-2027"); // Volta para o mandato atual
               }}
             >
               Limpar Filtros
