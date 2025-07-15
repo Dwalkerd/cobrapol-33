@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Play, Download, Calendar, Eye } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Play, Download, Calendar, Eye, FileImage, Palette } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -68,6 +69,51 @@ const Multimidia = () => {
     }
   ];
 
+  const identidadeVisual = [
+    {
+      titulo: "Logo Cobrapol - Versão Principal",
+      descricao: "Logo oficial do Cobrapol em alta resolução para uso institucional",
+      tipo: "Logo",
+      formato: "PNG, SVG, PDF",
+      tamanho: "2.5 MB"
+    },
+    {
+      titulo: "Logo Cobrapol - Versão Monocromática",
+      descricao: "Versão em preto e branco para aplicações especiais",
+      tipo: "Logo",
+      formato: "PNG, SVG",
+      tamanho: "1.8 MB"
+    },
+    {
+      titulo: "Manual de Identidade Visual",
+      descricao: "Guia completo com diretrizes de uso da marca",
+      tipo: "Manual",
+      formato: "PDF",
+      tamanho: "12.3 MB"
+    },
+    {
+      titulo: "Paleta de Cores Institucional",
+      descricao: "Cores oficiais da marca em diferentes formatos",
+      tipo: "Paleta",
+      formato: "ASE, ACO, PDF",
+      tamanho: "850 KB"
+    },
+    {
+      titulo: "Tipografia Institucional",
+      descricao: "Fontes oficiais utilizadas na comunicação",
+      tipo: "Fonte",
+      formato: "TTF, OTF",
+      tamanho: "3.2 MB"
+    },
+    {
+      titulo: "Templates de Apresentação",
+      descricao: "Modelos para apresentações institucionais",
+      tipo: "Template",
+      formato: "PPTX, PDF",
+      tamanho: "8.7 MB"
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -75,7 +121,7 @@ const Multimidia = () => {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-4">Multimídia</h1>
         <p className="text-muted-foreground text-lg">
-          Acesse vídeos, podcasts, fotos e outros conteúdos multimídia do Cobrapol.
+          Acesse vídeos, podcasts, fotos, logos e outros conteúdos multimídia do Cobrapol.
         </p>
       </div>
 
@@ -166,7 +212,7 @@ const Multimidia = () => {
       </section>
 
       {/* Fotos */}
-      <section>
+      <section className="mb-12">
         <h2 className="text-2xl font-bold text-foreground mb-6">Galeria de Fotos</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {fotos.map((foto, index) => (
@@ -193,6 +239,43 @@ const Multimidia = () => {
               <CardContent>
                 <p className="text-muted-foreground mb-4">{foto.descricao}</p>
                 <p className="text-sm text-muted-foreground font-medium">{foto.quantidade}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Identidade Visual */}
+      <section>
+        <h2 className="text-2xl font-bold text-foreground mb-6">Identidade Visual e Downloads</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {identidadeVisual.map((item, index) => (
+            <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
+              <div className="aspect-video bg-gradient-to-br from-gold/10 to-gold/5 rounded-t-lg relative overflow-hidden flex items-center justify-center">
+                {item.tipo === "Logo" && <FileImage className="h-16 w-16 text-gold/60" />}
+                {item.tipo === "Manual" && <FileImage className="h-16 w-16 text-gold/60" />}
+                {item.tipo === "Paleta" && <Palette className="h-16 w-16 text-gold/60" />}
+                {item.tipo === "Fonte" && <FileImage className="h-16 w-16 text-gold/60" />}
+                {item.tipo === "Template" && <FileImage className="h-16 w-16 text-gold/60" />}
+              </div>
+              <CardHeader>
+                <div className="flex items-center justify-between mb-2">
+                  <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20">
+                    {item.tipo}
+                  </Badge>
+                  <span className="text-xs text-muted-foreground">{item.tamanho}</span>
+                </div>
+                <CardTitle className="text-lg">{item.titulo}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">{item.descricao}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">{item.formato}</span>
+                  <Button size="sm" className="bg-gold hover:bg-gold-dark">
+                    <Download className="h-4 w-4 mr-2" />
+                    Baixar
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
