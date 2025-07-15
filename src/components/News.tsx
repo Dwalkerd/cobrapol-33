@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowRight, Newspaper } from "lucide-react";
+import newsImage from "@/assets/news-policia-reuniao.jpg";
 
 const News = () => {
   const noticias = [
@@ -11,7 +12,7 @@ const News = () => {
       excerpt: "Após intensas negociações, conseguimos um reajuste de 8.5% nos salários dos policiais, além de melhorias nos benefícios.",
       date: "15 Jan 2024",
       readTime: "3 min",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=400&fit=crop"
+      image: newsImage
     },
     {
       category: "Jurídico",
