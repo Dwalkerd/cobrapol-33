@@ -62,19 +62,19 @@ const News = () => {
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "Conquista":
-        return "bg-green-500/10 text-green-700 border-green-500/20";
+        return "bg-emerald-600/15 text-emerald-700 border-emerald-600/30 dark:bg-emerald-500/20 dark:text-emerald-400 dark:border-emerald-500/40";
       case "Jurídico":
-        return "bg-blue-500/10 text-blue-700 border-blue-500/20";
+        return "bg-primary/15 text-primary border-primary/30 dark:bg-primary/20 dark:text-primary-foreground dark:border-primary/40";
       case "Evento":
-        return "bg-purple-500/10 text-purple-700 border-purple-500/20";
+        return "bg-purple-600/15 text-purple-700 border-purple-600/30 dark:bg-purple-500/20 dark:text-purple-400 dark:border-purple-500/40";
       case "Benefício":
-        return "bg-gold/10 text-gold-dark border-gold/20";
+        return "bg-gold/15 text-gold-dark border-gold/30 dark:bg-gold/20 dark:text-gold dark:border-gold/40";
       case "Blog":
-        return "bg-orange-500/10 text-orange-700 border-orange-500/20";
+        return "bg-orange-600/15 text-orange-700 border-orange-600/30 dark:bg-orange-500/20 dark:text-orange-400 dark:border-orange-500/40";
       case "Atualização":
-        return "bg-cyan-500/10 text-cyan-700 border-cyan-500/20";
+        return "bg-cyan-600/15 text-cyan-700 border-cyan-600/30 dark:bg-cyan-500/20 dark:text-cyan-400 dark:border-cyan-500/40";
       default:
-        return "bg-gray-500/10 text-gray-700 border-gray-500/20";
+        return "bg-muted text-muted-foreground border-border";
     }
   };
 
@@ -139,7 +139,7 @@ const News = () => {
 
         {/* Comunicados Section */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 border-blue-500 text-blue-700">
+          <Badge variant="outline" className="mb-4 border-primary text-primary">
             Comunicados Oficiais
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
@@ -161,7 +161,7 @@ const News = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-4 left-4">
-                  <Badge className="bg-blue-500/10 text-blue-700 border-blue-500/20">
+                  <Badge className={getCategoryColor(article.category)}>
                     {article.category}
                   </Badge>
                 </div>
