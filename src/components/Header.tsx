@@ -16,7 +16,7 @@ const Header = () => {
       dropdown: [
         { label: "Fale Conosco", href: "/institucional/fale-conosco" },
         { label: "Diretoria Executiva", href: "/institucional/diretoria" },
-        { label: "História", href: "/institucional/historia" },
+        { label: "Sobre Nós", href: "/institucional/sobre-nos" },
         { label: "Missão, Visão e Valores", href: "/institucional/missao-visao-valores" },
       ]
     },
@@ -149,18 +149,41 @@ const Header = () => {
           <nav className="md:hidden py-4 border-t border-gold/10">
             <div className="flex flex-col gap-4">
               {menuItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-foreground hover:text-gold transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
+                <div key={item.label}>
+                  {item.dropdown ? (
+                    <div className="space-y-2">
+                      <span className="text-foreground font-medium py-2 block">
+                        {item.label}
+                      </span>
+                      <div className="ml-4 space-y-2">
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.label}
+                            to={subItem.href}
+                            className="text-muted-foreground hover:text-gold transition-colors block py-1"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="text-foreground hover:text-gold transition-colors font-medium py-2 block"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
               ))}
-              <Button variant="default" className="bg-gold hover:bg-gold-dark mt-2">
-                Área do Associado
-              </Button>
+              <Link to="/area-associado" onClick={() => setIsMenuOpen(false)}>
+                <Button variant="default" className="bg-gold hover:bg-gold-dark mt-2 w-full">
+                  Área do Associado
+                </Button>
+              </Link>
             </div>
           </nav>
         )}
