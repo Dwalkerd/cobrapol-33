@@ -15,7 +15,7 @@ const RotatingBanner = () => {
       date: "15/01/2024",
       category: "Conquistas",
       link: "/publicacoes/noticia/1",
-      image: "/assets/hero-police.jpg"
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&h=600&fit=crop"
     },
     {
       type: "evento",
