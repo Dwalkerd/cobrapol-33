@@ -28,7 +28,7 @@ const News = () => {
       excerpt: "Firmamos parceria com a rede hospitalar MedSaúde, oferecendo 40% de desconto para associados e familiares.",
       date: "5 Jan 2024",
       readTime: "4 min",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&h=400&fit=crop"
     }
   ];
 
@@ -47,7 +47,7 @@ const News = () => {
       excerpt: "Confira as últimas parcerias firmadas e benefícios exclusivos que foram disponibilizados para todos os associados.",
       date: "9 Jan 2024",
       readTime: "4 min",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop"
     },
     {
       category: "Atualização",
