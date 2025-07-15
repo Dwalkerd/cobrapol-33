@@ -1,11 +1,13 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, Download, Calendar, Eye, FileImage, Palette } from "lucide-react";
+import { Play, Download, Calendar, Eye, FileImage, Palette, Filter } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 const Multimidia = () => {
+  const [filtroAtivo, setFiltroAtivo] = useState<string>("todos");
   const videos = [
     {
       titulo: "Congresso Nacional 2024 - Abertura",
@@ -114,6 +116,31 @@ const Multimidia = () => {
     }
   ];
 
+  const filtros = [
+    { id: "todos", label: "Todos" },
+    { id: "videos", label: "Vídeos" },
+    { id: "podcasts", label: "Podcasts" },
+    { id: "fotos", label: "Fotos" },
+    { id: "identidade", label: "Identidade Visual" }
+  ];
+
+  const conteudoFiltrado = () => {
+    switch (filtroAtivo) {
+      case "videos":
+        return { videos, podcasts: [], fotos: [], identidadeVisual: [] };
+      case "podcasts":
+        return { videos: [], podcasts, fotos: [], identidadeVisual: [] };
+      case "fotos":
+        return { videos: [], podcasts: [], fotos, identidadeVisual: [] };
+      case "identidade":
+        return { videos: [], podcasts: [], fotos: [], identidadeVisual };
+      default:
+        return { videos, podcasts, fotos, identidadeVisual };
+    }
+  };
+
+  const { videos: videosExibidos, podcasts: podcastsExibidos, fotos: fotosExibidas, identidadeVisual: identidadeExibida } = conteudoFiltrado();
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -125,11 +152,33 @@ const Multimidia = () => {
         </p>
       </div>
 
+      {/* Filtros */}
+      <div className="mb-8">
+        <div className="flex items-center gap-2 mb-4">
+          <Filter className="h-5 w-5 text-muted-foreground" />
+          <span className="text-sm font-medium text-muted-foreground">Filtrar por:</span>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {filtros.map((filtro) => (
+            <Button
+              key={filtro.id}
+              variant={filtroAtivo === filtro.id ? "default" : "outline"}
+              size="sm"
+              onClick={() => setFiltroAtivo(filtro.id)}
+              className={filtroAtivo === filtro.id ? "bg-gold hover:bg-gold-dark" : ""}
+            >
+              {filtro.label}
+            </Button>
+          ))}
+        </div>
+      </div>
+
       {/* Vídeos */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-bold text-foreground mb-6">Vídeos</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {videos.map((video, index) => (
+      {videosExibidos.length > 0 && (
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-foreground mb-6">Vídeos</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {videosExibidos.map((video, index) => (
             <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
               <div className="aspect-video bg-muted rounded-t-lg relative overflow-hidden">
                 <img 
@@ -164,15 +213,17 @@ const Multimidia = () => {
                 </div>
               </CardContent>
             </Card>
-          ))}
+           ))}
         </div>
-      </section>
+        </section>
+      )}
 
       {/* Podcasts */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-bold text-foreground mb-6">Podcasts</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {podcasts.map((podcast, index) => (
+      {podcastsExibidos.length > 0 && (
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-foreground mb-6">Podcasts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {podcastsExibidos.map((podcast, index) => (
             <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
               <div className="aspect-video bg-muted rounded-t-lg relative overflow-hidden">
                 <img 
@@ -207,15 +258,17 @@ const Multimidia = () => {
                 </div>
               </CardContent>
             </Card>
-          ))}
+           ))}
         </div>
-      </section>
+        </section>
+      )}
 
       {/* Fotos */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-bold text-foreground mb-6">Galeria de Fotos</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {fotos.map((foto, index) => (
+      {fotosExibidas.length > 0 && (
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-foreground mb-6">Galeria de Fotos</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {fotosExibidas.map((foto, index) => (
             <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
               <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
                 <img 
@@ -241,15 +294,17 @@ const Multimidia = () => {
                 <p className="text-sm text-muted-foreground font-medium">{foto.quantidade}</p>
               </CardContent>
             </Card>
-          ))}
+           ))}
         </div>
-      </section>
+        </section>
+      )}
 
       {/* Identidade Visual */}
-      <section>
-        <h2 className="text-2xl font-bold text-foreground mb-6">Identidade Visual e Downloads</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {identidadeVisual.map((item, index) => (
+      {identidadeExibida.length > 0 && (
+        <section>
+          <h2 className="text-2xl font-bold text-foreground mb-6">Identidade Visual e Downloads</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {identidadeExibida.map((item, index) => (
             <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
               <div className="aspect-video bg-gradient-to-br from-gold/10 to-gold/5 rounded-t-lg relative overflow-hidden flex items-center justify-center">
                 {item.tipo === "Logo" && <FileImage className="h-16 w-16 text-gold/60" />}
@@ -278,9 +333,10 @@ const Multimidia = () => {
                 </div>
               </CardContent>
             </Card>
-          ))}
-        </div>
-      </section>
+           ))}
+          </div>
+        </section>
+      )}
       </div>
       <Footer />
     </div>
