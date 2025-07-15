@@ -39,7 +39,7 @@ const News = () => {
       excerpt: "Todos os associados estão convocados para a assembleia que discutirá as novas propostas de benefícios e melhorias.",
       date: "8 Jan 2024",
       readTime: "2 min",
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=400&fit=crop"
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=400&fit=crop"
     },
     {
       category: "Atualização",
