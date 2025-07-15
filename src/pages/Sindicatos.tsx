@@ -281,7 +281,7 @@ const Sindicatos = () => {
             <Card key={index} className="border-gold/20 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-24 h-16 rounded-md overflow-hidden border border-gold/20 shadow-sm">
+                  <div className="w-32 h-24 rounded-md overflow-hidden border border-gold/20 shadow-sm">
                     <img 
                       src={sindicato.bandeira} 
                       alt={`Bandeira ${sindicato.estado}`}
