@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Menu, X, Shield, Phone, Mail, ChevronDown, ChevronRight } from "lucide-react";
+import { Menu, X, Shield, Phone, Mail, ChevronDown, ChevronRight, Search, Globe, Monitor, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -100,121 +100,125 @@ const Header = () => {
     }, 200); // 200ms delay para dar tempo do usuário navegar
   };
 
+  const quickActions = [
+    { label: "Conheça os Policiais", href: "/policiais" },
+    { label: "Veja as ações sindicais", href: "/acoes" },
+    { label: "Acompanhe a atividade", href: "/atividade" },
+    { label: "Transparência e prestação de contas", href: "/transparencia" },
+  ];
+
   return (
-    <header className="bg-background border-b border-gold/20 sticky top-0 z-50">
+    <header className="bg-primary text-primary-foreground sticky top-0 z-50">
       <div className="container mx-auto px-4">
         {/* Top bar */}
-        <div className="hidden md:flex justify-between items-center py-2 text-sm border-b border-gold/10">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Phone className="h-4 w-4" />
-              <span>(11) 1234-5678</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Mail className="h-4 w-4" />
-              <span>contato@cobrapol.org.br</span>
-            </div>
-          </div>
-          <div className="text-muted-foreground">
-            Atendimento: Segunda à Sexta, 9h às 18h
-          </div>
-        </div>
-
-        {/* Main header */}
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3 border-b border-primary-foreground/20">
           <div className="flex items-center gap-3">
-            <div className="bg-gold p-1 rounded-full">
+            <div className="bg-primary-foreground/10 p-1 rounded">
               <img 
                 src="/lovable-uploads/18bd6ef1-312b-49a8-8679-fb0436eb8e48.png" 
                 alt="Logo Cobrapol" 
-                className="h-10 w-10 rounded-full"
+                className="h-8 w-8 rounded"
               />
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">Cobrapol</h1>
-              <p className="text-sm text-muted-foreground">Sindicato dos Policiais</p>
-            </div>
+            <span className="text-lg font-bold">COBRAPOL</span>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4">
-            <NavigationMenu>
-              <NavigationMenuList className="gap-1">
-                <NavigationMenuItem>
-                  <Link to="/" className="text-foreground hover:text-gold transition-colors font-medium px-4 py-2">
-                    Home
-                  </Link>
-                </NavigationMenuItem>
-                
-                {menuItems.map((item) => (
-                  <NavigationMenuItem key={item.label}>
-                    <NavigationMenuTrigger className="text-foreground hover:text-gold data-[state=open]:text-gold">
-                      {item.label}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="w-80 p-4">
-                        <div className="grid gap-2">
-                          {item.items.map((subItem) => (
-                            <NavigationMenuLink key={subItem.label} asChild>
-                              <Link
-                                to={subItem.href}
-                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gold/10 hover:text-gold focus:bg-gold/10 focus:text-gold"
-                              >
-                                <div className="text-sm font-medium leading-none">{subItem.label}</div>
-                              </Link>
-                            </NavigationMenuLink>
-                          ))}
-                        </div>
-                      </div>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-            
+          {/* Center links */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link to="/fale-conosco" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              Fale com o Sindicato
+            </Link>
+            <Link to="/acesso-informacao" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              Acesso à informação
+            </Link>
+            <Link to="/carta-servicos" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              Carta de serviços
+            </Link>
+          </div>
+
+          {/* Right side tools */}
+          <div className="flex items-center gap-4">
+            <button className="p-2 hover:bg-primary-foreground/10 rounded" title="Acessibilidade">
+              <Globe className="h-4 w-4" />
+            </button>
+            <button className="p-2 hover:bg-primary-foreground/10 rounded" title="Contraste">
+              <Monitor className="h-4 w-4" />
+            </button>
+            <div className="hidden md:flex items-center gap-2 text-sm">
+              <span>Português</span>
+              <ChevronDown className="h-3 w-3" />
+            </div>
+          </div>
+        </div>
+
+        {/* Main navigation bar */}
+        <div className="flex justify-between items-center py-4">
+          {/* Menu button */}
+          <button
+            className="flex items-center gap-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 px-4 py-2 rounded transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <Menu className="h-5 w-5" />
+            <span className="font-medium">Menu</span>
+          </button>
+
+          {/* Quick actions - Desktop only */}
+          <div className="hidden lg:flex items-center gap-8 flex-1 justify-center">
+            {quickActions.map((action) => (
+              <Link
+                key={action.label}
+                to={action.href}
+                className="text-center hover:text-primary-foreground/80 transition-colors"
+              >
+                <span className="text-sm font-medium">{action.label}</span>
+              </Link>
+            ))}
+          </div>
+
+          {/* Search and area do associado */}
+          <div className="flex items-center gap-4">
+            <button className="p-2 hover:bg-primary-foreground/10 rounded" title="Buscar">
+              <Search className="h-5 w-5" />
+            </button>
             <Link to="/area-associado">
-              <Button variant="default" className="bg-gold hover:bg-gold-dark ml-4">
+              <Button variant="secondary" size="sm" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
                 Área do Associado
               </Button>
             </Link>
           </div>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? (
-              <X className="h-6 w-6 text-foreground" />
-            ) : (
-              <Menu className="h-6 w-6 text-foreground" />
-            )}
-          </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile/Dropdown Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gold/10">
-            <div className="flex flex-col gap-4">
-              <Link
-                to="/"
-                className="text-foreground hover:text-gold transition-colors font-medium py-2 block"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              
+          <nav className="border-t border-primary-foreground/20 py-4">
+            <div className="grid gap-4 md:gap-6">
+              {/* Quick actions for mobile */}
+              <div className="lg:hidden grid gap-2">
+                <h3 className="font-semibold text-sm opacity-80 mb-2">Acesso Rápido</h3>
+                {quickActions.map((action) => (
+                  <Link
+                    key={action.label}
+                    to={action.href}
+                    className="text-sm hover:text-primary-foreground/80 transition-colors py-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {action.label}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Main menu items */}
               {menuItems.map((item) => (
                 <div key={item.label} className="space-y-2">
-                  <span className="text-foreground font-medium py-2 block">
+                  <h3 className="font-semibold text-primary-foreground border-b border-primary-foreground/20 pb-2">
                     {item.label}
-                  </span>
-                  <div className="ml-4 space-y-2">
+                  </h3>
+                  <div className="grid gap-1 ml-0">
                     {item.items.map((subItem) => (
                       <Link
                         key={subItem.label}
                         to={subItem.href}
-                        className="text-muted-foreground hover:text-gold transition-colors block py-1"
+                        className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors py-1 px-2 hover:bg-primary-foreground/10 rounded"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {subItem.label}
@@ -223,12 +227,6 @@ const Header = () => {
                   </div>
                 </div>
               ))}
-              
-              <Link to="/area-associado" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="default" className="bg-gold hover:bg-gold-dark mt-2 w-full">
-                  Área do Associado
-                </Button>
-              </Link>
             </div>
           </nav>
         )}
