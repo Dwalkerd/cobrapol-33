@@ -1,7 +1,15 @@
 import { useState, useRef } from "react";
-import { Menu, X, Shield, Phone, Mail, ChevronDown } from "lucide-react";
+import { Menu, X, Shield, Phone, Mail, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,27 +17,74 @@ const Header = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const menuItems = [
-    { label: "Home", href: "/" },
     { 
       label: "Institucional", 
-      href: "#",
-      dropdown: [
-        { label: "Fale Conosco", href: "/institucional/fale-conosco" },
-        { label: "Diretoria Executiva", href: "/institucional/diretoria" },
-        { label: "Sobre Nós", href: "/institucional/sobre-nos" },
-        { label: "Missão, Visão e Valores", href: "/institucional/missao-visao-valores" },
+      items: [
+        { label: "Sobre o Sindicato", href: "/institucional/sobre-nos" },
+        { label: "Fale com o Sindicato", href: "/institucional/fale-conosco" },
+        { label: "Páginas Institucionais", href: "/institucional" },
+        { label: "Serviços", href: "/servicos" },
+        { label: "Especiais", href: "/especiais" },
+      ]
+    },
+    { 
+      label: "Sindicatos", 
+      items: [
+        { label: "Lista de Sindicatos", href: "/sindicatos" },
+        { label: "Filiação", href: "/sindicatos/filiacao" },
+        { label: "Representação", href: "/sindicatos/representacao" },
+      ]
+    },
+    { 
+      label: "Atividade Legislativa", 
+      items: [
+        { label: "Projetos de Lei", href: "/atividade/projetos" },
+        { label: "Comissões", href: "/atividade/comissoes" },
+        { label: "Plenário", href: "/atividade/plenario" },
+      ]
+    },
+    { 
+      label: "Comunicação", 
+      items: [
+        { label: "Notícias", href: "/publicacoes/noticias" },
+        { label: "Blog/Artigos", href: "/publicacoes/blog" },
+        { label: "Multimídia", href: "/publicacoes/multimidia" },
+        { label: "Redes Sociais", href: "/comunicacao/redes-sociais" },
       ]
     },
     { 
       label: "Publicações", 
-      href: "#",
-      dropdown: [
+      items: [
         { label: "Notícias", href: "/publicacoes/noticias" },
         { label: "Artigos/Blog", href: "/publicacoes/blog" },
         { label: "Multimídia", href: "/publicacoes/multimidia" },
+        { label: "Boletins", href: "/publicacoes/boletins" },
       ]
     },
-    { label: "Sindicatos", href: "/sindicatos" },
+    { 
+      label: "Orçamento", 
+      items: [
+        { label: "Orçamento Anual", href: "/orcamento/anual" },
+        { label: "Prestação de Contas", href: "/orcamento/prestacao" },
+        { label: "Relatórios", href: "/orcamento/relatorios" },
+      ]
+    },
+    { 
+      label: "Transparência e Prestação de Contas", 
+      items: [
+        { label: "Portal da Transparência", href: "/transparencia" },
+        { label: "Relatórios Financeiros", href: "/transparencia/financeiros" },
+        { label: "Contratos", href: "/transparencia/contratos" },
+      ]
+    },
+    { 
+      label: "e-Cidadania", 
+      items: [
+        { label: "Consultas Públicas", href: "/e-cidadania/consultas" },
+        { label: "Ouvidoria", href: "/e-cidadania/ouvidoria" },
+        { label: "Petições", href: "/e-cidadania/peticoes" },
+      ]
+    },
   ];
 
   const handleMouseEnter = (itemLabel: string) => {
@@ -82,54 +137,47 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {menuItems.map((item) => (
-              <div key={item.label} className="relative group">
-                 {item.dropdown ? (
-                  <div
-                    className="flex items-center gap-1 text-foreground hover:text-gold transition-colors font-medium cursor-pointer"
-                    onMouseEnter={() => handleMouseEnter(item.label)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {item.label}
-                    <ChevronDown className="h-4 w-4" />
-                    
-                    {activeDropdown === item.label && (
-                      <div 
-                        className="absolute top-full left-0 mt-1 w-56 bg-background border border-gold/20 rounded-md shadow-lg z-50"
-                        onMouseEnter={() => handleMouseEnter(item.label)}
-                        onMouseLeave={handleMouseLeave}
-                      >
-                        {item.dropdown.map((subItem) => (
-                          <Link
-                            key={subItem.label}
-                            to={subItem.href}
-                            className="block px-4 py-2 text-foreground hover:bg-gold/10 hover:text-gold transition-colors"
-                            onClick={() => setActiveDropdown(null)}
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    to={item.href}
-                    className="text-foreground hover:text-gold transition-colors font-medium relative group"
-                  >
-                    {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+          <div className="hidden md:flex items-center gap-4">
+            <NavigationMenu>
+              <NavigationMenuList className="gap-1">
+                <NavigationMenuItem>
+                  <Link to="/" className="text-foreground hover:text-gold transition-colors font-medium px-4 py-2">
+                    Home
                   </Link>
-                )}
-              </div>
-            ))}
+                </NavigationMenuItem>
+                
+                {menuItems.map((item) => (
+                  <NavigationMenuItem key={item.label}>
+                    <NavigationMenuTrigger className="text-foreground hover:text-gold data-[state=open]:text-gold">
+                      {item.label}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <div className="w-80 p-4">
+                        <div className="grid gap-2">
+                          {item.items.map((subItem) => (
+                            <NavigationMenuLink key={subItem.label} asChild>
+                              <Link
+                                to={subItem.href}
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gold/10 hover:text-gold focus:bg-gold/10 focus:text-gold"
+                              >
+                                <div className="text-sm font-medium leading-none">{subItem.label}</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          ))}
+                        </div>
+                      </div>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+            
             <Link to="/area-associado">
-              <Button variant="default" className="bg-gold hover:bg-gold-dark">
+              <Button variant="default" className="bg-gold hover:bg-gold-dark ml-4">
                 Área do Associado
               </Button>
             </Link>
-          </nav>
+          </div>
 
           {/* Mobile menu button */}
           <button
@@ -148,37 +196,34 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t border-gold/10">
             <div className="flex flex-col gap-4">
+              <Link
+                to="/"
+                className="text-foreground hover:text-gold transition-colors font-medium py-2 block"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
+              
               {menuItems.map((item) => (
-                <div key={item.label}>
-                  {item.dropdown ? (
-                    <div className="space-y-2">
-                      <span className="text-foreground font-medium py-2 block">
-                        {item.label}
-                      </span>
-                      <div className="ml-4 space-y-2">
-                        {item.dropdown.map((subItem) => (
-                          <Link
-                            key={subItem.label}
-                            to={subItem.href}
-                            className="text-muted-foreground hover:text-gold transition-colors block py-1"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <Link
-                      to={item.href}
-                      className="text-foreground hover:text-gold transition-colors font-medium py-2 block"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
+                <div key={item.label} className="space-y-2">
+                  <span className="text-foreground font-medium py-2 block">
+                    {item.label}
+                  </span>
+                  <div className="ml-4 space-y-2">
+                    {item.items.map((subItem) => (
+                      <Link
+                        key={subItem.label}
+                        to={subItem.href}
+                        className="text-muted-foreground hover:text-gold transition-colors block py-1"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ))}
+              
               <Link to="/area-associado" onClick={() => setIsMenuOpen(false)}>
                 <Button variant="default" className="bg-gold hover:bg-gold-dark mt-2 w-full">
                   Área do Associado
