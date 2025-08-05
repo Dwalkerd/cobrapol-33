@@ -81,116 +81,56 @@ const News = () => {
   return (
     <section id="noticias" className="py-20 bg-gradient-to-b from-secondary/30 to-background">
       <div className="container mx-auto px-4">
-        {/* Notícias Section */}
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 border-gold text-gold">
-            Últimas Notícias
-          </Badge>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Notícias
-            <span className="text-gold"> Recentes</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Fique por dentro das últimas conquistas, benefícios e atualizações importantes.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        {/* Main Featured News */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {noticias.map((article, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40 overflow-hidden">
-              <div className="relative h-48 overflow-hidden">
+            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden">
+              <div className="relative aspect-video overflow-hidden">
                 <img 
                   src={article.image}
                   alt={article.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute top-4 left-4">
-                  <Badge className={getCategoryColor(article.category)}>
-                    {article.category}
-                  </Badge>
-                </div>
               </div>
-              <CardContent className="p-6">
-                <h4 className="font-bold text-foreground mb-3 group-hover:text-gold transition-colors line-clamp-2">
+              <CardContent className="p-4">
+                <h3 className="font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                   {article.title}
-                </h4>
-                <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
+                </h3>
+                <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
                   {article.excerpt}
                 </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      <span>{article.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      <span>{article.readTime}</span>
-                    </div>
-                  </div>
-                  <Button variant="ghost" size="sm" className="text-gold hover:text-gold-dark p-0 h-auto">
-                    Ler mais <ArrowRight className="ml-1 h-3 w-3" />
-                  </Button>
-                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Comunicados Section */}
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 border-primary text-primary">
-            Comunicados Oficiais
-          </Badge>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Comunicados
-            <span className="text-blue-600"> Importantes</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Informações oficiais e atualizações importantes para todos os associados.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        {/* Secondary News Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {comunicados.map((article, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-blue-500/20 hover:border-blue-500/40 overflow-hidden">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={article.image}
-                  alt={article.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 left-4">
-                  <Badge className={getCategoryColor(article.category)}>
-                    {article.category}
-                  </Badge>
+            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden">
+              <div className="flex gap-4 p-4">
+                <div className="w-24 h-16 flex-shrink-0 overflow-hidden rounded">
+                  <img 
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-medium text-sm text-foreground mb-1 group-hover:text-primary transition-colors line-clamp-2">
+                    {article.title}
+                  </h4>
                 </div>
               </div>
-              <CardContent className="p-6">
-                <h4 className="font-bold text-foreground mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
-                  {article.title}
-                </h4>
-                <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
-                  {article.excerpt}
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      <span>{article.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      <span>{article.readTime}</span>
-                    </div>
-                  </div>
-                  <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 p-0 h-auto">
-                    Ler mais <ArrowRight className="ml-1 h-3 w-3" />
-                  </Button>
-                </div>
-              </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* More News Button */}
+        <div className="text-center">
+          <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+            Mais notícias <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
 
         {/* Newsletter */}
