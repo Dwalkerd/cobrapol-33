@@ -108,10 +108,11 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-primary text-primary-foreground sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        {/* Top bar */}
-        <div className="flex justify-between items-center py-3 border-b border-primary-foreground/20">
+    <header className="sticky top-0 z-50">
+      {/* Top bar - Black background */}
+      <div className="bg-black text-white">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center py-3 border-b border-white/20">
           <div className="flex items-center gap-3">
             <div className="bg-primary-foreground/10 p-1 rounded">
               <img 
@@ -149,10 +150,14 @@ const Header = () => {
               <ChevronDown className="h-3 w-3" />
             </div>
           </div>
+          </div>
         </div>
+      </div>
 
-        {/* Main navigation bar */}
-        <div className="flex justify-between items-center py-4">
+      {/* Main navigation bar - Primary color */}
+      <div className="bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center py-4">
           {/* Menu button */}
           <button
             className="flex items-center gap-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 px-4 py-2 rounded transition-colors"
@@ -190,7 +195,7 @@ const Header = () => {
 
         {/* Mobile/Dropdown Navigation */}
         {isMenuOpen && (
-          <nav className="border-t border-primary-foreground/20 py-4">
+          <nav className="border-t border-primary-foreground/20 py-4 max-h-96 overflow-y-auto">
             <div className="grid gap-4 md:gap-6">
               {/* Quick actions for mobile */}
               <div className="lg:hidden grid gap-2">
@@ -230,6 +235,7 @@ const Header = () => {
             </div>
           </nav>
         )}
+        </div>
       </div>
     </header>
   );
