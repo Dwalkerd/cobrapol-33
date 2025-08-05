@@ -127,7 +127,7 @@ const News = () => {
         </div>
 
         {/* More News Button */}
-        <div className="text-center">
+        <div className="text-center mb-16">
           <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
             Mais notícias <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
