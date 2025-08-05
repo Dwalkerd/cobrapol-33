@@ -195,8 +195,8 @@ const Header = () => {
 
         {/* Mobile/Dropdown Navigation */}
         {isMenuOpen && (
-          <nav className="border-t border-primary-foreground/20 py-4 max-h-96 overflow-y-auto">
-            <div className="grid gap-4 md:gap-6">
+          <nav className="fixed inset-0 top-[120px] bg-primary border-t border-primary-foreground/20 py-4 overflow-y-auto z-40">
+            <div className="container mx-auto px-4 grid gap-4 md:gap-6">
               {/* Quick actions for mobile */}
               <div className="lg:hidden grid gap-2">
                 <h3 className="font-semibold text-sm opacity-80 mb-2">Acesso Rápido</h3>
