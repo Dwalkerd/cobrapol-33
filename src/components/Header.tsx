@@ -13,6 +13,7 @@ import {
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -193,45 +194,92 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile/Dropdown Navigation */}
+        {/* 3-Level Navigation Menu */}
         {isMenuOpen && (
-          <nav className="fixed inset-0 top-[120px] bg-primary border-t border-primary-foreground/20 py-4 overflow-y-auto z-40">
-            <div className="container mx-auto px-4 grid gap-4 md:gap-6">
-              {/* Quick actions for mobile */}
-              <div className="lg:hidden grid gap-2">
-                <h3 className="font-semibold text-sm opacity-80 mb-2">Acesso Rápido</h3>
-                {quickActions.map((action) => (
-                  <Link
-                    key={action.label}
-                    to={action.href}
-                    className="text-sm hover:text-primary-foreground/80 transition-colors py-1"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {action.label}
-                  </Link>
-                ))}
-              </div>
+          <nav className="fixed inset-0 top-[120px] bg-primary border-t border-primary-foreground/20 z-40">
+            <div className="flex h-full">
+              {/* Level 1: Categories */}
+              <div className="w-80 bg-primary border-r border-primary-foreground/20 overflow-y-auto">
+                <div className="p-4">
+                  {/* Quick actions for mobile */}
+                  <div className="lg:hidden mb-6">
+                    <h3 className="font-semibold text-sm opacity-80 mb-3">Acesso Rápido</h3>
+                    <div className="grid gap-2">
+                      {quickActions.map((action) => (
+                        <Link
+                          key={action.label}
+                          to={action.href}
+                          className="text-sm hover:text-primary-foreground/80 transition-colors py-2 px-3 hover:bg-primary-foreground/10 rounded"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {action.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
 
-              {/* Main menu items */}
-              {menuItems.map((item) => (
-                <div key={item.label} className="space-y-2">
-                  <h3 className="font-semibold text-primary-foreground border-b border-primary-foreground/20 pb-2">
-                    {item.label}
-                  </h3>
-                  <div className="grid gap-1 ml-0">
-                    {item.items.map((subItem) => (
-                      <Link
-                        key={subItem.label}
-                        to={subItem.href}
-                        className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors py-1 px-2 hover:bg-primary-foreground/10 rounded"
-                        onClick={() => setIsMenuOpen(false)}
+                  {/* Categories */}
+                  <div className="space-y-1">
+                    <h3 className="font-semibold text-sm opacity-80 mb-3">Categorias</h3>
+                    {menuItems.map((item) => (
+                      <button
+                        key={item.label}
+                        onClick={() => setSelectedCategory(selectedCategory === item.label ? null : item.label)}
+                        className={`w-full text-left flex items-center justify-between py-3 px-3 rounded transition-colors ${
+                          selectedCategory === item.label 
+                            ? 'bg-primary-foreground/20 text-primary-foreground' 
+                            : 'text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10'
+                        }`}
                       >
-                        {subItem.label}
-                      </Link>
+                        <span className="font-medium">{item.label}</span>
+                        <ChevronRight className={`h-4 w-4 transition-transform ${selectedCategory === item.label ? 'rotate-90' : ''}`} />
+                      </button>
                     ))}
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Level 2: Subcategories/Items */}
+              {selectedCategory && (
+                <div className="w-80 bg-primary-foreground/5 border-r border-primary-foreground/20 overflow-y-auto">
+                  <div className="p-4">
+                    <h3 className="font-semibold text-primary-foreground mb-4 border-b border-primary-foreground/20 pb-2">
+                      {selectedCategory}
+                    </h3>
+                    <div className="space-y-1">
+                      {menuItems.find(item => item.label === selectedCategory)?.items.map((subItem) => (
+                        <Link
+                          key={subItem.label}
+                          to={subItem.href}
+                          className="block text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors py-2 px-3 hover:bg-primary-foreground/10 rounded"
+                          onClick={() => {
+                            setIsMenuOpen(false);
+                            setSelectedCategory(null);
+                          }}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Close button overlay */}
+              <div className="flex-1 bg-black/20" onClick={() => {
+                setIsMenuOpen(false);
+                setSelectedCategory(null);
+              }}>
+                <button 
+                  className="absolute top-4 right-4 p-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setSelectedCategory(null);
+                  }}
+                >
+                  <X className="h-5 w-5 text-primary-foreground" />
+                </button>
+              </div>
             </div>
           </nav>
         )}
