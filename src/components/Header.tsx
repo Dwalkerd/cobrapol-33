@@ -311,18 +311,18 @@ const Header = () => {
               )}
 
               {/* Close button overlay */}
-              <div className="flex-1 bg-black/20" onClick={() => {
+              <div className="flex-1 bg-black/30 backdrop-blur-sm" onClick={() => {
                 setIsMenuOpen(false);
                 setSelectedCategory(null);
               }}>
                 <button 
-                  className="absolute top-4 right-4 p-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded"
+                  className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded backdrop-blur-sm border border-white/20"
                   onClick={() => {
                     setIsMenuOpen(false);
                     setSelectedCategory(null);
                   }}
                 >
-                  <X className="h-5 w-5 text-primary-foreground" />
+                  <X className="h-5 w-5 text-white" />
                 </button>
               </div>
             </div>
