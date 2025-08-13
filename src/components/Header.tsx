@@ -70,6 +70,7 @@ const Header = () => {
         { label: "Notícias", href: "/publicacoes/noticias" },
         { label: "Blog/Artigos", href: "/publicacoes/blog" },
         { label: "Multimídia", href: "/publicacoes/multimidia" },
+        { label: "Revistas Cobrapol", href: "/comunicacao/revistas" },
         { label: "Redes Sociais", href: "/comunicacao/redes-sociais" },
       ]
     },
@@ -163,19 +164,23 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center relative">
               <button 
-                className="flex items-center gap-2 text-sm hover:bg-primary-foreground/10 px-2 py-1 rounded transition-colors"
-                onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+                className="flex items-center gap-2 text-sm hover:bg-primary-foreground/10 px-3 py-2 rounded transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
+                }}
               >
                 <span>{selectedLanguage}</span>
                 <ChevronDown className="h-3 w-3" />
               </button>
               
               {isLanguageDropdownOpen && (
-                <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg min-w-[120px] z-50">
+                <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg min-w-[120px] z-[60]">
                   <div className="py-1">
                     <button 
-                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => {
+                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setSelectedLanguage("Português");
                         setIsLanguageDropdownOpen(false);
                       }}
@@ -183,8 +188,9 @@ const Header = () => {
                       Português
                     </button>
                     <button 
-                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => {
+                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setSelectedLanguage("English");
                         setIsLanguageDropdownOpen(false);
                       }}
@@ -192,8 +198,9 @@ const Header = () => {
                       English
                     </button>
                     <button 
-                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => {
+                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setSelectedLanguage("Español");
                         setIsLanguageDropdownOpen(false);
                       }}

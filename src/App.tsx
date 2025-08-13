@@ -18,6 +18,7 @@ import Sindicatos from "./pages/Sindicatos";
 import AreaAssociado from "./pages/AreaAssociado";
 import AcessoInformacao from "./pages/AcessoInformacao";
 import CartaServicos from "./pages/CartaServicos";
+import RevistasCobrapol from "./pages/comunicacao/RevistasCobrapol";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/acesso-informacao" element={<AcessoInformacao />} />
           <Route path="/carta-servicos" element={<CartaServicos />} />
+          <Route path="/comunicacao/revistas" element={<RevistasCobrapol />} />
           <Route path="/institucional/fale-conosco" element={<FaleConosco />} />
           <Route path="/institucional/diretoria" element={<Diretoria />} />
           <Route path="/institucional/sobre-nos" element={<SobreNos />} />
