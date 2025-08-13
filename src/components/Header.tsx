@@ -241,20 +241,20 @@ const Header = () => {
 
         {/* 3-Level Navigation Menu */}
         {isMenuOpen && (
-          <nav className="fixed inset-0 top-[120px] bg-primary border-t border-primary-foreground/20 z-40">
+          <nav className="fixed inset-0 top-[120px] bg-black/20 backdrop-blur-sm z-40 animate-fade-in">
             <div className="flex h-full">
               {/* Level 1: Categories */}
-              <div className="w-80 bg-primary border-r border-primary-foreground/20 overflow-y-auto">
+              <div className="w-80 bg-white border-r border-gray-200 shadow-xl overflow-y-auto animate-slide-in-right">
                 <div className="p-4">
                   {/* Quick actions for mobile */}
                   <div className="lg:hidden mb-6">
-                    <h3 className="font-semibold text-sm opacity-80 mb-3">Acesso Rápido</h3>
+                    <h3 className="font-semibold text-sm text-gray-600 mb-3">Acesso Rápido</h3>
                     <div className="grid gap-2">
                       {quickActions.map((action) => (
                         <Link
                           key={action.label}
                           to={action.href}
-                          className="text-sm hover:text-primary-foreground/80 transition-colors py-2 px-3 hover:bg-primary-foreground/10 rounded"
+                          className="text-sm text-gray-700 hover:text-primary transition-colors py-2 px-3 hover:bg-gray-50 rounded"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {action.label}
@@ -265,15 +265,15 @@ const Header = () => {
 
                   {/* Categories */}
                   <div className="space-y-1">
-                    <h3 className="font-semibold text-sm opacity-80 mb-3">Categorias</h3>
+                    <h3 className="font-semibold text-sm text-gray-600 mb-3">Categorias</h3>
                     {menuItems.map((item) => (
                       <button
                         key={item.label}
                         onClick={() => setSelectedCategory(selectedCategory === item.label ? null : item.label)}
                         className={`w-full text-left flex items-center justify-between py-3 px-3 rounded transition-colors ${
                           selectedCategory === item.label 
-                            ? 'bg-primary-foreground/20 text-primary-foreground' 
-                            : 'text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10'
+                            ? 'bg-primary text-white' 
+                            : 'text-gray-700 hover:text-primary hover:bg-gray-50'
                         }`}
                       >
                         <span className="font-medium">{item.label}</span>
@@ -286,9 +286,9 @@ const Header = () => {
 
               {/* Level 2: Subcategories/Items */}
               {selectedCategory && (
-                <div className="w-80 bg-primary-foreground/5 border-r border-primary-foreground/20 overflow-y-auto">
+                <div className="w-80 bg-white border-r border-gray-200 shadow-xl overflow-y-auto animate-slide-in-right">
                   <div className="p-4">
-                    <h3 className="font-semibold text-primary-foreground mb-4 border-b border-primary-foreground/20 pb-2">
+                    <h3 className="font-semibold text-primary mb-4 border-b border-gray-200 pb-2">
                       {selectedCategory}
                     </h3>
                     <div className="space-y-1">
@@ -296,7 +296,7 @@ const Header = () => {
                         <Link
                           key={subItem.label}
                           to={subItem.href}
-                          className="block text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors py-2 px-3 hover:bg-primary-foreground/10 rounded"
+                          className="block text-sm text-gray-700 hover:text-primary transition-colors py-2 px-3 hover:bg-gray-50 rounded"
                           onClick={() => {
                             setIsMenuOpen(false);
                             setSelectedCategory(null);
@@ -311,18 +311,18 @@ const Header = () => {
               )}
 
               {/* Close button overlay */}
-              <div className="flex-1 bg-black/30 backdrop-blur-sm" onClick={() => {
+              <div className="flex-1" onClick={() => {
                 setIsMenuOpen(false);
                 setSelectedCategory(null);
               }}>
                 <button 
-                  className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded backdrop-blur-sm border border-white/20"
+                  className="absolute top-4 right-4 p-2 bg-white hover:bg-gray-100 rounded-full shadow-lg border border-gray-200 transition-colors"
                   onClick={() => {
                     setIsMenuOpen(false);
                     setSelectedCategory(null);
                   }}
                 >
-                  <X className="h-5 w-5 text-white" />
+                  <X className="h-5 w-5 text-gray-600" />
                 </button>
               </div>
             </div>
