@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Menu, X, Shield, Phone, Mail, ChevronDown, ChevronRight, Search, Globe, Monitor, Sun, Moon } from "lucide-react";
+import { Menu, X, Shield, Phone, Mail, ChevronDown, ChevronRight, Search, Globe, Monitor, Sun, Moon, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -187,7 +187,8 @@ const Header = () => {
               <Search className="h-5 w-5" />
             </button>
             <Link to="/area-associado">
-              <Button variant="secondary" size="sm" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+              <Button variant="secondary" size="sm" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 flex items-center gap-2">
+                <Lock className="h-4 w-4" />
                 Área restrita
               </Button>
             </Link>
