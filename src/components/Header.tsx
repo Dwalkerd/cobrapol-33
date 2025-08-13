@@ -140,12 +140,6 @@ const Header = () => {
 
           {/* Right side tools */}
           <div className="flex items-center gap-4">
-            <button className="p-2 hover:bg-primary-foreground/10 rounded" title="Acessibilidade">
-              <Globe className="h-4 w-4" />
-            </button>
-            <button className="p-2 hover:bg-primary-foreground/10 rounded" title="Contraste">
-              <Monitor className="h-4 w-4" />
-            </button>
             <div className="hidden md:flex items-center gap-2 text-sm">
               <span>Português</span>
               <ChevronDown className="h-3 w-3" />
