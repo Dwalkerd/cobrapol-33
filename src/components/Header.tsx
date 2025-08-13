@@ -188,7 +188,7 @@ const Header = () => {
             </button>
             <Link to="/area-associado">
               <Button variant="secondary" size="sm" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                Área do Associado
+                Área restrita
               </Button>
             </Link>
           </div>
