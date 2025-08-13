@@ -42,9 +42,10 @@ const Header = () => {
       items: [
         { label: "Sobre o Sindicato", href: "/institucional/sobre-nos" },
         { label: "Fale com o Sindicato", href: "/institucional/fale-conosco" },
-        { label: "Páginas Institucionais", href: "/institucional" },
-        { label: "Serviços", href: "/servicos" },
-        { label: "Especiais", href: "/especiais" },
+        { label: "Diretoria", href: "/institucional/diretoria" },
+        { label: "Missão, Visão e Valores", href: "/institucional/missao-visao-valores" },
+        { label: "Carta de Serviços", href: "/carta-servicos" },
+        { label: "Acesso à Informação", href: "/acesso-informacao" },
       ]
     },
     { 
@@ -90,11 +91,12 @@ const Header = () => {
       ]
     },
     { 
-      label: "Transparência e Prestação de Contas", 
+      label: "Transparência", 
       items: [
         { label: "Portal da Transparência", href: "/transparencia" },
         { label: "Relatórios Financeiros", href: "/transparencia/financeiros" },
         { label: "Contratos", href: "/transparencia/contratos" },
+        { label: "Acesso à Informação", href: "/acesso-informacao" },
       ]
     },
     { 
