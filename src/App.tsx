@@ -16,6 +16,8 @@ import ArtigoDetalhes from "./pages/publicacoes/ArtigoDetalhes";
 import Multimidia from "./pages/publicacoes/Multimidia";
 import Sindicatos from "./pages/Sindicatos";
 import AreaAssociado from "./pages/AreaAssociado";
+import AcessoInformacao from "./pages/AcessoInformacao";
+import CartaServicos from "./pages/CartaServicos";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/fale-conosco" element={<FaleConosco />} />
+          <Route path="/acesso-informacao" element={<AcessoInformacao />} />
+          <Route path="/carta-servicos" element={<CartaServicos />} />
           <Route path="/institucional/fale-conosco" element={<FaleConosco />} />
           <Route path="/institucional/diretoria" element={<Diretoria />} />
           <Route path="/institucional/sobre-nos" element={<SobreNos />} />
