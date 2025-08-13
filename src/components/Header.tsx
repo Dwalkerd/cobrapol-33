@@ -119,7 +119,7 @@ const Header = () => {
       <div className="bg-black text-white">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-3 border-b border-white/20">
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <div className="bg-primary-foreground/10 p-1 rounded">
               <img 
                 src="/lovable-uploads/18bd6ef1-312b-49a8-8679-fb0436eb8e48.png" 
@@ -128,7 +128,7 @@ const Header = () => {
               />
             </div>
             <span className="text-lg font-bold">COBRAPOL</span>
-          </div>
+          </Link>
 
           {/* Center links */}
           <div className="hidden md:flex items-center gap-8">
