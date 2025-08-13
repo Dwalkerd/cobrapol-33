@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Menu, X, Shield, Phone, Mail, ChevronDown, ChevronRight, Search, Globe, Monitor, Sun, Moon, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -15,7 +15,26 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState("Português");
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Close language dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isLanguageDropdownOpen) {
+        setIsLanguageDropdownOpen(false);
+      }
+    };
+
+    if (isLanguageDropdownOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isLanguageDropdownOpen]);
 
   const menuItems = [
     { 
@@ -127,7 +146,7 @@ const Header = () => {
 
           {/* Center links */}
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/fale-conosco" className="text-sm hover:text-primary-foreground/80 transition-colors">
+            <Link to="/institucional/fale-conosco" className="text-sm hover:text-primary-foreground/80 transition-colors">
               Fale com o Sindicato
             </Link>
             <Link to="/acesso-informacao" className="text-sm hover:text-primary-foreground/80 transition-colors">
@@ -140,9 +159,48 @@ const Header = () => {
 
           {/* Right side tools */}
           <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-2 text-sm">
-              <span>Português</span>
-              <ChevronDown className="h-3 w-3" />
+            <div className="hidden md:flex items-center relative">
+              <button 
+                className="flex items-center gap-2 text-sm hover:bg-primary-foreground/10 px-2 py-1 rounded transition-colors"
+                onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+              >
+                <span>{selectedLanguage}</span>
+                <ChevronDown className="h-3 w-3" />
+              </button>
+              
+              {isLanguageDropdownOpen && (
+                <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg min-w-[120px] z-50">
+                  <div className="py-1">
+                    <button 
+                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => {
+                        setSelectedLanguage("Português");
+                        setIsLanguageDropdownOpen(false);
+                      }}
+                    >
+                      Português
+                    </button>
+                    <button 
+                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => {
+                        setSelectedLanguage("English");
+                        setIsLanguageDropdownOpen(false);
+                      }}
+                    >
+                      English
+                    </button>
+                    <button 
+                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => {
+                        setSelectedLanguage("Español");
+                        setIsLanguageDropdownOpen(false);
+                      }}
+                    >
+                      Español
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           </div>
