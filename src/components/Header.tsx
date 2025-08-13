@@ -57,14 +57,6 @@ const Header = () => {
       ]
     },
     { 
-      label: "Atividade Legislativa", 
-      items: [
-        { label: "Projetos de Lei", href: "/atividade/projetos" },
-        { label: "Comissões", href: "/atividade/comissoes" },
-        { label: "Plenário", href: "/atividade/plenario" },
-      ]
-    },
-    { 
       label: "Comunicação", 
       items: [
         { label: "Notícias", href: "/publicacoes/noticias" },
@@ -72,15 +64,6 @@ const Header = () => {
         { label: "Multimídia", href: "/publicacoes/multimidia" },
         { label: "Revistas Cobrapol", href: "/comunicacao/revistas" },
         { label: "Redes Sociais", href: "/comunicacao/redes-sociais" },
-      ]
-    },
-    { 
-      label: "Publicações", 
-      items: [
-        { label: "Notícias", href: "/publicacoes/noticias" },
-        { label: "Artigos/Blog", href: "/publicacoes/blog" },
-        { label: "Multimídia", href: "/publicacoes/multimidia" },
-        { label: "Boletins", href: "/publicacoes/boletins" },
       ]
     },
     { 
