@@ -19,6 +19,14 @@ import AreaAssociado from "./pages/AreaAssociado";
 import AcessoInformacao from "./pages/AcessoInformacao";
 import CartaServicos from "./pages/CartaServicos";
 import RevistasCobrapol from "./pages/comunicacao/RevistasCobrapol";
+import Filiacao from "./pages/sindicatos/Filiacao";
+import Representacao from "./pages/sindicatos/Representacao";
+import Transparencia from "./pages/transparencia/Transparencia";
+import Ouvidoria from "./pages/e-cidadania/Ouvidoria";
+import PoliticaPrivacidade from "./pages/legais/PoliticaPrivacidade";
+import TermosUso from "./pages/legais/TermosUso";
+import Estatuto from "./pages/legais/Estatuto";
+import RegimentoInterno from "./pages/legais/RegimentoInterno";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +51,14 @@ const App = () => (
           <Route path="/publicacoes/artigo/:id" element={<ArtigoDetalhes />} />
           <Route path="/publicacoes/multimidia" element={<Multimidia />} />
           <Route path="/sindicatos" element={<Sindicatos />} />
+          <Route path="/sindicatos/filiacao" element={<Filiacao />} />
+          <Route path="/sindicatos/representacao" element={<Representacao />} />
+          <Route path="/transparencia" element={<Transparencia />} />
+          <Route path="/e-cidadania/ouvidoria" element={<Ouvidoria />} />
+          <Route path="/legais/politica-privacidade" element={<PoliticaPrivacidade />} />
+          <Route path="/legais/termos-uso" element={<TermosUso />} />
+          <Route path="/legais/estatuto" element={<Estatuto />} />
+          <Route path="/legais/regimento-interno" element={<RegimentoInterno />} />
           <Route path="/area-associado" element={<AreaAssociado />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

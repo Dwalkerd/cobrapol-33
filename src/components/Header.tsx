@@ -78,7 +78,6 @@ const Header = () => {
         { label: "Blog/Artigos", href: "/publicacoes/blog" },
         { label: "Multimídia", href: "/publicacoes/multimidia" },
         { label: "Revistas Cobrapol", href: "/comunicacao/revistas" },
-        { label: "Redes Sociais", href: "/comunicacao/redes-sociais" },
       ]
     },
     { 
@@ -86,7 +85,6 @@ const Header = () => {
       items: [
         { label: "Orçamento Anual", href: "/orcamento/anual" },
         { label: "Prestação de Contas", href: "/orcamento/prestacao" },
-        { label: "Relatórios", href: "/orcamento/relatorios" },
       ]
     },
     { 
@@ -94,16 +92,13 @@ const Header = () => {
       items: [
         { label: "Portal da Transparência", href: "/transparencia" },
         { label: "Relatórios Financeiros", href: "/transparencia/financeiros" },
-        { label: "Contratos", href: "/transparencia/contratos" },
         { label: "Acesso à Informação", href: "/acesso-informacao" },
       ]
     },
     { 
       label: "e-Cidadania", 
       items: [
-        { label: "Consultas Públicas", href: "/e-cidadania/consultas" },
         { label: "Ouvidoria", href: "/e-cidadania/ouvidoria" },
-        { label: "Petições", href: "/e-cidadania/peticoes" },
       ]
     },
   ];

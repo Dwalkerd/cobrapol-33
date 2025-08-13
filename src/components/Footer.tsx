@@ -2,27 +2,27 @@ import { Shield, Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } fr
 
 const Footer = () => {
   const quickLinks = [
-    { label: "Início", href: "#inicio" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Serviços", href: "#servicos" },
-    { label: "Notícias", href: "#noticias" },
-    { label: "Contato", href: "#contato" }
+    { label: "Início", href: "/" },
+    { label: "Sobre", href: "/institucional/sobre-nos" },
+    { label: "Serviços", href: "/carta-servicos" },
+    { label: "Notícias", href: "/publicacoes/noticias" },
+    { label: "Contato", href: "/institucional/fale-conosco" }
   ];
 
   const services = [
-    { label: "Assistência Jurídica", href: "#" },
-    { label: "Assistência Social", href: "#" },
-    { label: "Capacitação", href: "#" },
-    { label: "Assistência Médica", href: "#" },
-    { label: "Benefícios", href: "#" }
+    { label: "Área do Associado", href: "/area-associado" },
+    { label: "Lista de Sindicatos", href: "/sindicatos" },
+    { label: "Filiação", href: "/sindicatos/filiacao" },
+    { label: "Ouvidoria", href: "/e-cidadania/ouvidoria" },
+    { label: "Transparência", href: "/transparencia" }
   ];
 
   const legal = [
-    { label: "Política de Privacidade", href: "#" },
-    { label: "Termos de Uso", href: "#" },
-    { label: "Estatuto", href: "#" },
-    { label: "Regimento Interno", href: "#" },
-    { label: "Transparência", href: "#" }
+    { label: "Política de Privacidade", href: "/legais/politica-privacidade" },
+    { label: "Termos de Uso", href: "/legais/termos-uso" },
+    { label: "Estatuto", href: "/legais/estatuto" },
+    { label: "Regimento Interno", href: "/legais/regimento-interno" },
+    { label: "Transparência", href: "/transparencia" }
   ];
 
   const socialLinks = [
