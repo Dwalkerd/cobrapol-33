@@ -17,6 +17,8 @@ const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState("Português");
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Close language dropdown when clicking outside
@@ -25,16 +27,29 @@ const Header = () => {
       if (isLanguageDropdownOpen) {
         setIsLanguageDropdownOpen(false);
       }
+      if (isSearchOpen) {
+        setIsSearchOpen(false);
+      }
     };
 
-    if (isLanguageDropdownOpen) {
+    if (isLanguageDropdownOpen || isSearchOpen) {
       document.addEventListener('click', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, [isLanguageDropdownOpen]);
+  }, [isLanguageDropdownOpen, isSearchOpen]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Simular busca - em uma aplicação real, isso faria uma busca de fato
+      alert(`Buscando por: "${searchQuery}"`);
+      setSearchQuery("");
+      setIsSearchOpen(false);
+    }
+  };
 
   const menuItems = [
     { 
@@ -227,9 +242,35 @@ const Header = () => {
 
           {/* Search and area do associado */}
           <div className="flex items-center gap-4">
-            <button className="p-2 hover:bg-primary-foreground/10 rounded" title="Buscar">
-              <Search className="h-5 w-5" />
-            </button>
+            <div className="relative">
+              {isSearchOpen ? (
+                <form onSubmit={handleSearch} className="flex items-center bg-primary-foreground/10 rounded-lg px-3 py-2">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Buscar..."
+                    className="bg-transparent text-primary-foreground placeholder:text-primary-foreground/60 text-sm w-48 focus:outline-none"
+                    autoFocus
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                  <button type="submit" className="ml-2 p-1 hover:bg-primary-foreground/10 rounded">
+                    <Search className="h-4 w-4" />
+                  </button>
+                </form>
+              ) : (
+                <button 
+                  className="p-2 hover:bg-primary-foreground/10 rounded transition-colors" 
+                  title="Buscar"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsSearchOpen(true);
+                  }}
+                >
+                  <Search className="h-5 w-5" />
+                </button>
+              )}
+            </div>
             <Link to="/area-associado">
               <Button variant="secondary" size="sm" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 flex items-center gap-2">
                 <Lock className="h-4 w-4" />
