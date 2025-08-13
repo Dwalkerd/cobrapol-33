@@ -107,10 +107,10 @@ const Header = () => {
   };
 
   const quickActions = [
-    { label: "Conheça os Policiais", href: "/policiais" },
-    { label: "Veja as ações sindicais", href: "/acoes" },
-    { label: "Acompanhe a atividade", href: "/atividade" },
-    { label: "Transparência e prestação de contas", href: "/transparencia" },
+    { label: "Sobre o Sindicato", href: "/institucional/sobre-nos" },
+    { label: "Notícias", href: "/publicacoes/noticias" },
+    { label: "Lista de Sindicatos", href: "/sindicatos" },
+    { label: "Revistas Cobrapol", href: "/comunicacao/revistas" },
   ];
 
   return (
