@@ -121,6 +121,7 @@ const Header = () => {
     { label: "Notícias", href: "/publicacoes/noticias" },
     { label: "Lista de Sindicatos", href: "/sindicatos" },
     { label: "Revistas Cobrapol", href: "/comunicacao/revistas" },
+    { label: "Transparência", href: "/transparencia" },
   ];
 
   return (
