@@ -25,12 +25,6 @@ const Footer = () => {
     { label: "Transparência", href: "/transparencia" }
   ];
 
-  const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Youtube, href: "#", label: "YouTube" }
-  ];
 
   return (
     <footer className="bg-gradient-to-b from-foreground to-foreground/90 text-background">
@@ -113,20 +107,8 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 text-gold">Conecte-se</h4>
             <div className="space-y-4 mb-6">
               <p className="text-background/80 text-sm">
-                Siga-nos nas redes sociais para ficar por dentro das últimas notícias e conquistas.
+                Acompanhe nossas redes sociais para ficar por dentro das últimas notícias e conquistas. Visite nosso site para mais informações.
               </p>
-              <div className="flex gap-3">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="bg-background/10 hover:bg-gold p-3 rounded-xl transition-all duration-200 group hover:scale-110"
-                  >
-                    <social.icon className="h-5 w-5 text-background/80 group-hover:text-foreground" />
-                  </a>
-                ))}
-              </div>
             </div>
             <div className="bg-gold/10 rounded-2xl p-4 border border-gold/20">
               <h5 className="font-semibold text-gold mb-2">Atendimento 24h</h5>

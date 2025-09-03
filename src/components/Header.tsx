@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, Shield, Phone, Mail, ChevronDown, ChevronRight, Search, Globe, Monitor, Sun, Moon, Lock } from "lucide-react";
+import { Menu, X, Shield, Phone, Mail, ChevronDown, ChevronRight, Search, Globe, Monitor, Sun, Moon, Lock, Instagram, Youtube, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -15,31 +15,26 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [selectedLanguage, setSelectedLanguage] = useState("Português");
-  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Close language dropdown when clicking outside
+  // Close search when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (isLanguageDropdownOpen) {
-        setIsLanguageDropdownOpen(false);
-      }
       if (isSearchOpen) {
         setIsSearchOpen(false);
       }
     };
 
-    if (isLanguageDropdownOpen || isSearchOpen) {
+    if (isSearchOpen) {
       document.addEventListener('click', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, [isLanguageDropdownOpen, isSearchOpen]);
+  }, [isSearchOpen]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -124,6 +119,42 @@ const Header = () => {
     { label: "Transparência", href: "/transparencia" },
   ];
 
+  const socialLinks = [
+    { 
+      icon: Instagram, 
+      href: "http://instagram.com/CobrapolBR", 
+      label: "Instagram" 
+    },
+    { 
+      icon: Youtube, 
+      href: "http://youtube.com/TVCobrapol", 
+      label: "YouTube" 
+    },
+    { 
+      icon: () => (
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21.86 5.5a.61.61 0 0 0-.35-.35A69.09 69.09 0 0 0 12 4.5a69.09 69.09 0 0 0-9.51.65.61.61 0 0 0-.35.35A69.32 69.32 0 0 0 1.5 12a69.32 69.32 0 0 0 .64 6.5.61.61 0 0 0 .35.35A69.09 69.09 0 0 0 12 19.5a69.09 69.09 0 0 0 9.51-.65.61.61 0 0 0 .35-.35A69.32 69.32 0 0 0 22.5 12a69.32 69.32 0 0 0-.64-6.5ZM8.79 15.54a7.44 7.44 0 0 1-2.33-.19.79.79 0 0 1-.5-.5A7.44 7.44 0 0 1 5.77 12a7.44 7.44 0 0 1 .19-2.85.79.79 0 0 1 .5-.5A7.44 7.44 0 0 1 8.79 8.46a.63.63 0 0 1 .63.63v6.82a.63.63 0 0 1-.63.63Zm6.67 0a7.44 7.44 0 0 1-2.33-.19.79.79 0 0 1-.5-.5A7.44 7.44 0 0 1 12.44 12a7.44 7.44 0 0 1 .19-2.85.79.79 0 0 1 .5-.5a7.44 7.44 0 0 1 2.33-.19.63.63 0 0 1 .63.63v6.82a.63.63 0 0 1-.63.63Z"/>
+        </svg>
+      ), 
+      href: "https://threads.com/CobrapolBR", 
+      label: "Threads" 
+    },
+    { 
+      icon: Facebook, 
+      href: "http://facebook.com/CobrapolBR", 
+      label: "Facebook" 
+    },
+    { 
+      icon: () => (
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      ), 
+      href: "http://x.com/CobrapolBR", 
+      label: "X" 
+    },
+  ];
+
   return (
     <header className="sticky top-0 z-50">
       {/* Top bar - Black background */}
@@ -156,54 +187,19 @@ const Header = () => {
 
           {/* Right side tools */}
           <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center relative">
-              <button 
-                className="flex items-center gap-2 text-sm hover:bg-primary-foreground/10 px-3 py-2 rounded transition-colors"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
-                }}
-              >
-                <span>{selectedLanguage}</span>
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              
-              {isLanguageDropdownOpen && (
-                <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg min-w-[120px] z-[60]">
-                  <div className="py-1">
-                    <button 
-                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedLanguage("Português");
-                        setIsLanguageDropdownOpen(false);
-                      }}
-                    >
-                      Português
-                    </button>
-                    <button 
-                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedLanguage("English");
-                        setIsLanguageDropdownOpen(false);
-                      }}
-                    >
-                      English
-                    </button>
-                    <button 
-                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedLanguage("Español");
-                        setIsLanguageDropdownOpen(false);
-                      }}
-                    >
-                      Español
-                    </button>
-                  </div>
-                </div>
-              )}
+            <div className="hidden md:flex items-center gap-2">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="bg-primary-foreground/10 hover:bg-primary text-primary-foreground hover:text-primary p-2 rounded transition-all duration-200"
+                >
+                  <social.icon />
+                </a>
+              ))}
             </div>
           </div>
           </div>
