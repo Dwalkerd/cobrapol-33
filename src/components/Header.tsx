@@ -195,7 +195,7 @@ const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="bg-primary-foreground/10 hover:bg-primary text-primary-foreground hover:text-primary p-2 rounded transition-all duration-200"
+                  className="bg-primary-foreground/10 hover:bg-primary text-primary-foreground hover:text-black p-2 rounded transition-all duration-200"
                 >
                   <social.icon />
                 </a>
