@@ -150,7 +150,15 @@ const Footer = () => {
             <div className="flex items-center gap-2 text-background/60 text-sm">
               <span>Desenvolvido com</span>
               <span className="text-gold">❤</span>
-              <span>para os Policiais do Brasil</span>
+              <span>por</span>
+              <a 
+                href="https://teamkode.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gold hover:text-gold-light transition-colors font-medium"
+              >
+                Team Kode
+              </a>
             </div>
           </div>
         </div>
