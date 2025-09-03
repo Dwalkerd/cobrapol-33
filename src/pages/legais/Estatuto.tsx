@@ -199,10 +199,11 @@ const Estatuto = () => {
                     <div>
                       <h4 className="font-semibold mb-2">Sede Social</h4>
                       <ul className="space-y-1 text-sm">
-                        <li><strong>Endereço:</strong> Av. Paulista, 1000</li>
-                        <li><strong>Bairro:</strong> Bela Vista</li>
-                        <li><strong>Cidade:</strong> São Paulo/SP</li>
-                        <li><strong>CEP:</strong> 01310-100</li>
+                        <li><strong>Endereço:</strong> SCS Quadra 01 Bloco G Sala 201</li>
+                        <li><strong>Edifício:</strong> Baracat - Asa Sul</li>
+                        <li><strong>Cidade:</strong> Brasília/DF</li>
+                        <li><strong>CEP:</strong> 70309-900</li>
+                        <li><strong>CNPJ:</strong> 37.050.804/0001-05</li>
                       </ul>
                     </div>
                   </div>

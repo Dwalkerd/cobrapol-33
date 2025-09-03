@@ -157,8 +157,8 @@ const PoliticaPrivacidade = () => {
                 </p>
                 <ul className="space-y-2">
                   <li><strong>E-mail:</strong> privacidade@cobrapol.org.br</li>
-                  <li><strong>Telefone:</strong> (11) 1234-5678</li>
-                  <li><strong>Endereço:</strong> Av. Paulista, 1000 - São Paulo/SP - CEP: 01310-100</li>
+                  <li><strong>Telefone:</strong> (61) 1234-5678</li>
+                  <li><strong>Endereço:</strong> SCS Quadra 01 Bloco G Sala 201, Edifício Baracat - Asa Sul, Brasília/DF - CEP: 70309-900</li>
                   <li><strong>Encarregado de Dados:</strong> Dr. João Silva (dpo@cobrapol.org.br)</li>
                 </ul>
               </div>

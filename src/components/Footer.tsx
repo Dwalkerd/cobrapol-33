@@ -53,11 +53,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <MapPin className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>Av. Paulista, 1000 - São Paulo/SP</span>
+                <span>SCS Quadra 01 Bloco G Sala 201, Edifício Baracat - Asa Sul, Brasília/DF - CEP: 70309-900</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <Phone className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>(11) 1234-5678</span>
+                <span>(61) 1234-5678</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <Mail className="h-4 w-4 text-gold flex-shrink-0" />
@@ -141,10 +141,10 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
               <p className="text-background/60 text-sm">
-                © 2024 Cobrapol - Sindicato dos Policiais. Todos os direitos reservados.
+                © 2024 Cobrapol - Confederação Brasileira de Trabalhadores Policiais Civis. Todos os direitos reservados.
               </p>
               <p className="text-background/50 text-xs mt-1">
-                CNPJ: 12.345.678/0001-90 | Fundado em 1993
+                CNPJ: 37.050.804/0001-05 | Fundada em 9 de outubro de 1991
               </p>
             </div>
             <div className="flex items-center gap-2 text-background/60 text-sm">

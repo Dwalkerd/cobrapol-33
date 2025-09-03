@@ -44,7 +44,7 @@ const TermosUso = () => {
               <p>
                 O COBRAPOL é uma entidade sindical de âmbito nacional que representa os interesses 
                 dos policiais brasileiros, constituída conforme a legislação brasileira vigente, 
-                com sede na Av. Paulista, 1000 - São Paulo/SP.
+                com sede em SCS Quadra 01 Bloco G Sala 201, Edifício Baracat - Asa Sul, Brasília/DF.
               </p>
 
               <h2 className="text-2xl font-bold mb-4 mt-8">3. Uso Permitido</h2>
@@ -198,8 +198,8 @@ const TermosUso = () => {
                 </p>
                 <ul className="space-y-2">
                   <li><strong>E-mail:</strong> juridico@cobrapol.org.br</li>
-                  <li><strong>Telefone:</strong> (11) 1234-5678</li>
-                  <li><strong>Endereço:</strong> Av. Paulista, 1000 - São Paulo/SP - CEP: 01310-100</li>
+                  <li><strong>Telefone:</strong> (61) 1234-5678</li>
+                  <li><strong>Endereço:</strong> SCS Quadra 01 Bloco G Sala 201, Edifício Baracat - Asa Sul, Brasília/DF - CEP: 70309-900</li>
                   <li><strong>Horário de atendimento:</strong> Segunda a Sexta, 8h às 18h</li>
                 </ul>
               </div>

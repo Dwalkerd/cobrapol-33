@@ -30,10 +30,10 @@ const Representacao = () => {
 
   const regionalOffices = [
     {
-      region: "São Paulo",
-      address: "Av. Paulista, 1000 - Centro, São Paulo/SP",
-      phone: "(11) 1234-5678",
-      email: "saopaulo@cobrapol.org.br",
+      region: "Sede Nacional - Brasília",
+      address: "SCS Quadra 01 Bloco G Sala 201, Edifício Baracat - Asa Sul, Brasília/DF",
+      phone: "(61) 1234-5678",
+      email: "brasilia@cobrapol.org.br",
       hours: "Segunda a Sexta: 8h às 18h"
     },
     {
