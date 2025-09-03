@@ -27,6 +27,10 @@ import PoliticaPrivacidade from "./pages/legais/PoliticaPrivacidade";
 import TermosUso from "./pages/legais/TermosUso";
 import Estatuto from "./pages/legais/Estatuto";
 import RegimentoInterno from "./pages/legais/RegimentoInterno";
+import Composicao from "./pages/institucional/Composicao";
+import EstruturaOrganizacional from "./pages/institucional/EstruturaOrganizacional";
+import Funcionamento from "./pages/institucional/Funcionamento";
+import ResponsabilidadeSocial from "./pages/institucional/ResponsabilidadeSocial";
 
 const queryClient = new QueryClient();
 

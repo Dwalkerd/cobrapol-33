@@ -50,12 +50,14 @@ const Header = () => {
     { 
       label: "Institucional", 
       items: [
-        { label: "Sobre o Sindicato", href: "/institucional/sobre-nos" },
-        { label: "Fale com o Sindicato", href: "/institucional/fale-conosco" },
-        { label: "Diretoria", href: "/institucional/diretoria" },
-        { label: "Missão, Visão e Valores", href: "/institucional/missao-visao-valores" },
-        { label: "Carta de Serviços", href: "/carta-servicos" },
-        { label: "Acesso à Informação", href: "/acesso-informacao" },
+        { label: "Sobre a Cobrapol", href: "/institucional/sobre-nos" },
+        { label: "Composição", href: "/institucional/composicao" },
+        { label: "Estrutura Organizacional", href: "/institucional/estrutura-organizacional" },
+        { label: "Funcionamento", href: "/institucional/funcionamento" },
+        { label: "Estatuto", href: "/legais/estatuto" },
+        { label: "Responsabilidade Social", href: "/institucional/responsabilidade-social" },
+        { label: "Fale com a Cobrapol", href: "/institucional/fale-conosco" },
+        { label: "Ouvidoria", href: "/e-cidadania/ouvidoria" },
       ]
     },
     { 
