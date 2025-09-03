@@ -112,11 +112,10 @@ const Header = () => {
   };
 
   const quickActions = [
-    { label: "Sobre o Sindicato", href: "/institucional/sobre-nos" },
+    { label: "Sobre a Cobrapol", href: "/institucional/sobre-nos" },
     { label: "Notícias", href: "/publicacoes/noticias" },
-    { label: "Lista de Sindicatos", href: "/sindicatos" },
-    { label: "Revistas Cobrapol", href: "/comunicacao/revistas" },
-    { label: "Transparência", href: "/transparencia" },
+    { label: "Revista Cobrapol", href: "/comunicacao/revistas" },
+    { label: "Eventos", href: "#" },
   ];
 
   const socialLinks = [
@@ -174,14 +173,14 @@ const Header = () => {
 
           {/* Center links */}
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/institucional/fale-conosco" className="text-sm hover:text-primary-foreground/80 transition-colors">
-              Fale com o Sindicato
+            <Link to="/sindicatos" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              Entidades Filiadas
             </Link>
-            <Link to="/acesso-informacao" className="text-sm hover:text-primary-foreground/80 transition-colors">
-              Acesso à informação
+            <Link to="#" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              Ranking Nacional Remuneratório
             </Link>
-            <Link to="/carta-servicos" className="text-sm hover:text-primary-foreground/80 transition-colors">
-              Carta de serviços
+            <Link to="/e-cidadania/ouvidoria" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              Ouvidoria <span className="text-xs opacity-60">(em construção)</span>
             </Link>
           </div>
 
@@ -264,9 +263,9 @@ const Header = () => {
               )}
             </div>
             <Link to="/area-associado">
-              <Button variant="secondary" size="sm" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 flex items-center gap-2">
+              <Button variant="outline" size="sm" className="flex items-center gap-2 text-sm">
                 <Lock className="h-4 w-4" />
-                Área restrita
+                Área Restrita
               </Button>
             </Link>
           </div>
