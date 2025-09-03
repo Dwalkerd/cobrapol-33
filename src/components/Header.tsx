@@ -180,7 +180,7 @@ const Header = () => {
               Ranking Nacional Remuneratório
             </Link>
             <Link to="/e-cidadania/ouvidoria" className="text-sm hover:text-primary-foreground/80 transition-colors">
-              Ouvidoria <span className="text-xs opacity-60">(em construção)</span>
+              Ouvidoria
             </Link>
           </div>
 
