@@ -105,7 +105,7 @@ const SobreNos = () => {
                   <div className="text-sm text-background/70">Fundação</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold">30+</div>
+                  <div className="text-3xl font-bold text-gold">34</div>
                   <div className="text-sm text-background/70">Anos de História</div>
                 </div>
                 <div className="text-center">
@@ -160,13 +160,14 @@ const SobreNos = () => {
               Sobre a Cobrapol
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Defendendo Policiais Civis há
-              <span className="text-gold"> Mais de 30 Anos</span>
+              A COBRAPOL: Mais de
+              <span className="text-gold"> 30 Anos de Atuação</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Somos a Confederação Brasileira de Trabalhadores Policiais Civis, registrada no 
-              Ministério do Trabalho desde 1991. Nossa história é marcada por conquistas importantes 
-              e pelo comprometimento inabalável com os direitos dos policiais civis brasileiros.
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              A Confederação Brasileira de Trabalhadores Policiais Civis (Cobrapol), fundada em 9 de outubro de 1991, é a maior entidade representativa dos policiais civis no Brasil. Com 34 anos de atuação, nasceu com o propósito de unificar sindicatos e federações estaduais e, desde então, atua nacionalmente na defesa dos direitos, garantias e interesses da categoria, promovendo valorização profissional, justiça social e fortalecimento das instituições policiais.
+            </p>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto mt-6 leading-relaxed">
+              Ao longo de sua história, a Cobrapol se consolidou como uma voz ativa e legítima nos debates sobre segurança pública, dialogando com os poderes Executivo, Legislativo e Judiciário. Mais do que representar, a entidade mobiliza, articula e transforma, garantindo que os policiais civis de todo o país tenham protagonismo nas decisões que impactam sua carreira e a sociedade.
             </p>
           </div>
 
@@ -178,7 +179,7 @@ const SobreNos = () => {
                   <Target className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-foreground">Missão</h3>
-                <p className="text-muted-foreground leading-relaxed">Promover a defesa dos direitos dos trabalhadores da segurança pública, garantindo espaço de negociação coletiva.</p>
+                <p className="text-muted-foreground leading-relaxed">Representar e fortalecer os policiais civis do Brasil, promovendo a valorização da carreira, a defesa dos direitos trabalhistas e previdenciários, e a construção de uma segurança pública cidadã, moderna e eficiente.</p>
               </CardContent>
             </Card>
 
@@ -188,7 +189,7 @@ const SobreNos = () => {
                   <Heart className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-foreground">Valores</h3>
-                <p className="text-muted-foreground leading-relaxed">União, solidariedade, transparência, democracia e compromisso com a sociedade.</p>
+                <p className="text-muted-foreground leading-relaxed">Unidade – União da categoria em todo o território nacional. Compromisso – Dedicação na defesa dos policiais civis e da sociedade. Transparência – Gestão ética e responsável. Respeito – Valorização da diversidade e dignidade humana. Justiça – Igualdade de direitos e melhores condições de trabalho.</p>
               </CardContent>
             </Card>
 
@@ -197,8 +198,8 @@ const SobreNos = () => {
                 <div className="bg-gold p-4 rounded-full w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <Handshake className="h-8 w-8 text-primary-foreground" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-foreground">Compromisso</h3>
-                <p className="text-muted-foreground leading-relaxed">Estar sempre ao lado dos policiais, oferecendo suporte jurídico, social e profissional.</p>
+                <h3 className="text-xl font-bold mb-4 text-foreground">Visão</h3>
+                <p className="text-muted-foreground leading-relaxed">Ser a principal referência nacional na defesa e valorização dos policiais civis, fortalecendo o sindicalismo e contribuindo para uma segurança pública de qualidade, baseada em justiça, respeito e compromisso social.</p>
               </CardContent>
             </Card>
 
@@ -207,8 +208,8 @@ const SobreNos = () => {
                 <div className="bg-gold p-4 rounded-full w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <Trophy className="h-8 w-8 text-primary-foreground" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-foreground">Conquistas</h3>
-                <p className="text-muted-foreground leading-relaxed">Atuação no STF, Lei Orgânica Nacional, programas de saúde mental e melhorias salariais.</p>
+                <h3 className="text-xl font-bold mb-4 text-foreground">Por que se Filiar?</h3>
+                <p className="text-muted-foreground leading-relaxed">Filiar-se à Cobrapol é unir forças em uma luta coletiva que transcende fronteiras estaduais. Ganha representatividade nacional, fortalece a defesa de direitos e contribui para um movimento sindical forte que propõe soluções e transforma realidades.</p>
               </CardContent>
             </Card>
           </div>
@@ -307,14 +308,10 @@ const SobreNos = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                Ao longo de mais de três décadas, a COBRAPOL tem sido uma voz forte na defesa dos direitos dos 
-                policiais civis brasileiros. Nossa história é marcada por conquistas importantes como a participação 
-                em processos no STF, a articulação da Lei Orgânica Nacional e programas de saúde mental.
+                A Cobrapol também lidera grandes mobilizações nacionais em defesa da categoria, como nas discussões sobre a Reforma da Previdência, na articulação para a aprovação da Lei Orgânica Nacional das Polícias Civis e na luta pela PEC da Segurança Pública. Essas batalhas simbolizam o compromisso da entidade em garantir não apenas melhores condições de trabalho e valorização salarial, mas também a preservação de direitos históricos que asseguram dignidade e justiça aos policiais civis de todo o Brasil.
               </p>
               <p className="text-muted-foreground">
-                Como confederação registrada junto ao Ministério do Trabalho, continuamos trabalhando para um futuro 
-                onde os policiais civis tenham carreiras estruturadas, direitos respeitados e condições dignas de 
-                trabalho, sempre com transparência e democracia.
+                A Cobrapol é mais do que uma confederação: é a voz, a força e a união dos policiais civis de todo o Brasil. Filiar-se à Cobrapol significa integrar uma rede articulada de sindicatos que compartilham experiências, estratégias e conquistas, tendo acesso a suporte político e institucional em pautas locais e nacionais.
               </p>
             </CardContent>
           </Card>

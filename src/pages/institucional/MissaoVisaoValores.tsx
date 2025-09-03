@@ -25,9 +25,9 @@ const MissaoVisaoValores = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground text-center">
-              Promover a defesa dos direitos dos trabalhadores da segurança pública, garantindo 
-              espaço de negociação coletiva e influenciando políticas que melhorem as condições 
-              de trabalho na Polícia Civil.
+              Representar e fortalecer os policiais civis do Brasil, promovendo a valorização da carreira, 
+              a defesa dos direitos trabalhistas e previdenciários, e a construção de uma segurança pública 
+              cidadã, moderna e eficiente.
             </p>
           </CardContent>
         </Card>
@@ -41,8 +41,9 @@ const MissaoVisaoValores = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground text-center">
-              Tornar-se referência na consolidação de uma Polícia Civil moderna, unificada e 
-              valorizada, com carreiras estruturadas de forma clara e igualitária em todo o país.
+              Ser a principal referência nacional na defesa e valorização dos policiais civis, 
+              fortalecendo o sindicalismo e contribuindo para uma segurança pública de qualidade, 
+              baseada em justiça, respeito e compromisso social.
             </p>
           </CardContent>
         </Card>
@@ -57,16 +58,24 @@ const MissaoVisaoValores = () => {
           <CardContent>
             <div className="space-y-3">
               <div className="text-center">
-                <h4 className="font-semibold text-foreground">União e Solidariedade</h4>
-                <p className="text-sm text-muted-foreground">Atuação conjunta com sindicatos estaduais</p>
+                <h4 className="font-semibold text-foreground">Unidade</h4>
+                <p className="text-sm text-muted-foreground">Acreditamos na força da coletividade e na união da categoria em todo o território nacional</p>
               </div>
               <div className="text-center">
-                <h4 className="font-semibold text-foreground">Transparência e Democracia</h4>
-                <p className="text-sm text-muted-foreground">Decisões em congressos com ampla participação</p>
+                <h4 className="font-semibold text-foreground">Compromisso</h4>
+                <p className="text-sm text-muted-foreground">Atuamos com seriedade e dedicação na defesa dos policiais civis e da sociedade</p>
               </div>
               <div className="text-center">
-                <h4 className="font-semibold text-foreground">Compromisso com a Sociedade</h4>
-                <p className="text-sm text-muted-foreground">Serviço policial eficiente e humanizado</p>
+                <h4 className="font-semibold text-foreground">Transparência</h4>
+                <p className="text-sm text-muted-foreground">Priorizamos uma gestão ética e responsável em todas as ações</p>
+              </div>
+              <div className="text-center">
+                <h4 className="font-semibold text-foreground">Respeito</h4>
+                <p className="text-sm text-muted-foreground">Valorizamos a diversidade, o diálogo e a dignidade humana</p>
+              </div>
+              <div className="text-center">
+                <h4 className="font-semibold text-foreground">Justiça</h4>
+                <p className="text-sm text-muted-foreground">Lutamos pela igualdade de direitos, reconhecimento profissional e melhores condições de trabalho</p>
               </div>
             </div>
           </CardContent>
