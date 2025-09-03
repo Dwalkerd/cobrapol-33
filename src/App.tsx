@@ -33,6 +33,9 @@ import Funcionamento from "./pages/institucional/Funcionamento";
 import ResponsabilidadeSocial from "./pages/institucional/ResponsabilidadeSocial";
 import Federacoes from "./pages/entidades-filiadas/Federacoes";
 import SindicatosPage from "./pages/entidades-filiadas/SindicatosPage";
+import OrcamentoAnual from "./pages/orcamento/OrcamentoAnual";
+import PrestacaoContas from "./pages/orcamento/PrestacaoContas";
+import RelatoriosFinanceiros from "./pages/transparencia/RelatoriosFinanceiros";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +53,10 @@ const App = () => (
           <Route path="/institucional/fale-conosco" element={<FaleConosco />} />
           <Route path="/institucional/diretoria" element={<Diretoria />} />
           <Route path="/institucional/sobre-nos" element={<SobreNos />} />
+          <Route path="/institucional/composicao" element={<Composicao />} />
+          <Route path="/institucional/estrutura-organizacional" element={<EstruturaOrganizacional />} />
+          <Route path="/institucional/funcionamento" element={<Funcionamento />} />
+          <Route path="/institucional/responsabilidade-social" element={<ResponsabilidadeSocial />} />
           <Route path="/institucional/missao-visao-valores" element={<MissaoVisaoValores />} />
           <Route path="/publicacoes/noticias" element={<Noticias />} />
           <Route path="/publicacoes/noticia/:id" element={<NoticiaDetalhes />} />
@@ -61,7 +68,10 @@ const App = () => (
           <Route path="/entidades-filiadas/sindicatos" element={<SindicatosPage />} />
           <Route path="/sindicatos/filiacao" element={<Filiacao />} />
           <Route path="/sindicatos/representacao" element={<Representacao />} />
+          <Route path="/orcamento/anual" element={<OrcamentoAnual />} />
+          <Route path="/orcamento/prestacao" element={<PrestacaoContas />} />
           <Route path="/transparencia" element={<Transparencia />} />
+          <Route path="/transparencia/financeiros" element={<RelatoriosFinanceiros />} />
           <Route path="/e-cidadania/ouvidoria" element={<Ouvidoria />} />
           <Route path="/legais/politica-privacidade" element={<PoliticaPrivacidade />} />
           <Route path="/legais/termos-uso" element={<TermosUso />} />
