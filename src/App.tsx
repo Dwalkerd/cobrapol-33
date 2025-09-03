@@ -31,6 +31,8 @@ import Composicao from "./pages/institucional/Composicao";
 import EstruturaOrganizacional from "./pages/institucional/EstruturaOrganizacional";
 import Funcionamento from "./pages/institucional/Funcionamento";
 import ResponsabilidadeSocial from "./pages/institucional/ResponsabilidadeSocial";
+import Federacoes from "./pages/entidades-filiadas/Federacoes";
+import SindicatosPage from "./pages/entidades-filiadas/SindicatosPage";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +57,8 @@ const App = () => (
           <Route path="/publicacoes/artigo/:id" element={<ArtigoDetalhes />} />
           <Route path="/publicacoes/multimidia" element={<Multimidia />} />
           <Route path="/sindicatos" element={<Sindicatos />} />
+          <Route path="/entidades-filiadas/federacoes" element={<Federacoes />} />
+          <Route path="/entidades-filiadas/sindicatos" element={<SindicatosPage />} />
           <Route path="/sindicatos/filiacao" element={<Filiacao />} />
           <Route path="/sindicatos/representacao" element={<Representacao />} />
           <Route path="/transparencia" element={<Transparencia />} />

@@ -61,11 +61,10 @@ const Header = () => {
       ]
     },
     { 
-      label: "Sindicatos", 
+      label: "Entidades Filiadas", 
       items: [
-        { label: "Lista de Sindicatos", href: "/sindicatos" },
-        { label: "Filiação", href: "/sindicatos/filiacao" },
-        { label: "Representação", href: "/sindicatos/representacao" },
+        { label: "Federações", href: "/entidades-filiadas/federacoes" },
+        { label: "Sindicatos", href: "/entidades-filiadas/sindicatos" },
       ]
     },
     { 
@@ -175,7 +174,7 @@ const Header = () => {
 
           {/* Center links */}
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/sindicatos" className="text-sm hover:text-primary-foreground/80 transition-colors">
+            <Link to="/entidades-filiadas/federacoes" className="text-sm hover:text-primary-foreground/80 transition-colors">
               Entidades Filiadas
             </Link>
             <Link to="#" className="text-sm hover:text-primary-foreground/80 transition-colors">
