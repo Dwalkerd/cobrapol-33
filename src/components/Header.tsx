@@ -159,17 +159,17 @@ const Header = () => {
     <header className="sticky top-0 z-50">
       {/* Top bar - Black background */}
       <div className="bg-black text-white">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-3 border-b border-white/20">
-          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="flex justify-between items-center py-2 sm:py-3 border-b border-white/20">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
             <div className="bg-primary-foreground/10 p-1 rounded">
               <img 
                 src="/lovable-uploads/18bd6ef1-312b-49a8-8679-fb0436eb8e48.png" 
                 alt="Logo Cobrapol" 
-                className="h-8 w-8 rounded"
+                className="h-6 w-6 sm:h-8 sm:w-8 rounded"
               />
             </div>
-            <span className="text-lg font-bold">COBRAPOL</span>
+            <span className="text-sm sm:text-lg font-bold">COBRAPOL</span>
           </Link>
 
           {/* Center links */}
@@ -199,16 +199,16 @@ const Header = () => {
           </div>
 
           {/* Right side tools */}
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-2">
-              {socialLinks.map((social, index) => (
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden sm:flex items-center gap-1 sm:gap-2">
+              {socialLinks.slice(0, 3).map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="bg-primary-foreground/10 hover:bg-primary text-primary-foreground hover:text-black p-2 rounded transition-all duration-200"
+                  className="bg-primary-foreground/10 hover:bg-primary text-primary-foreground hover:text-black p-1.5 sm:p-2 rounded transition-all duration-200"
                 >
                   <social.icon />
                 </a>
@@ -221,15 +221,15 @@ const Header = () => {
 
       {/* Main navigation bar - Primary color */}
       <div className="bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-4">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="flex justify-between items-center py-2 sm:py-4">
           {/* Menu button */}
           <button
-            className="flex items-center gap-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 px-4 py-2 rounded transition-colors"
+            className="flex items-center gap-1 sm:gap-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 px-2 sm:px-4 py-1.5 sm:py-2 rounded transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <Menu className="h-5 w-5" />
-            <span className="font-medium">Menu</span>
+            <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="text-sm sm:text-base font-medium">Menu</span>
           </button>
 
           {/* Quick actions - Desktop only */}
@@ -246,40 +246,41 @@ const Header = () => {
           </div>
 
           {/* Search and area do associado */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1 sm:gap-4">
             <div className="relative">
               {isSearchOpen ? (
-                <form onSubmit={handleSearch} className="flex items-center bg-primary-foreground/10 rounded-lg px-3 py-2">
+                <form onSubmit={handleSearch} className="flex items-center bg-primary-foreground/10 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2">
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Buscar..."
-                    className="bg-transparent text-primary-foreground placeholder:text-primary-foreground/60 text-sm w-48 focus:outline-none"
+                    className="bg-transparent text-primary-foreground placeholder:text-primary-foreground/60 text-sm w-24 sm:w-48 focus:outline-none"
                     autoFocus
                     onClick={(e) => e.stopPropagation()}
                   />
-                  <button type="submit" className="ml-2 p-1 hover:bg-primary-foreground/10 rounded">
-                    <Search className="h-4 w-4" />
+                  <button type="submit" className="ml-1 sm:ml-2 p-1 hover:bg-primary-foreground/10 rounded">
+                    <Search className="h-3 w-3 sm:h-4 sm:w-4" />
                   </button>
                 </form>
               ) : (
                 <button 
-                  className="p-2 hover:bg-primary-foreground/10 rounded transition-colors" 
+                  className="p-1.5 sm:p-2 hover:bg-primary-foreground/10 rounded transition-colors" 
                   title="Buscar"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsSearchOpen(true);
                   }}
                 >
-                  <Search className="h-5 w-5" />
+                  <Search className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               )}
             </div>
             <Link to="/area-associado">
-              <button className="flex items-center gap-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 px-4 py-2 rounded transition-colors text-sm">
-                <Lock className="h-4 w-4" />
-                Área Restrita
+              <button className="flex items-center gap-1 sm:gap-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 px-2 sm:px-4 py-1.5 sm:py-2 rounded transition-colors text-xs sm:text-sm">
+                <Lock className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden sm:inline">Área Restrita</span>
+                <span className="sm:hidden">Área</span>
               </button>
             </Link>
           </div>
@@ -287,10 +288,10 @@ const Header = () => {
 
         {/* 3-Level Navigation Menu */}
         {isMenuOpen && (
-          <nav className="fixed inset-0 top-[120px] bg-black/20 backdrop-blur-sm z-40 animate-fade-in">
+          <nav className="fixed inset-0 top-[100px] sm:top-[120px] bg-black/20 backdrop-blur-sm z-40 animate-fade-in">
             <div className="flex h-full">
               {/* Level 1: Categories */}
-              <div className="w-80 bg-white border-r border-gray-200 shadow-xl overflow-y-auto animate-slide-in-right">
+              <div className="w-full sm:w-80 bg-white border-r border-gray-200 shadow-xl overflow-y-auto animate-slide-in-right">
                 <div className="p-4">
                   {/* Quick actions for mobile */}
                   <div className="lg:hidden mb-6">
@@ -332,7 +333,7 @@ const Header = () => {
 
               {/* Level 2: Subcategories/Items */}
               {selectedCategory && (
-                <div className="w-80 bg-white border-r border-gray-200 shadow-xl overflow-y-auto animate-slide-in-right">
+                <div className="hidden sm:block w-80 bg-white border-r border-gray-200 shadow-xl overflow-y-auto animate-slide-in-right">
                   <div className="p-4">
                     <h3 className="font-semibold text-primary mb-4 border-b border-gray-200 pb-2">
                       {selectedCategory}
