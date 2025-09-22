@@ -118,15 +118,6 @@ const RotatingBanner = () => {
                       <ArrowRight className="h-4 w-4" />
                     </Button>
                   </Link>
-                  <Link to="/area-associado">
-                    <Button 
-                      variant="outline" 
-                      size="lg"
-                      className="border-background text-background bg-background/10 hover:bg-background/20 backdrop-blur-sm"
-                    >
-                      Área do Associado
-                    </Button>
-                  </Link>
                 </div>
               </div>
             </div>

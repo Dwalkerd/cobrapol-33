@@ -174,9 +174,22 @@ const Header = () => {
 
           {/* Center links */}
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/entidades-filiadas/federacoes" className="text-sm hover:text-primary-foreground/80 transition-colors">
-              Entidades Filiadas
-            </Link>
+            <div className="relative group">
+              <button className="text-sm hover:text-primary-foreground/80 transition-colors flex items-center gap-1">
+                Entidades Filiadas
+                <ChevronDown className="h-3 w-3" />
+              </button>
+              <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 min-w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-2">
+                  <Link to="/entidades-filiadas/federacoes" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">
+                    Federações
+                  </Link>
+                  <Link to="/entidades-filiadas/sindicatos" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">
+                    Sindicatos
+                  </Link>
+                </div>
+              </div>
+            </div>
             <Link to="#" className="text-sm hover:text-primary-foreground/80 transition-colors">
               Ranking Nacional Remuneratório
             </Link>

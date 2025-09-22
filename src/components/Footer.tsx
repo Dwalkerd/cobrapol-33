@@ -10,7 +10,6 @@ const Footer = () => {
   ];
 
   const services = [
-    { label: "Área do Associado", href: "/area-associado" },
     { label: "Lista de Sindicatos", href: "/sindicatos" },
     { label: "Filiação", href: "/sindicatos/filiacao" },
     { label: "Ouvidoria", href: "/e-cidadania/ouvidoria" },
