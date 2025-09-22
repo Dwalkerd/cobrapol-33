@@ -201,7 +201,7 @@ const Header = () => {
           {/* Right side tools */}
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="hidden sm:flex items-center gap-1 sm:gap-2">
-              {socialLinks.slice(0, 3).map((social, index) => (
+              {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
