@@ -1,6 +1,9 @@
 import { Shield, Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { useConfig } from '@/hooks/useConfig';
 
 const Footer = () => {
+  const { data: config } = useConfig();
+  
   const quickLinks = [
     { label: "Início", href: "/" },
     { label: "Sobre", href: "/institucional/sobre-nos" },
@@ -41,26 +44,25 @@ const Footer = () => {
                 />
               </div>
               <div>
-                <h3 className="text-2xl font-bold">Cobrapol</h3>
-                <p className="text-sm text-background/70">Sindicato dos Policiais</p>
+                <h3 className="text-2xl font-bold">{config?.nome_organizacao || 'Cobrapol'}</h3>
+                <p className="text-sm text-background/70">{config?.slogan || 'Sindicato dos Policiais'}</p>
               </div>
             </div>
             <p className="text-background/80 mb-6 leading-relaxed">
-              Defendendo os direitos dos policiais brasileiros há mais de 30 anos. 
-              Unidos pela justiça, fortalecidos pela união.
+              {config?.descricao_principal || 'Defendendo os direitos dos policiais brasileiros há mais de 30 anos. Unidos pela justiça, fortalecidos pela união.'}
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <MapPin className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>SCS Quadra 01 Bloco G Sala 201, Edifício Baracat - Asa Sul, Brasília/DF - CEP: 70309-900</span>
+                <span>{config?.endereco_completo || 'SCS Quadra 01 Bloco G Sala 201, Edifício Baracat - Asa Sul, Brasília/DF - CEP: 70309-900'}</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <Phone className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>(61) 1234-5678</span>
+                <span>{config?.telefone_principal || '(61) 1234-5678'}</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <Mail className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>contato@cobrapol.org.br</span>
+                <span>{config?.email_principal || 'contato@cobrapol.org.br'}</span>
               </div>
             </div>
           </div>
@@ -140,10 +142,10 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
               <p className="text-background/60 text-sm">
-                © 2024 Cobrapol - Confederação Brasileira de Trabalhadores Policiais Civis. Todos os direitos reservados.
+                © 2024 {config?.nome_organizacao || 'Cobrapol'} - Confederação Brasileira de Trabalhadores Policiais Civis. Todos os direitos reservados.
               </p>
               <p className="text-background/50 text-xs mt-1">
-                CNPJ: 37.050.804/0001-05 | Fundada em 9 de outubro de 1991
+                CNPJ: {config?.informacoes_footer?.cnpj || '37.050.804/0001-05'} | Fundada em {config?.informacoes_footer?.fundacao || '9 de outubro de 1991'}
               </p>
             </div>
             <div className="flex items-center gap-2 text-background/60 text-sm">
