@@ -1,63 +1,16 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowRight, Newspaper } from "lucide-react";
-import newsImage from "@/assets/news-policia-reuniao.jpg";
+import { useNoticiasRecentes } from '@/hooks/useNoticiasRecentes';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 const News = () => {
-  const noticias = [
-    {
-      category: "Conquista",
-      title: "Novo Acordo Salarial Aprovado para 2024",
-      excerpt: "Após intensas negociações, conseguimos um reajuste de 8.5% nos salários dos policiais, além de melhorias nos benefícios.",
-      date: "15 Jan 2024",
-      readTime: "3 min",
-      image: newsImage
-    },
-    {
-      category: "Jurídico",
-      title: "Vitória Importante no STF sobre Direitos Previdenciários",
-      excerpt: "O Supremo Tribunal Federal decidiu favoravelmente sobre a aposentadoria especial dos policiais em todo o território nacional.",
-      date: "10 Jan 2024",
-      readTime: "5 min",
-      image: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=800&h=400&fit=crop"
-    },
-    {
-      category: "Benefício",
-      title: "Novo Convênio Médico com Desconto Especial",
-      excerpt: "Firmamos parceria com a rede hospitalar MedSaúde, oferecendo 40% de desconto para associados e familiares.",
-      date: "5 Jan 2024",
-      readTime: "4 min",
-      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&h=400&fit=crop"
-    }
-  ];
+  const { data: todasNoticias, isLoading } = useNoticiasRecentes(12);
 
-  const comunicados = [
-    {
-      category: "Evento",
-      title: "Assembleia Geral Extraordinária - Convocação",
-      excerpt: "Todos os associados estão convocados para a assembleia que discutirá as novas propostas de benefícios e melhorias.",
-      date: "8 Jan 2024",
-      readTime: "2 min",
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=400&fit=crop"
-    },
-    {
-      category: "Atualização",
-      title: "Novos Benefícios Disponíveis para Associados",
-      excerpt: "Confira as últimas parcerias firmadas e benefícios exclusivos que foram disponibilizados para todos os associados.",
-      date: "9 Jan 2024",
-      readTime: "4 min",
-      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop"
-    },
-    {
-      category: "Atualização",
-      title: "Melhorias no Atendimento ao Associado",
-      excerpt: "Implementamos um novo sistema de atendimento 24/7 para dar suporte ainda melhor aos nossos associados.",
-      date: "3 Jan 2024",
-      readTime: "3 min",
-      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=400&fit=crop"
-    }
-  ];
+  const noticias = todasNoticias?.filter((n: any) => n.categoria !== 'Serviços' && n.categoria !== 'Comunicado') || [];
+  const comunicados = todasNoticias?.filter((n: any) => n.categoria === 'Serviços' || n.categoria === 'Comunicado') || [];
 
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -78,27 +31,44 @@ const News = () => {
     }
   };
 
+  if (isLoading) {
+    return (
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center text-xl">Carregando notícias...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="noticias" className="py-20 bg-gradient-to-b from-secondary/30 to-background">
       <div className="container mx-auto px-4">
         {/* Main Featured News */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {noticias.map((article, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden">
+          {noticias.slice(0, 3).map((noticia: any) => (
+            <Card key={noticia.id} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden">
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src={article.image}
-                  alt={article.title}
+                  src={noticia.imagem_destaque || "https://images.unsplash.com/photo-1589391886645-d51941baf7fb"}
+                  alt={noticia.titulo}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <Badge className={`absolute top-4 left-4 ${getCategoryColor(noticia.categoria)}`}>
+                  {noticia.categoria}
+                </Badge>
               </div>
               <CardContent className="p-4">
                 <h3 className="font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                  {article.title}
+                  {noticia.titulo}
                 </h3>
                 <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
-                  {article.excerpt}
+                  {noticia.resumo}
                 </p>
+                <div className="flex items-center text-sm text-gray-500">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  {format(new Date(noticia.data_publicacao), "dd 'de' MMMM, yyyy", { locale: ptBR })}
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -106,20 +76,27 @@ const News = () => {
 
         {/* Secondary News Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {comunicados.map((article, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden">
+          {comunicados.slice(0, 3).map((comunicado: any) => (
+            <Card key={comunicado.id} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden">
               <div className="flex gap-4 p-4">
                 <div className="w-24 h-16 flex-shrink-0 overflow-hidden rounded">
                   <img 
-                    src={article.image}
-                    alt={article.title}
+                    src={comunicado.imagem_destaque || "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"}
+                    alt={comunicado.titulo}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="flex-1 min-w-0">
+                  <Badge className={`mb-2 ${getCategoryColor(comunicado.categoria)}`}>
+                    {comunicado.categoria}
+                  </Badge>
                   <h4 className="font-medium text-sm text-foreground mb-1 group-hover:text-primary transition-colors line-clamp-2">
-                    {article.title}
+                    {comunicado.titulo}
                   </h4>
+                  <div className="flex items-center text-xs text-gray-500 mt-2">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    {format(new Date(comunicado.data_publicacao), "dd 'de' MMM", { locale: ptBR })}
+                  </div>
                 </div>
               </div>
             </Card>
