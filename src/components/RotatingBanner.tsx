@@ -3,48 +3,23 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, ChevronRight, Calendar, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useNoticiasDestaque } from '@/hooks/useNoticiasDestaque';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 const RotatingBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { data: noticias, isLoading } = useNoticiasDestaque(4);
 
-  const slides = [
-    {
-      type: "noticia",
-      title: "Nova Conquista: Aumento Salarial Aprovado",
-      description: "Após intensas negociações, foi aprovado reajuste salarial para a categoria policial.",
-      date: "15/01/2024",
-      category: "Conquistas",
-      link: "/publicacoes/noticia/1",
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&h=600&fit=crop"
-    },
-    {
-      type: "evento",
-      title: "Congresso Nacional de Policiais 2024",
-      description: "Evento reunirá representantes de todos os estados para discutir pautas importantes.",
-      date: "12/01/2024",
-      category: "Eventos",
-      link: "/publicacoes/noticias",
-      image: "/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png"
-    },
-    {
-      type: "beneficio",
-      title: "Plano de Saúde: Novas Coberturas",
-      description: "Ampliação da cobertura do plano de saúde para familiares dos associados.",
-      date: "10/01/2024",
-      category: "Benefícios",
-      link: "/publicacoes/noticia/3",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=600&fit=crop"
-    },
-    {
-      type: "capacitacao",
-      title: "Capacitação Profissional: Novos Cursos",
-      description: "Lançamento de programa de capacitação com foco em segurança pública moderna.",
-      date: "08/01/2024",
-      category: "Capacitação",
-      link: "/publicacoes/noticia/4",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop"
-    }
-  ];
+  const slides = noticias?.map((noticia: any) => ({
+    type: 'news',
+    title: noticia.titulo,
+    description: noticia.resumo,
+    date: format(new Date(noticia.data_publicacao), "dd 'de' MMMM, yyyy", { locale: ptBR }),
+    category: noticia.categoria,
+    link: `/publicacoes/noticias/${noticia.slug}`,
+    image: noticia.imagem_destaque || '/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png'
+  })) || [];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,6 +40,22 @@ const RotatingBanner = () => {
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
+
+  if (isLoading) {
+    return (
+      <div className="relative h-[600px] bg-gradient-to-r from-cobrapol-darkBlue to-cobrapol-blue flex items-center justify-center">
+        <div className="text-white text-xl">Carregando destaques...</div>
+      </div>
+    );
+  }
+
+  if (!slides || slides.length === 0) {
+    return (
+      <div className="relative h-[600px] bg-gradient-to-r from-cobrapol-darkBlue to-cobrapol-blue flex items-center justify-center">
+        <div className="text-white text-xl">Nenhuma notícia em destaque no momento</div>
+      </div>
+    );
+  }
 
   return (
     <section className="relative h-[600px] overflow-hidden">
