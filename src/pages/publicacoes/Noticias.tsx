@@ -21,8 +21,8 @@ const Noticias = () => {
 
   // Separar notícias para o layout
   const noticiaPrincipal = data?.noticias[0];
-  const noticiasSecundarias = data?.noticias.slice(1, 3) || [];
-  const noticiasGrid = data?.noticias.slice(3) || [];
+  const noticiasSecundarias = data?.noticias.slice(1, 4) || [];
+  const noticiasGrid = data?.noticias.slice(4) || [];
 
   return (
     <div className="min-h-screen">
