@@ -59,7 +59,7 @@ const App = () => (
           <Route path="/institucional/responsabilidade-social" element={<ResponsabilidadeSocial />} />
           <Route path="/institucional/missao-visao-valores" element={<MissaoVisaoValores />} />
           <Route path="/publicacoes/noticias" element={<Noticias />} />
-          <Route path="/publicacoes/noticia/:id" element={<NoticiaDetalhes />} />
+          <Route path="/publicacoes/noticia/:slug" element={<NoticiaDetalhes />} />
           <Route path="/publicacoes/blog" element={<Blog />} />
           <Route path="/publicacoes/artigo/:id" element={<ArtigoDetalhes />} />
           <Route path="/publicacoes/multimidia" element={<Multimidia />} />
