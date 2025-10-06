@@ -14,6 +14,147 @@ export type Database = {
   }
   public: {
     Tables: {
+      configuracoes_site: {
+        Row: {
+          cores_tema: Json | null
+          created_at: string | null
+          descricao_principal: string | null
+          email_principal: string | null
+          endereco_completo: string | null
+          id: number
+          informacoes_footer: Json | null
+          logo_url: string | null
+          nome_organizacao: string | null
+          redes_sociais: Json | null
+          slogan: string | null
+          telefone_principal: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          cores_tema?: Json | null
+          created_at?: string | null
+          descricao_principal?: string | null
+          email_principal?: string | null
+          endereco_completo?: string | null
+          id?: never
+          informacoes_footer?: Json | null
+          logo_url?: string | null
+          nome_organizacao?: string | null
+          redes_sociais?: Json | null
+          slogan?: string | null
+          telefone_principal?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          cores_tema?: Json | null
+          created_at?: string | null
+          descricao_principal?: string | null
+          email_principal?: string | null
+          endereco_completo?: string | null
+          id?: never
+          informacoes_footer?: Json | null
+          logo_url?: string | null
+          nome_organizacao?: string | null
+          redes_sociais?: Json | null
+          slogan?: string | null
+          telefone_principal?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      departamentos: {
+        Row: {
+          ativo: boolean | null
+          created_at: string | null
+          descricao: string | null
+          email: string | null
+          icone: string | null
+          id: number
+          nome: string
+          ordem: number | null
+          responsavel: string | null
+          telefone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          ativo?: boolean | null
+          created_at?: string | null
+          descricao?: string | null
+          email?: string | null
+          icone?: string | null
+          id?: never
+          nome: string
+          ordem?: number | null
+          responsavel?: string | null
+          telefone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          ativo?: boolean | null
+          created_at?: string | null
+          descricao?: string | null
+          email?: string | null
+          icone?: string | null
+          id?: never
+          nome?: string
+          ordem?: number | null
+          responsavel?: string | null
+          telefone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      diretoria_geral: {
+        Row: {
+          ativo: boolean | null
+          biografia: string | null
+          cargo: string
+          created_at: string | null
+          email: string | null
+          foto_url: string | null
+          id: number
+          linkedin: string | null
+          mandato_fim: string | null
+          mandato_inicio: string | null
+          nome: string
+          ordem: number | null
+          tipo_orgao: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          ativo?: boolean | null
+          biografia?: string | null
+          cargo: string
+          created_at?: string | null
+          email?: string | null
+          foto_url?: string | null
+          id?: never
+          linkedin?: string | null
+          mandato_fim?: string | null
+          mandato_inicio?: string | null
+          nome: string
+          ordem?: number | null
+          tipo_orgao?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          ativo?: boolean | null
+          biografia?: string | null
+          cargo?: string
+          created_at?: string | null
+          email?: string | null
+          foto_url?: string | null
+          id?: never
+          linkedin?: string | null
+          mandato_fim?: string | null
+          mandato_inicio?: string | null
+          nome?: string
+          ordem?: number | null
+          tipo_orgao?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       diretoria_sindicato: {
         Row: {
           atribuicoes: string | null
@@ -75,22 +216,40 @@ export type Database = {
       }
       documentos: {
         Row: {
+          categoria: string | null
           created_at: string
+          data_publicacao: string | null
+          descricao: string | null
+          downloads: number | null
           id: number
           link_doc: string | null
           nome: string | null
+          tamanho_arquivo: string | null
+          tipo: string | null
         }
         Insert: {
+          categoria?: string | null
           created_at?: string
+          data_publicacao?: string | null
+          descricao?: string | null
+          downloads?: number | null
           id?: number
           link_doc?: string | null
           nome?: string | null
+          tamanho_arquivo?: string | null
+          tipo?: string | null
         }
         Update: {
+          categoria?: string | null
           created_at?: string
+          data_publicacao?: string | null
+          descricao?: string | null
+          downloads?: number | null
           id?: number
           link_doc?: string | null
           nome?: string | null
+          tamanho_arquivo?: string | null
+          tipo?: string | null
         }
         Relationships: []
       }
@@ -159,11 +318,114 @@ export type Database = {
           },
         ]
       }
+      estatisticas_site: {
+        Row: {
+          ano: number
+          created_at: string | null
+          despesas_orcadas: number | null
+          downloads_documentos: number | null
+          filiados_ativos: number | null
+          id: number
+          mes: number | null
+          processos_atendidos: number | null
+          receita_anual: number | null
+          receitas_previstas: number | null
+          superavit_previsto: number | null
+          taxa_transparencia: number | null
+          updated_at: string | null
+          visitantes_site: number | null
+        }
+        Insert: {
+          ano: number
+          created_at?: string | null
+          despesas_orcadas?: number | null
+          downloads_documentos?: number | null
+          filiados_ativos?: number | null
+          id?: never
+          mes?: number | null
+          processos_atendidos?: number | null
+          receita_anual?: number | null
+          receitas_previstas?: number | null
+          superavit_previsto?: number | null
+          taxa_transparencia?: number | null
+          updated_at?: string | null
+          visitantes_site?: number | null
+        }
+        Update: {
+          ano?: number
+          created_at?: string | null
+          despesas_orcadas?: number | null
+          downloads_documentos?: number | null
+          filiados_ativos?: number | null
+          id?: never
+          mes?: number | null
+          processos_atendidos?: number | null
+          receita_anual?: number | null
+          receitas_previstas?: number | null
+          superavit_previsto?: number | null
+          taxa_transparencia?: number | null
+          updated_at?: string | null
+          visitantes_site?: number | null
+        }
+        Relationships: []
+      }
+      federacoes: {
+        Row: {
+          created_at: string | null
+          descricao: string | null
+          email: string | null
+          endereco: string | null
+          estados: string[] | null
+          id: number
+          logo_url: string | null
+          nome: string
+          quantidade_sindicatos: number | null
+          regiao: string
+          sigla: string | null
+          site_url: string | null
+          telefone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          descricao?: string | null
+          email?: string | null
+          endereco?: string | null
+          estados?: string[] | null
+          id?: never
+          logo_url?: string | null
+          nome: string
+          quantidade_sindicatos?: number | null
+          regiao: string
+          sigla?: string | null
+          site_url?: string | null
+          telefone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          descricao?: string | null
+          email?: string | null
+          endereco?: string | null
+          estados?: string[] | null
+          id?: never
+          logo_url?: string | null
+          nome?: string
+          quantidade_sindicatos?: number | null
+          regiao?: string
+          sigla?: string | null
+          site_url?: string | null
+          telefone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       financeiro: {
         Row: {
           adm_aprove: boolean | null
           aliquota: number | null
           ano: string | null
+          categoria: string | null
           competencia: string | null
           created_at: string
           descricao: string | null
@@ -177,8 +439,11 @@ export type Database = {
           id: number
           id_sindicato: number | null
           mes: string | null
+          observacoes: string | null
+          periodo_referencia: string | null
           referencia: string | null
           status: Database["public"]["Enums"]["status_financeiro"] | null
+          tipo_documento: string | null
           valor_arrecadacao: number | null
           valor_contribuicao: number | null
           vama: number | null
@@ -189,6 +454,7 @@ export type Database = {
           adm_aprove?: boolean | null
           aliquota?: number | null
           ano?: string | null
+          categoria?: string | null
           competencia?: string | null
           created_at?: string
           descricao?: string | null
@@ -202,8 +468,11 @@ export type Database = {
           id?: number
           id_sindicato?: number | null
           mes?: string | null
+          observacoes?: string | null
+          periodo_referencia?: string | null
           referencia?: string | null
           status?: Database["public"]["Enums"]["status_financeiro"] | null
+          tipo_documento?: string | null
           valor_arrecadacao?: number | null
           valor_contribuicao?: number | null
           vama?: number | null
@@ -214,6 +483,7 @@ export type Database = {
           adm_aprove?: boolean | null
           aliquota?: number | null
           ano?: string | null
+          categoria?: string | null
           competencia?: string | null
           created_at?: string
           descricao?: string | null
@@ -227,8 +497,11 @@ export type Database = {
           id?: number
           id_sindicato?: number | null
           mes?: string | null
+          observacoes?: string | null
+          periodo_referencia?: string | null
           referencia?: string | null
           status?: Database["public"]["Enums"]["status_financeiro"] | null
+          tipo_documento?: string | null
           valor_arrecadacao?: number | null
           valor_contribuicao?: number | null
           vama?: number | null
@@ -265,6 +538,210 @@ export type Database = {
             referencedColumns: ["id_sindicato"]
           },
         ]
+      }
+      formularios_contato: {
+        Row: {
+          anonimo: boolean | null
+          assunto: string | null
+          cpf_matricula: string | null
+          created_at: string | null
+          data_resposta: string | null
+          departamento: string | null
+          email: string
+          id: number
+          mensagem: string
+          nome: string
+          protocolo: string | null
+          responsavel_resposta: string | null
+          resposta: string | null
+          status: string | null
+          telefone: string | null
+          tipo: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          anonimo?: boolean | null
+          assunto?: string | null
+          cpf_matricula?: string | null
+          created_at?: string | null
+          data_resposta?: string | null
+          departamento?: string | null
+          email: string
+          id?: never
+          mensagem: string
+          nome: string
+          protocolo?: string | null
+          responsavel_resposta?: string | null
+          resposta?: string | null
+          status?: string | null
+          telefone?: string | null
+          tipo?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          anonimo?: boolean | null
+          assunto?: string | null
+          cpf_matricula?: string | null
+          created_at?: string | null
+          data_resposta?: string | null
+          departamento?: string | null
+          email?: string
+          id?: never
+          mensagem?: string
+          nome?: string
+          protocolo?: string | null
+          responsavel_resposta?: string | null
+          resposta?: string | null
+          status?: string | null
+          telefone?: string | null
+          tipo?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      historico_cobrapol: {
+        Row: {
+          ano: number
+          created_at: string | null
+          descricao: string | null
+          evento: string
+          id: number
+          ordem: number | null
+          tipo_evento: string | null
+        }
+        Insert: {
+          ano: number
+          created_at?: string | null
+          descricao?: string | null
+          evento: string
+          id?: never
+          ordem?: number | null
+          tipo_evento?: string | null
+        }
+        Update: {
+          ano?: number
+          created_at?: string | null
+          descricao?: string | null
+          evento?: string
+          id?: never
+          ordem?: number | null
+          tipo_evento?: string | null
+        }
+        Relationships: []
+      }
+      multimidia: {
+        Row: {
+          autor: string | null
+          categoria: string | null
+          created_at: string | null
+          data_publicacao: string | null
+          descricao: string | null
+          duracao: string | null
+          id: number
+          status: string | null
+          tags: string[] | null
+          tipo: string
+          titulo: string
+          updated_at: string | null
+          url_arquivo: string | null
+          url_thumb: string | null
+          visualizacoes: number | null
+        }
+        Insert: {
+          autor?: string | null
+          categoria?: string | null
+          created_at?: string | null
+          data_publicacao?: string | null
+          descricao?: string | null
+          duracao?: string | null
+          id?: never
+          status?: string | null
+          tags?: string[] | null
+          tipo: string
+          titulo: string
+          updated_at?: string | null
+          url_arquivo?: string | null
+          url_thumb?: string | null
+          visualizacoes?: number | null
+        }
+        Update: {
+          autor?: string | null
+          categoria?: string | null
+          created_at?: string | null
+          data_publicacao?: string | null
+          descricao?: string | null
+          duracao?: string | null
+          id?: never
+          status?: string | null
+          tags?: string[] | null
+          tipo?: string
+          titulo?: string
+          updated_at?: string | null
+          url_arquivo?: string | null
+          url_thumb?: string | null
+          visualizacoes?: number | null
+        }
+        Relationships: []
+      }
+      noticias_cobrapol: {
+        Row: {
+          autor: string | null
+          categoria: string | null
+          conteudo: string | null
+          created_at: string | null
+          data_publicacao: string | null
+          destaque: boolean | null
+          fonte: string | null
+          id: number
+          imagem_destaque: string | null
+          link_externo: string | null
+          resumo: string | null
+          slug: string
+          status: string | null
+          tags: string[] | null
+          titulo: string
+          updated_at: string | null
+          visualizacoes: number | null
+        }
+        Insert: {
+          autor?: string | null
+          categoria?: string | null
+          conteudo?: string | null
+          created_at?: string | null
+          data_publicacao?: string | null
+          destaque?: boolean | null
+          fonte?: string | null
+          id?: never
+          imagem_destaque?: string | null
+          link_externo?: string | null
+          resumo?: string | null
+          slug: string
+          status?: string | null
+          tags?: string[] | null
+          titulo: string
+          updated_at?: string | null
+          visualizacoes?: number | null
+        }
+        Update: {
+          autor?: string | null
+          categoria?: string | null
+          conteudo?: string | null
+          created_at?: string | null
+          data_publicacao?: string | null
+          destaque?: boolean | null
+          fonte?: string | null
+          id?: never
+          imagem_destaque?: string | null
+          link_externo?: string | null
+          resumo?: string | null
+          slug?: string
+          status?: string | null
+          tags?: string[] | null
+          titulo?: string
+          updated_at?: string | null
+          visualizacoes?: number | null
+        }
+        Relationships: []
       }
       notificacoes: {
         Row: {
@@ -325,27 +802,140 @@ export type Database = {
           },
         ]
       }
+      paginas: {
+        Row: {
+          conteudo: string | null
+          created_at: string | null
+          exibir_menu: boolean | null
+          icone: string | null
+          id: number
+          imagem_destaque: string | null
+          keywords: string | null
+          meta_description: string | null
+          ordem: number | null
+          parent_page_id: number | null
+          slug: string
+          status: string | null
+          template: string | null
+          titulo: string
+          updated_at: string | null
+        }
+        Insert: {
+          conteudo?: string | null
+          created_at?: string | null
+          exibir_menu?: boolean | null
+          icone?: string | null
+          id?: never
+          imagem_destaque?: string | null
+          keywords?: string | null
+          meta_description?: string | null
+          ordem?: number | null
+          parent_page_id?: number | null
+          slug: string
+          status?: string | null
+          template?: string | null
+          titulo: string
+          updated_at?: string | null
+        }
+        Update: {
+          conteudo?: string | null
+          created_at?: string | null
+          exibir_menu?: boolean | null
+          icone?: string | null
+          id?: never
+          imagem_destaque?: string | null
+          keywords?: string | null
+          meta_description?: string | null
+          ordem?: number | null
+          parent_page_id?: number | null
+          slug?: string
+          status?: string | null
+          template?: string | null
+          titulo?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "paginas_parent_page_id_fkey"
+            columns: ["parent_page_id"]
+            isOneToOne: false
+            referencedRelation: "paginas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       pastas: {
         Row: {
+          categoria: string | null
           created_at: string
+          descricao: string | null
+          icone: string | null
           id: number
           nome: string | null
           sigilo: Database["public"]["Enums"]["sigilo_pastas"] | null
           tamanho_mg: number | null
         }
         Insert: {
+          categoria?: string | null
           created_at?: string
+          descricao?: string | null
+          icone?: string | null
           id?: number
           nome?: string | null
           sigilo?: Database["public"]["Enums"]["sigilo_pastas"] | null
           tamanho_mg?: number | null
         }
         Update: {
+          categoria?: string | null
           created_at?: string
+          descricao?: string | null
+          icone?: string | null
           id?: number
           nome?: string | null
           sigilo?: Database["public"]["Enums"]["sigilo_pastas"] | null
           tamanho_mg?: number | null
+        }
+        Relationships: []
+      }
+      programas_sociais: {
+        Row: {
+          categoria: string | null
+          created_at: string | null
+          descricao: string | null
+          detalhes: Json | null
+          icone: string | null
+          id: number
+          itens: string[] | null
+          nome: string
+          ordem: number | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          categoria?: string | null
+          created_at?: string | null
+          descricao?: string | null
+          detalhes?: Json | null
+          icone?: string | null
+          id?: never
+          itens?: string[] | null
+          nome: string
+          ordem?: number | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          categoria?: string | null
+          created_at?: string | null
+          descricao?: string | null
+          detalhes?: Json | null
+          icone?: string | null
+          id?: never
+          itens?: string[] | null
+          nome?: string
+          ordem?: number | null
+          status?: string | null
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -563,62 +1153,145 @@ export type Database = {
           },
         ]
       }
+      revistas: {
+        Row: {
+          ano: number | null
+          arquivo_pdf_url: string | null
+          capa_url: string | null
+          created_at: string | null
+          data_publicacao: string | null
+          descricao: string | null
+          destaque: boolean | null
+          downloads: number | null
+          edicao: string | null
+          id: number
+          mes: string | null
+          status: string | null
+          tamanho_arquivo: string | null
+          titulo: string
+          updated_at: string | null
+        }
+        Insert: {
+          ano?: number | null
+          arquivo_pdf_url?: string | null
+          capa_url?: string | null
+          created_at?: string | null
+          data_publicacao?: string | null
+          descricao?: string | null
+          destaque?: boolean | null
+          downloads?: number | null
+          edicao?: string | null
+          id?: never
+          mes?: string | null
+          status?: string | null
+          tamanho_arquivo?: string | null
+          titulo: string
+          updated_at?: string | null
+        }
+        Update: {
+          ano?: number | null
+          arquivo_pdf_url?: string | null
+          capa_url?: string | null
+          created_at?: string | null
+          data_publicacao?: string | null
+          descricao?: string | null
+          destaque?: boolean | null
+          downloads?: number | null
+          edicao?: string | null
+          id?: never
+          mes?: string | null
+          status?: string | null
+          tamanho_arquivo?: string | null
+          titulo?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       sindicatos: {
         Row: {
           aliquota: number | null
           ata_eleicao_link: string | null
+          cidade: string | null
           cnes_link: string | null
           cnpj: string | null
           contribuicao_minima: number | null
           created_at: string
+          data_filiacao: string | null
           data_fundacao: string | null
           demonicacao: string | null
           email: string | null
+          estado: string | null
           estatuto_link: string | null
+          federacao_id: number | null
           foto: string | null
           id: number
           is_contribuicao_ativa: boolean | null
           is_sindicato_ativo: boolean | null
+          logo_url: string | null
           nome_fantasia: string | null
+          presidente_nome: string | null
           telefone: string | null
+          website: string | null
         }
         Insert: {
           aliquota?: number | null
           ata_eleicao_link?: string | null
+          cidade?: string | null
           cnes_link?: string | null
           cnpj?: string | null
           contribuicao_minima?: number | null
           created_at?: string
+          data_filiacao?: string | null
           data_fundacao?: string | null
           demonicacao?: string | null
           email?: string | null
+          estado?: string | null
           estatuto_link?: string | null
+          federacao_id?: number | null
           foto?: string | null
           id?: number
           is_contribuicao_ativa?: boolean | null
           is_sindicato_ativo?: boolean | null
+          logo_url?: string | null
           nome_fantasia?: string | null
+          presidente_nome?: string | null
           telefone?: string | null
+          website?: string | null
         }
         Update: {
           aliquota?: number | null
           ata_eleicao_link?: string | null
+          cidade?: string | null
           cnes_link?: string | null
           cnpj?: string | null
           contribuicao_minima?: number | null
           created_at?: string
+          data_filiacao?: string | null
           data_fundacao?: string | null
           demonicacao?: string | null
           email?: string | null
+          estado?: string | null
           estatuto_link?: string | null
+          federacao_id?: number | null
           foto?: string | null
           id?: number
           is_contribuicao_ativa?: boolean | null
           is_sindicato_ativo?: boolean | null
+          logo_url?: string | null
           nome_fantasia?: string | null
+          presidente_nome?: string | null
           telefone?: string | null
+          website?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "sindicatos_federacao_id_fkey"
+            columns: ["federacao_id"]
+            isOneToOne: false
+            referencedRelation: "federacoes"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       subpastas: {
         Row: {
@@ -1030,6 +1703,10 @@ export type Database = {
               p_uf: string
             }
         Returns: undefined
+      }
+      generate_protocolo: {
+        Args: Record<PropertyKey, never>
+        Returns: string
       }
       inserir_sindicato: {
         Args:
