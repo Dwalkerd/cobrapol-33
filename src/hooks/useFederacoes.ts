@@ -5,7 +5,7 @@ export function useFederacoes() {
   return useQuery({
     queryKey: ['federacoes'],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from('federacoes')
         .select('*')
         .order('regiao')
@@ -25,7 +25,7 @@ export function useSindicatosPorFederacao(federacaoId: number) {
   return useQuery({
     queryKey: ['sindicatos-federacao', federacaoId],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from('sindicatos')
         .select('*')
         .eq('federacao_id', federacaoId)
