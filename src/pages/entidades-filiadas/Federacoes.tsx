@@ -5,106 +5,39 @@ import { MapPin, Users, Phone, Mail, Globe, ChevronDown, ChevronUp } from "lucid
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
+import { useFederacoes } from '@/hooks/useFederacoes';
 
 const Federacoes = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
-
-  const federacoes = [
-    {
-      id: 1,
-      nome: "Federação Centro-Oeste",
-      sigla: "FEPOL-CO",
-      estados: ["DF", "GO", "MT", "MS"],
-      presidente: "A definir",
-      telefone: "(61) 3321-0000",
-      email: "contato@fepolco.org.br",
-      site: "www.fepolco.org.br",
-      endereco: {
-        rua: "Rua das Federações, 100",
-        bairro: "Asa Norte",
-        cidade: "Brasília",
-        cep: "70000-000"
-      },
-      funcionamento: "Segunda a Sexta: 8h às 18h",
-      descricao: "Representa os sindicatos de policiais civis da região Centro-Oeste do Brasil."
-    },
-    {
-      id: 2,
-      nome: "Federação Nordeste",
-      sigla: "FEPOL-NE", 
-      estados: ["AL", "BA", "CE", "MA", "PB", "PE", "PI", "RN", "SE"],
-      presidente: "A definir",
-      telefone: "(85) 3321-0000",
-      email: "contato@fepolne.org.br",
-      site: "www.fepolne.org.br",
-      endereco: {
-        rua: "Avenida Nordeste, 200",
-        bairro: "Centro",
-        cidade: "Fortaleza",
-        cep: "60000-000"
-      },
-      funcionamento: "Segunda a Sexta: 8h às 17h",
-      descricao: "Representa os sindicatos de policiais civis da região Nordeste do Brasil."
-    },
-    {
-      id: 3,
-      nome: "Federação Norte",
-      sigla: "FEPOL-N",
-      estados: ["AC", "AP", "AM", "PA", "RO", "RR", "TO"],
-      presidente: "A definir",
-      telefone: "(91) 3321-0000",
-      email: "contato@fepoln.org.br",
-      site: "www.fepoln.org.br",
-      endereco: {
-        rua: "Rua Norte, 300",
-        bairro: "Batista Campos",
-        cidade: "Belém",
-        cep: "66000-000"
-      },
-      funcionamento: "Segunda a Sexta: 8h às 17h",
-      descricao: "Representa os sindicatos de policiais civis da região Norte do Brasil."
-    },
-    {
-      id: 4,
-      nome: "Federação Sudeste",
-      sigla: "FEPOL-SE",
-      estados: ["ES", "MG", "RJ", "SP"],
-      presidente: "A definir",
-      telefone: "(11) 3321-0000",
-      email: "contato@fepolse.org.br",
-      site: "www.fepolse.org.br",
-      endereco: {
-        rua: "Avenida Paulista, 1000",
-        bairro: "Bela Vista",
-        cidade: "São Paulo",
-        cep: "01000-000"
-      },
-      funcionamento: "Segunda a Sexta: 9h às 18h",
-      descricao: "Representa os sindicatos de policiais civis da região Sudeste do Brasil."
-    },
-    {
-      id: 5,
-      nome: "Federação Sul",
-      sigla: "FEPOL-S",
-      estados: ["PR", "RS", "SC"],
-      presidente: "A definir",
-      telefone: "(51) 3321-0000",
-      email: "contato@fepols.org.br",
-      site: "www.fepols.org.br",
-      endereco: {
-        rua: "Rua do Sul, 500",
-        bairro: "Centro Histórico",
-        cidade: "Porto Alegre",
-        cep: "90000-000"
-      },
-      funcionamento: "Segunda a Sexta: 8h às 17h",
-      descricao: "Representa os sindicatos de policiais civis da região Sul do Brasil."
-    }
-  ];
+  const { data: federacoes, isLoading, error } = useFederacoes();
 
   const toggleExpanded = (id: number) => {
     setExpandedCard(expandedCard === id ? null : id);
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow container mx-auto px-4 py-12">
+          <div className="text-center text-xl">Carregando federações...</div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow container mx-auto px-4 py-12">
+          <div className="text-center text-red-500">Erro ao carregar federações</div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -124,7 +57,7 @@ const Federacoes = () => {
         </div>
 
         <div className="grid gap-6">
-          {federacoes.map((federacao) => (
+          {federacoes?.map((federacao) => (
             <Card key={federacao.id} className="border-gold/20">
               <CardHeader>
                 <div className="flex items-center justify-between">
@@ -137,7 +70,7 @@ const Federacoes = () => {
                         {federacao.nome}
                       </CardTitle>
                       <CardDescription className="text-base">
-                        {federacao.sigla} • {federacao.estados.join(", ")}
+                        {federacao.sigla} • {federacao.estados?.join(", ")}
                       </CardDescription>
                     </div>
                   </div>
@@ -167,41 +100,48 @@ const Federacoes = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Globe className="h-4 w-4 text-gold" />
-                    <span className="text-sm text-muted-foreground">{federacao.site}</span>
+                    <span className="text-sm text-muted-foreground">{federacao.site_url}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4 text-gold" />
-                    <span className="text-sm text-muted-foreground">{federacao.estados.length} estados</span>
+                    <span className="text-sm text-muted-foreground">
+                      {federacao.quantidade_sindicatos} sindicatos filiados
+                    </span>
                   </div>
                 </div>
 
                 {expandedCard === federacao.id && (
-                  <div className="mt-6 pt-6 border-t border-gold/20">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-3">Informações Detalhadas</h4>
-                        <div className="space-y-2">
-                          <div>
-                            <span className="font-medium text-foreground">Presidente: </span>
-                            <span className="text-muted-foreground">{federacao.presidente}</span>
-                          </div>
-                          <div>
-                            <span className="font-medium text-foreground">Funcionamento: </span>
-                            <span className="text-muted-foreground">{federacao.funcionamento}</span>
-                          </div>
-                          <div>
-                            <span className="font-medium text-foreground">Descrição: </span>
-                            <span className="text-muted-foreground">{federacao.descricao}</span>
-                          </div>
+                  <div className="mt-6 pt-6 border-t border-gold/20 space-y-4">
+                    {/* Endereço */}
+                    {federacao.endereco && (
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                        <div>
+                          <p className="font-semibold mb-1">Endereço</p>
+                          <p className="text-muted-foreground">{federacao.endereco}</p>
                         </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-3">Endereço Completo</h4>
-                        <div className="text-muted-foreground">
-                          <p>{federacao.endereco.rua}</p>
-                          <p>{federacao.endereco.bairro}</p>
-                          <p>{federacao.endereco.cidade} - CEP: {federacao.endereco.cep}</p>
+                    )}
+
+                    {/* Descrição */}
+                    {federacao.descricao && (
+                      <div className="flex items-start gap-3">
+                        <Users className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                        <div>
+                          <p className="font-semibold mb-1">Sobre</p>
+                          <p className="text-muted-foreground">{federacao.descricao}</p>
                         </div>
+                      </div>
+                    )}
+
+                    {/* Quantidade de sindicatos */}
+                    <div className="flex items-start gap-3">
+                      <Users className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold mb-1">Sindicatos Filiados</p>
+                        <p className="text-muted-foreground">
+                          {federacao.quantidade_sindicatos} sindicatos ativos em {federacao.estados?.length} estados
+                        </p>
                       </div>
                     </div>
                   </div>
