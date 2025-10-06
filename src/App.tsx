@@ -14,7 +14,7 @@ import NoticiaDetalhes from "./pages/publicacoes/NoticiaDetalhes";
 import Blog from "./pages/publicacoes/Blog";
 import ArtigoDetalhes from "./pages/publicacoes/ArtigoDetalhes";
 import Multimidia from "./pages/publicacoes/Multimidia";
-import Sindicatos from "./pages/Sindicatos";
+
 import AreaAssociado from "./pages/AreaAssociado";
 import AcessoInformacao from "./pages/AcessoInformacao";
 import CartaServicos from "./pages/CartaServicos";
@@ -63,7 +63,7 @@ const App = () => (
           <Route path="/publicacoes/blog" element={<Blog />} />
           <Route path="/publicacoes/artigo/:id" element={<ArtigoDetalhes />} />
           <Route path="/publicacoes/multimidia" element={<Multimidia />} />
-          <Route path="/sindicatos" element={<Sindicatos />} />
+          <Route path="/sindicatos" element={<SindicatosPage />} />
           <Route path="/entidades-filiadas/federacoes" element={<Federacoes />} />
           <Route path="/entidades-filiadas/sindicatos" element={<SindicatosPage />} />
           <Route path="/sindicatos/filiacao" element={<Filiacao />} />
