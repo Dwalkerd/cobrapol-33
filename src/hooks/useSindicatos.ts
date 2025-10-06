@@ -75,12 +75,22 @@ export function useEstadosDisponiveis() {
       const { data, error } = await (supabase as any)
         .from('sindicatos')
         .select('estado')
-        .eq('is_sindicato_ativo', true)
+        // Removido filtro is_sindicato_ativo para mostrar TODOS os estados
       
-      if (error) throw error
+      if (error) {
+        console.error('Erro ao buscar estados:', error)
+        throw error
+      }
       
-      const estados = [...new Set(data?.map((s: any) => s.estado))].sort()
-      return estados.filter(e => e)
+      console.log('📊 Dados brutos dos estados:', data)
+      
+      const estados = [...new Set(data?.map((s: any) => s.estado))]
+        .filter(e => e) // Remove nulls/undefined
+        .sort()
+      
+      console.log('✅ Estados únicos disponíveis:', estados)
+      
+      return estados
     },
     staleTime: 1000 * 60 * 30
   })
