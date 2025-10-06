@@ -7,11 +7,17 @@ import { MapPin, Users, Phone, Mail, Globe, ChevronDown, ChevronUp, Search, Buil
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState, useMemo } from "react";
+import { useEstadosDisponiveis } from "@/hooks/useSindicatos";
 
 const SindicatosPage = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedRegion, setSelectedRegion] = useState("todos");
+  const [filtros, setFiltros] = useState({
+    estado: "todos",
+    regiao: "todas",
+    busca: ""
+  });
+  
+  const { data: estados } = useEstadosDisponiveis();
 
   // Dados dos sindicatos organizados por UF (ordem alfabética) - Todos os estados + DF
   const sindicatos = [
@@ -504,7 +510,7 @@ const SindicatosPage = () => {
   ];
 
   const regioes = [
-    { value: "todos", label: "Todas as Regiões" },
+    { value: "todas", label: "Todas as Regiões" },
     { value: "Centro-Oeste", label: "Centro-Oeste" },
     { value: "Nordeste", label: "Nordeste" },
     { value: "Norte", label: "Norte" },
@@ -515,15 +521,16 @@ const SindicatosPage = () => {
   const filteredSindicatos = useMemo(() => {
     return sindicatos.filter(sindicato => {
       const matchesSearch = 
-        sindicato.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        sindicato.denominacao.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        sindicato.uf.toLowerCase().includes(searchTerm.toLowerCase());
+        sindicato.nome.toLowerCase().includes(filtros.busca.toLowerCase()) ||
+        sindicato.denominacao.toLowerCase().includes(filtros.busca.toLowerCase()) ||
+        sindicato.uf.toLowerCase().includes(filtros.busca.toLowerCase());
       
-      const matchesRegion = selectedRegion === "todos" || sindicato.regiao === selectedRegion;
+      const matchesEstado = filtros.estado === "todos" || sindicato.uf === filtros.estado;
+      const matchesRegion = filtros.regiao === "todas" || sindicato.regiao === filtros.regiao;
       
-      return matchesSearch && matchesRegion;
+      return matchesSearch && matchesEstado && matchesRegion;
     }).sort((a, b) => a.uf.localeCompare(b.uf));
-  }, [searchTerm, selectedRegion]);
+  }, [filtros]);
 
   const toggleExpanded = (id: number) => {
     setExpandedCard(expandedCard === id ? null : id);
@@ -556,25 +563,52 @@ const SindicatosPage = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Campo de Busca */}
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Buscar por nome ou UF
                   </label>
-                  <Input
-                    placeholder="Digite o nome do sindicato ou UF..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="border-gold/20"
-                  />
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                    <Input
+                      type="text"
+                      placeholder="Digite o nome do sindicato ou UF..."
+                      className="pl-10 border-gold/20"
+                      value={filtros.busca}
+                      onChange={(e) => setFiltros({ ...filtros, busca: e.target.value })}
+                    />
+                  </div>
                 </div>
+
+                {/* Filtro por Estado */}
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Filtrar por região
+                    Filtrar por Estado/UF
                   </label>
-                  <Select value={selectedRegion} onValueChange={setSelectedRegion}>
+                  <Select value={filtros.estado} onValueChange={(value) => setFiltros({ ...filtros, estado: value })}>
                     <SelectTrigger className="border-gold/20">
-                      <SelectValue placeholder="Selecione uma região" />
+                      <SelectValue placeholder="Todos os Estados" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="todos">Todos os Estados</SelectItem>
+                      {estados?.map((estado: string) => (
+                        <SelectItem key={estado} value={estado}>
+                          {estado}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Filtro por Região */}
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Filtrar por Região
+                  </label>
+                  <Select value={filtros.regiao} onValueChange={(value) => setFiltros({ ...filtros, regiao: value })}>
+                    <SelectTrigger className="border-gold/20">
+                      <SelectValue placeholder="Todas as Regiões" />
                     </SelectTrigger>
                     <SelectContent>
                       {regioes.map((regiao) => (
