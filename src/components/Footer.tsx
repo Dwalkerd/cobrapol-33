@@ -62,7 +62,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <Mail className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>{config?.email_principal || 'contato@cobrapol.org.br'}</span>
+                <span>{config?.email_principal || 'cobrapol@cobrapol.org.br'}</span>
               </div>
             </div>
           </div>
