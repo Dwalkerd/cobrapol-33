@@ -116,7 +116,7 @@ const Footer = () => {
               <p className="text-sm text-background/80 mb-2">
                 Plantão de emergência para associados
               </p>
-              <p className="text-lg font-bold text-gold">0800 123 4567</p>
+              <p className="text-lg font-bold text-gold">+55 (61) 3034-3750</p>
             </div>
           </div>
         </div>
