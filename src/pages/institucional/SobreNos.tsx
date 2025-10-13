@@ -215,9 +215,7 @@ const SobreNos = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-foreground">Valores</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Unidade – União da categoria em todo o território nacional. Compromisso – Dedicação na defesa dos
-                  policiais civis e da sociedade. Transparência – Gestão ética e responsável. Respeito – Valorização da
-                  diversidade e dignidade humana. Justiça – Igualdade de direitos e melhores condições de trabalho.
+                  <strong>Unidade</strong> – União da categoria em todo o território nacional. <strong>Compromisso</strong> – Dedicação à defesa dos policiais civis e da sociedade. <strong>Transparência</strong> – Gestão ética, responsável e participativa. <strong>Respeito</strong> – Valorização da diversidade e da dignidade humana. <strong>Justiça</strong> – Promoção da igualdade de direitos e de melhores condições de trabalho.
                 </p>
               </CardContent>
             </Card>
