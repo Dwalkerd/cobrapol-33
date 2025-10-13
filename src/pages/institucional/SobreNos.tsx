@@ -160,8 +160,8 @@ const SobreNos = () => {
               Sobre a Cobrapol
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              A COBRAPOL: Mais de
-              <span className="text-gold">30 Anos de Atuação</span>
+              COBRAPOL:
+              <span className="text-gold"> MAIS DE 30 ANOS DE ATUAÇÃO</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
               A Confederação Brasileira de Trabalhadores Policiais Civis (Cobrapol), fundada em 9 de outubro de 1991, é
