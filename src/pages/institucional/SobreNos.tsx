@@ -202,8 +202,8 @@ const SobreNos = () => {
                 <h3 className="text-xl font-bold mb-4 text-foreground">Visão</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Ser a principal referência nacional na defesa e valorização dos policiais civis, fortalecendo o
-                  sindicalismo e contribuindo para uma segurança pública de qualidade, baseada em justiça, respeito e
-                  compromisso social.
+                  sindicalismo e contribuindo para uma segurança pública de qualidade, pautada na justiça, no respeito e
+                  no compromisso social.
                 </p>
               </CardContent>
             </Card>
