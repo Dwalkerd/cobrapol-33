@@ -250,7 +250,7 @@ const SobreNos = () => {
       {/* História Timeline */}
       <div className="container mx-auto px-4 py-16">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-foreground mb-4">Nossa História Detalhada</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-4">Conheça mais sobre a nossa história</h2>
           <p className="text-muted-foreground text-lg">
             Conheça os marcos históricos que definiram nossa trajetória ao longo de mais de três décadas.
           </p>
