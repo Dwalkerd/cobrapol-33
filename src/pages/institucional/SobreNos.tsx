@@ -197,20 +197,6 @@ const SobreNos = () => {
             <Card className="text-center group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40">
               <CardContent className="p-8">
                 <div className="bg-gold p-4 rounded-full w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <Heart className="h-8 w-8 text-primary-foreground" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-foreground">Valores</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Unidade – União da categoria em todo o território nacional. Compromisso – Dedicação na defesa dos
-                  policiais civis e da sociedade. Transparência – Gestão ética e responsável. Respeito – Valorização da
-                  diversidade e dignidade humana. Justiça – Igualdade de direitos e melhores condições de trabalho.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40">
-              <CardContent className="p-8">
-                <div className="bg-gold p-4 rounded-full w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <Handshake className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-foreground">Visão</h3>
@@ -218,6 +204,20 @@ const SobreNos = () => {
                   Ser a principal referência nacional na defesa e valorização dos policiais civis, fortalecendo o
                   sindicalismo e contribuindo para uma segurança pública de qualidade, baseada em justiça, respeito e
                   compromisso social.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40">
+              <CardContent className="p-8">
+                <div className="bg-gold p-4 rounded-full w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <Heart className="h-8 w-8 text-primary-foreground" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-foreground">Valores</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Unidade – União da categoria em todo o território nacional. Compromisso – Dedicação na defesa dos
+                  policiais civis e da sociedade. Transparência – Gestão ética e responsável. Respeito – Valorização da
+                  diversidade e dignidade humana. Justiça – Igualdade de direitos e melhores condições de trabalho.
                 </p>
               </CardContent>
             </Card>
