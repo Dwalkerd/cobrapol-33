@@ -70,7 +70,7 @@ const SobreNos = () => {
                   Associe-se
                 </Button>
                 <Button variant="outline" size="lg" className="border-background text-foreground bg-background hover:bg-background/90 hover:text-foreground">
-                  Conheça Nossa Diretoria
+                  Conheça nossa diretoria
                 </Button>
               </div>
 
