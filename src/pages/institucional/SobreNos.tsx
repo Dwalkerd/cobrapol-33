@@ -182,7 +182,7 @@ const SobreNos = () => {
                   <Trophy className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-foreground">Por que se Filiar?</h3>
-                <p className="text-muted-foreground leading-relaxed">Filiar-se à Cobrapol é unir forças em uma luta coletiva que transcende fronteiras estaduais. A filiação amplia a representatividade nacional, fortalece a defesa de direitos e contribui para um movimento sindical sólido, capaz de propor soluções e transformar realidades.</p>
+                <p className="text-muted-foreground leading-relaxed">Filiar-se à Cobrapol é unir forças em uma luta coletiva que transcende fronteiras estaduais. Ganha representatividade nacional, fortalece a defesa de direitos e contribui para um movimento sindical forte que propõe soluções e transforma realidades.</p>
               </CardContent>
             </Card>
           </div>
@@ -250,10 +250,8 @@ const SobreNos = () => {
       {/* História Timeline */}
       <div className="container mx-auto px-4 py-16">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-foreground mb-4">Conheça mais sobre a nossa história</h2>
-          <p className="text-muted-foreground text-lg">
-            Conheça os marcos históricos que definiram nossa trajetória ao longo de mais de três décadas.
-          </p>
+          <h2 className="text-3xl font-bold text-foreground mb-4">Nossa História Detalhada</h2>
+          <p className="text-muted-foreground text-lg">A Cobrapol lidera grandes mobilizações nacionais em defesa da categoria, como nas discussões sobre a Reforma da Previdência, na articulação pela aprovação da Lei Orgânica Nacional das Polícias Civis e na luta pela PEC da Segurança Pública. Essas batalhas simbolizam o compromisso da entidade em garantir não apenas melhores condições de trabalho e valorização salarial, mas também a preservação de direitos históricos que asseguram dignidade e justiça aos policiais civis de todo o país.</p>
         </div>
 
         <div className="space-y-6">
