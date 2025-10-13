@@ -141,7 +141,10 @@ const SobreNos = () => {
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">A Confederação Brasileira de Trabalhadores Policiais Civis (COBRAPOL) foi fundada em 9 de outubro de 1991 e é hoje a maior entidade representativa dos policiais civis do Brasil. Há 34 anos, nasceu com o propósito de unificar sindicatos e federações estaduais e, desde então, atua em âmbito nacional na defesa dos direitos, garantias e interesses da categoria, promovendo a valorização profissional, a justiça social e o fortalecimento das instituições policiais.</p>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto mt-6 leading-relaxed">
-              Ao longo de sua história, a Cobrapol se consolidou como uma voz ativa e legítima nos debates sobre segurança pública, dialogando com os poderes Executivo, Legislativo e Judiciário. Mais do que representar, a entidade mobiliza, articula e transforma, garantindo que os policiais civis de todo o país tenham protagonismo nas decisões que impactam sua carreira e a sociedade.
+              Ao longo de sua trajetória, a Cobrapol consolidou-se como uma voz ativa, respeitada e legítima nos debates sobre segurança pública. Mantém diálogo permanente com os Poderes Executivo, Legislativo e Judiciário, contribuindo para a formulação de políticas que impactam diretamente o trabalho policial e a sociedade.
+            </p>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto mt-6 leading-relaxed">
+              Mais do que representar, a entidade mobiliza, articula e transforma – garantindo que os policiais civis de todo o país tenham protagonismo nas decisões que moldam o futuro da segurança pública brasileira.
             </p>
           </div>
 
