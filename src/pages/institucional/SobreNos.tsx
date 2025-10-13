@@ -280,7 +280,7 @@ const SobreNos = () => {
                 A Cobrapol também lidera grandes mobilizações nacionais em defesa da categoria, como nas discussões sobre a Reforma da Previdência, na articulação para a aprovação da Lei Orgânica Nacional das Polícias Civis e na luta pela PEC da Segurança Pública. Essas batalhas simbolizam o compromisso da entidade em garantir não apenas melhores condições de trabalho e valorização salarial, mas também a preservação de direitos históricos que asseguram dignidade e justiça aos policiais civis de todo o Brasil.
               </p>
               <p className="text-muted-foreground">
-                A Cobrapol é mais do que uma confederação: é a voz, a força e a união dos policiais civis de todo o Brasil. Filiar-se à Cobrapol significa integrar uma rede articulada de sindicatos que compartilham experiências, estratégias e conquistas, tendo acesso a suporte político e institucional em pautas locais e nacionais.
+                Mais do que uma confederação, a Cobrapol é a voz, a força e a união dos policiais civis brasileiros. Filiar-se à entidade significa integrar uma rede articulada de sindicatos que compartilham experiências, estratégias e conquistas, com acesso a suporte político e institucional em pautas locais e nacionais.
               </p>
             </CardContent>
           </Card>
