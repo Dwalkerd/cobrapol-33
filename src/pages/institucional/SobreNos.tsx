@@ -74,7 +74,7 @@ const SobreNos = () => {
                 <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                   Sobre
                   <span className="block text-transparent bg-gradient-to-r from-gold-light to-gold bg-clip-text">
-                    Nós
+                    nós
                   </span>
                 </h1>
                 <p className="text-xl text-background/90 max-w-lg">
