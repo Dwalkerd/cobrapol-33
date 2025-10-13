@@ -182,7 +182,7 @@ const SobreNos = () => {
                   <Trophy className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-foreground">Por que se Filiar?</h3>
-                <p className="text-muted-foreground leading-relaxed">Filiar-se à Cobrapol é unir forças em uma luta coletiva que transcende fronteiras estaduais. Ganha representatividade nacional, fortalece a defesa de direitos e contribui para um movimento sindical forte que propõe soluções e transforma realidades.</p>
+                <p className="text-muted-foreground leading-relaxed">Filiar-se à Cobrapol é unir forças em uma luta coletiva que transcende fronteiras estaduais. A filiação amplia a representatividade nacional, fortalece a defesa de direitos e contribui para um movimento sindical sólido, capaz de propor soluções e transformar realidades.</p>
               </CardContent>
             </Card>
           </div>
