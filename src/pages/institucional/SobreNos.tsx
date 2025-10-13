@@ -160,7 +160,7 @@ const SobreNos = () => {
               Sobre a Cobrapol
             </Badge>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              A COBRAPOL: Mais de
+              A COBRAPOL:
               <span className="text-gold"> 30 Anos de Atuação</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
