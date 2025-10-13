@@ -67,7 +67,7 @@ const SobreNos = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8">
-                  Torne-se Associado
+                  Associe-se
                 </Button>
                 <Button variant="outline" size="lg" className="border-background text-foreground bg-background hover:bg-background/90 hover:text-foreground">
                   Conheça Nossa Diretoria
