@@ -67,10 +67,10 @@ const SobreNos = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8">
-                  Associe-se
+                  Torne-se Associado
                 </Button>
                 <Button variant="outline" size="lg" className="border-background text-foreground bg-background hover:bg-background/90 hover:text-foreground">
-                  Conheça nossa diretoria
+                  Conheça Nossa Diretoria
                 </Button>
               </div>
 
@@ -113,7 +113,7 @@ const SobreNos = () => {
                 <div className="space-y-6 pt-12">
                   <div className="bg-background/10 backdrop-blur-sm border border-gold/20 rounded-2xl p-6 text-center">
                     <Users className="h-12 w-12 text-gold mx-auto mb-4" />
-                    <h3 className="font-semibold text-lg mb-2 text-background">Federações</h3>
+                    <h3 className="font-semibold text-lg mb-2 text-background">MAIS DE 30 ANOS DE ATUAÇÃO</h3>
                     <p className="text-sm text-background/70">Organização regional</p>
                   </div>
                   <div className="bg-background/10 backdrop-blur-sm border border-gold/20 rounded-2xl p-6 text-center">
