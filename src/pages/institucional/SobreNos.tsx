@@ -5,59 +5,44 @@ import { Shield, Users, Scale, Award, Target, Heart, Handshake, Trophy } from "l
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-police.jpg";
-
 const SobreNos = () => {
-  const marcos = [
-    {
-      ano: "1991",
-      titulo: "Fundação da COBRAPOL",
-      descricao: "Fundada em 9 de outubro de 1991 pela iniciativa de sindicalistas estaduais para dar voz unificada aos policiais civis em todo o Brasil."
-    },
-    {
-      ano: "1993",
-      titulo: "Registro como Confederação",
-      descricao: "Formalização junto ao Ministério do Trabalho e Emprego como confederação sindical com CNPJ 37.050.804/0001-05."
-    },
-    {
-      ano: "1995",
-      titulo: "Primeiros Congressos Nacionais",
-      descricao: "Estabelecimento dos congressos nacionais como órgão máximo deliberativo, reunindo delegados de todos os estados."
-    },
-    {
-      ano: "2000",
-      titulo: "Expansão das Federações",
-      descricao: "Organização das federações regionais (Norte, Nordeste, Sudeste, Sul e Centro-Oeste) fortalecendo a representação nacional."
-    },
-    {
-      ano: "2007",
-      titulo: "Lei Orgânica Nacional",
-      descricao: "Início da articulação política para aprovação da Lei Orgânica Nacional das Polícias Civis (PL 1.949/2007)."
-    },
-    {
-      ano: "2018",
-      titulo: "Atuação no STF",
-      descricao: "Participação como amicus curiae em processos no Supremo Tribunal Federal defendendo direitos previdenciários da categoria."
-    },
-    {
-      ano: "2020",
-      titulo: "Saúde Mental",
-      descricao: "Implementação de protocolos de atendimento e prevenção ao adoecimento mental dos policiais civis."
-    }
-  ];
-
-  return (
-    <div className="min-h-screen">
+  const marcos = [{
+    ano: "1991",
+    titulo: "Fundação da COBRAPOL",
+    descricao: "Fundada em 9 de outubro de 1991 pela iniciativa de sindicalistas estaduais para dar voz unificada aos policiais civis em todo o Brasil."
+  }, {
+    ano: "1993",
+    titulo: "Registro como Confederação",
+    descricao: "Formalização junto ao Ministério do Trabalho e Emprego como confederação sindical com CNPJ 37.050.804/0001-05."
+  }, {
+    ano: "1995",
+    titulo: "Primeiros Congressos Nacionais",
+    descricao: "Estabelecimento dos congressos nacionais como órgão máximo deliberativo, reunindo delegados de todos os estados."
+  }, {
+    ano: "2000",
+    titulo: "Expansão das Federações",
+    descricao: "Organização das federações regionais (Norte, Nordeste, Sudeste, Sul e Centro-Oeste) fortalecendo a representação nacional."
+  }, {
+    ano: "2007",
+    titulo: "Lei Orgânica Nacional",
+    descricao: "Início da articulação política para aprovação da Lei Orgânica Nacional das Polícias Civis (PL 1.949/2007)."
+  }, {
+    ano: "2018",
+    titulo: "Atuação no STF",
+    descricao: "Participação como amicus curiae em processos no Supremo Tribunal Federal defendendo direitos previdenciários da categoria."
+  }, {
+    ano: "2020",
+    titulo: "Saúde Mental",
+    descricao: "Implementação de protocolos de atendimento e prevenção ao adoecimento mental dos policiais civis."
+  }];
+  return <div className="min-h-screen">
       <Header />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img 
-            src={heroImage}
-            alt="Policiais brasileiros unidos"
-            className="w-full h-full object-cover"
-          />
+          <img src={heroImage} alt="Policiais brasileiros unidos" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/60"></div>
         </div>
 
@@ -74,26 +59,17 @@ const SobreNos = () => {
                 <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                   Sobre
                   <span className="block text-transparent bg-gradient-to-r from-gold-light to-gold bg-clip-text">
-                    nós
+                    Nós
                   </span>
                 </h1>
-                <p className="text-xl text-background/90 max-w-lg">
-                  Conheça a COBRAPOL: mais de 30 anos defendendo os direitos dos policiais civis brasileiros. Nossa história, missão e valores.
-                </p>
+                <p className="text-xl text-background/90 max-w-lg">Há mais de 30 anos defendendo os direitos e prerrogativas de quem protege o Brasil. Conheça a história, missão e valores da COBRAPOL.</p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
-                  className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8"
-                >
+                <Button size="lg" className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8">
                   Torne-se Associado
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-background text-foreground bg-background hover:bg-background/90 hover:text-foreground"
-                >
+                <Button variant="outline" size="lg" className="border-background text-foreground bg-background hover:bg-background/90 hover:text-foreground">
                   Conheça Nossa Diretoria
                 </Button>
               </div>
@@ -284,8 +260,7 @@ const SobreNos = () => {
         </div>
 
         <div className="space-y-6">
-          {marcos.map((marco, index) => (
-            <Card key={index} className="border-gold/20">
+          {marcos.map((marco, index) => <Card key={index} className="border-gold/20">
               <CardHeader>
                 <CardTitle className="flex items-center gap-4">
                   <Badge variant="outline" className="bg-gold/10 text-gold border-gold/20">
@@ -297,8 +272,7 @@ const SobreNos = () => {
               <CardContent>
                 <p className="text-muted-foreground">{marco.descricao}</p>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
 
         <div className="mt-12">
@@ -318,8 +292,6 @@ const SobreNos = () => {
         </div>
       </div>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default SobreNos;
