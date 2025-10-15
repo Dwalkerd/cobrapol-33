@@ -17,7 +17,7 @@ const RotatingBanner = () => {
     description: noticia.resumo,
     date: format(new Date(noticia.data_publicacao), "dd 'de' MMMM, yyyy", { locale: ptBR }),
     category: noticia.categoria,
-    link: `/publicacoes/noticias/${noticia.slug}`,
+    link: `/publicacoes/noticia/${noticia.slug}`,
     image: noticia.imagem_destaque || '/lovable-uploads/ec42e553-3cfd-4344-acb3-edcaec2e378d.png'
   })) || [];
 
