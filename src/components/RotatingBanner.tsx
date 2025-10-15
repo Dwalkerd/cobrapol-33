@@ -100,15 +100,27 @@ const RotatingBanner = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to={slide.link}>
-                    <Button 
-                      size="lg" 
-                      className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8 gap-2"
-                    >
-                      Saiba Mais
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </Link>
+                  {slide.link.startsWith('http') ? (
+                    <a href={slide.link} target="_blank" rel="noopener noreferrer">
+                      <Button 
+                        size="lg" 
+                        className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8 gap-2"
+                      >
+                        Saiba Mais
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </a>
+                  ) : (
+                    <Link to={slide.link}>
+                      <Button 
+                        size="lg" 
+                        className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8 gap-2"
+                      >
+                        Saiba Mais
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
