@@ -116,11 +116,13 @@ const NoticiaDetalhes = () => {
                 )}
 
                 {/* Conteúdo completo */}
-                <div className="prose prose-lg max-w-none text-foreground">
+                <div className="prose prose-lg max-w-none">
                   {(noticia as any).conteudo?.split('\n\n').map((paragrafo: string, index: number) => (
-                    <p key={index} className="mb-6 leading-relaxed">
-                      {paragrafo}
-                    </p>
+                    paragrafo.trim() ? (
+                      <p key={index} className="mb-6 leading-relaxed text-gray-800">
+                        {paragrafo}
+                      </p>
+                    ) : null
                   ))}
                 </div>
 
