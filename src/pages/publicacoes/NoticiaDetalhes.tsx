@@ -116,15 +116,10 @@ const NoticiaDetalhes = () => {
                 )}
 
                 {/* Conteúdo completo */}
-                <div className="prose prose-lg max-w-none">
-                  {(noticia as any).conteudo?.split('\n\n').map((paragrafo: string, index: number) => (
-                    paragrafo.trim() ? (
-                      <p key={index} className="mb-6 leading-relaxed text-gray-800">
-                        {paragrafo}
-                      </p>
-                    ) : null
-                  ))}
-                </div>
+                <div 
+                  className="prose prose-lg max-w-none"
+                  dangerouslySetInnerHTML={{ __html: (noticia as any).conteudo || '' }}
+                />
 
                 {/* Compartilhar */}
                 <div className="mt-12 pt-8 border-t">
