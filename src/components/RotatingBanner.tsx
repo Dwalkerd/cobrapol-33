@@ -54,8 +54,7 @@ const RotatingBanner = () => {
         plugins={[
           Autoplay({
             delay: 6000,
-            stopOnInteraction: true,
-            stopOnMouseEnter: true,
+            stopOnInteraction: false,
           }),
         ]}
         className="w-full h-full"
