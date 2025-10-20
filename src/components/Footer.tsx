@@ -1,22 +1,22 @@
 import { Shield, Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
-import { useConfig } from '@/hooks/useConfig';
+import { useConfig } from "@/hooks/useConfig";
 
 const Footer = () => {
   const { data: config } = useConfig();
-  
+
   const quickLinks = [
     { label: "Início", href: "/" },
     { label: "Sobre", href: "/institucional/sobre-nos" },
     { label: "Serviços", href: "/carta-servicos" },
     { label: "Notícias", href: "/publicacoes/noticias" },
-    { label: "Contato", href: "/institucional/fale-conosco" }
+    { label: "Contato", href: "/institucional/fale-conosco" },
   ];
 
   const services = [
     { label: "Lista de Sindicatos", href: "/sindicatos" },
     { label: "Filiação", href: "/sindicatos/filiacao" },
     { label: "Ouvidoria", href: "/e-cidadania/ouvidoria" },
-    { label: "Transparência", href: "/transparencia" }
+    { label: "Transparência", href: "/transparencia" },
   ];
 
   const legal = [
@@ -24,9 +24,8 @@ const Footer = () => {
     { label: "Termos de Uso", href: "/legais/termos-uso" },
     { label: "Estatuto", href: "/legais/estatuto" },
     { label: "Regimento Interno", href: "/legais/regimento-interno" },
-    { label: "Transparência", href: "/transparencia" }
+    { label: "Transparência", href: "/transparencia" },
   ];
-
 
   return (
     <footer className="bg-gradient-to-b from-foreground to-foreground/90 text-background">
@@ -37,32 +36,38 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
               <div className="bg-gold p-1 rounded-full">
-                <img 
-                  src="/lovable-uploads/18bd6ef1-312b-49a8-8679-fb0436eb8e48.png" 
-                  alt="Logo Cobrapol" 
+                <img
+                  src="/lovable-uploads/18bd6ef1-312b-49a8-8679-fb0436eb8e48.png"
+                  alt="Logo Cobrapol"
                   className="h-10 w-10 rounded-full"
                 />
               </div>
               <div>
-                <h3 className="text-2xl font-bold">{config?.nome_organizacao || 'Cobrapol'}</h3>
-                <p className="text-sm text-background/70">{config?.slogan || 'Confederação Brasileira dos Policiais Civis'}</p>
+                <h3 className="text-2xl font-bold">{config?.nome_organizacao || "Cobrapol"}</h3>
+                <p className="text-sm text-background/70">
+                  {config?.slogan || "Confederação Brasileira dos Policiais Civis"}
+                </p>
               </div>
             </div>
             <p className="text-background/80 mb-6 leading-relaxed">
-              {config?.descricao_principal || 'Defendendo os direitos dos policiais brasileiros há mais de 30 anos. Unidos pela justiça, fortalecidos pela união.'}
+              {config?.descricao_principal ||
+                "Defendendo os direitos dos policiais brasileiros há mais de 30 anos. Unidos pela justiça, fortalecidos pela união."}
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <MapPin className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>{config?.endereco_completo || 'SCS Quadra 01 Bloco G Sala 201, Edifício Baracat - Asa Sul, Brasília/DF - CEP: 70309-900'}</span>
+                <span>
+                  {config?.endereco_completo ||
+                    "SCS Quadra 01 Bloco G Sala 201, Edifício Baracat - Asa Sul, Brasília/DF - CEP: 70309-900"}
+                </span>
               </div>
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <Phone className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>{config?.telefone_principal || '+55 (61) 3034-3750'}</span>
+                <span>{config?.telefone_principal || "+55 (61) 3034-3750"}</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-background/80">
                 <Mail className="h-4 w-4 text-gold flex-shrink-0" />
-                <span>{config?.email_principal || 'cobrapol@cobrapol.org.br'}</span>
+                <span>{config?.email_principal || "cobrapol@cobrapol.org.br"}</span>
               </div>
             </div>
           </div>
@@ -73,7 +78,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-background/80 hover:text-gold transition-colors duration-200 flex items-center gap-2 group"
                   >
@@ -91,7 +96,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a 
+                  <a
                     href={service.href}
                     className="text-background/80 hover:text-gold transition-colors duration-200 flex items-center gap-2 group"
                   >
@@ -108,7 +113,8 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 text-gold">Conecte-se</h4>
             <div className="space-y-4">
               <p className="text-background/80 text-sm">
-                Acompanhe nossas redes sociais para ficar por dentro das últimas notícias e conquistas. Visite nosso site para mais informações.
+                Acompanhe nossas redes sociais para ficar por dentro das últimas notícias e conquistas. Visite nosso
+                site para mais informações.
               </p>
             </div>
           </div>
@@ -119,7 +125,7 @@ const Footer = () => {
           <ul className="flex flex-wrap justify-center gap-6 mb-6">
             {legal.map((item, index) => (
               <li key={index}>
-                <a 
+                <a
                   href={item.href}
                   className="text-background/60 hover:text-gold transition-colors duration-200 text-sm"
                 >
@@ -135,10 +141,12 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
             <div className="text-center">
               <p className="text-background/60 text-sm">
-                © 2024 {config?.nome_organizacao || 'Cobrapol'} - Confederação Brasileira de Trabalhadores Policiais Civis. Todos os direitos reservados.
+                © 2025 {config?.nome_organizacao || "Cobrapol"} - Confederação Brasileira dos Policiais Civis. Todos os
+                direitos reservados.
               </p>
               <p className="text-background/50 text-xs mt-1">
-                CNPJ: {config?.informacoes_footer?.cnpj || '37.050.804/0001-05'} | Fundada em {config?.informacoes_footer?.fundacao || '9 de outubro de 1991'}
+                CNPJ: {config?.informacoes_footer?.cnpj || "37.050.804/0001-05"} | Fundada em{" "}
+                {config?.informacoes_footer?.fundacao || "9 de outubro de 1991"}
               </p>
             </div>
           </div>
