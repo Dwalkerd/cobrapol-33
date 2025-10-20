@@ -139,27 +139,14 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-background/20 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+            <div className="text-center">
               <p className="text-background/60 text-sm">
                 © 2024 {config?.nome_organizacao || 'Cobrapol'} - Confederação Brasileira de Trabalhadores Policiais Civis. Todos os direitos reservados.
               </p>
               <p className="text-background/50 text-xs mt-1">
                 CNPJ: {config?.informacoes_footer?.cnpj || '37.050.804/0001-05'} | Fundada em {config?.informacoes_footer?.fundacao || '9 de outubro de 1991'}
               </p>
-            </div>
-            <div className="flex items-center gap-2 text-background/60 text-sm">
-              <span>Desenvolvido com</span>
-              <span className="text-gold">❤</span>
-              <span>por</span>
-              <a 
-                href="https://teamkode.com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gold hover:text-gold-light transition-colors font-medium"
-              >
-                Team Kode
-              </a>
             </div>
           </div>
         </div>
