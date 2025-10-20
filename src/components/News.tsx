@@ -108,7 +108,7 @@ const News = () => {
           <Button 
             variant="outline" 
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            onClick={() => window.location.href = '/publicacoes/noticia'}
+            onClick={() => window.location.href = '/publicacoes/noticias'}
           >
             Mais notícias <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
