@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowRight, Newspaper } from "lucide-react";
 import { useNoticiasRecentes } from '@/hooks/useNoticiasRecentes';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { Link } from "react-router-dom";
 
 const News = () => {
   const { data: todasNoticias, isLoading } = useNoticiasRecentes(12);
@@ -47,59 +48,63 @@ const News = () => {
         {/* Main Featured News */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {noticias.slice(0, 3).map((noticia: any) => (
-            <Card key={noticia.id} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden">
-              <div className="relative aspect-video overflow-hidden">
-                <img 
-                  src={noticia.imagem_destaque || "https://images.unsplash.com/photo-1589391886645-d51941baf7fb"}
-                  alt={noticia.titulo}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <Badge className={`absolute top-4 left-4 ${getCategoryColor(noticia.categoria)}`}>
-                  {noticia.categoria}
-                </Badge>
-              </div>
-              <CardContent className="p-4">
-                <h3 className="font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                  {noticia.titulo}
-                </h3>
-                <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
-                  {noticia.resumo}
-                </p>
-                <div className="flex items-center text-sm text-gray-500">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {format(new Date(noticia.data_publicacao), "dd 'de' MMMM, yyyy", { locale: ptBR })}
+            <Link key={noticia.id} to={`/publicacoes/noticia/${noticia.slug}`}>
+              <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden cursor-pointer h-full">
+                <div className="relative aspect-video overflow-hidden">
+                  <img 
+                    src={noticia.imagem_destaque || "https://images.unsplash.com/photo-1589391886645-d51941baf7fb"}
+                    alt={noticia.titulo}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <Badge className={`absolute top-4 left-4 ${getCategoryColor(noticia.categoria)}`}>
+                    {noticia.categoria}
+                  </Badge>
                 </div>
-              </CardContent>
-            </Card>
+                <CardContent className="p-4">
+                  <h3 className="font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                    {noticia.titulo}
+                  </h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+                    {noticia.resumo}
+                  </p>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    {format(new Date(noticia.data_publicacao), "dd 'de' MMMM, yyyy", { locale: ptBR })}
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
 
         {/* Secondary News Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {comunicados.slice(0, 3).map((comunicado: any) => (
-            <Card key={comunicado.id} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden">
-              <div className="flex gap-4 p-4">
-                <div className="w-24 h-16 flex-shrink-0 overflow-hidden rounded">
-                  <img 
-                    src={comunicado.imagem_destaque || "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"}
-                    alt={comunicado.titulo}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <Badge className={`mb-2 ${getCategoryColor(comunicado.categoria)}`}>
-                    {comunicado.categoria}
-                  </Badge>
-                  <h4 className="font-medium text-sm text-foreground mb-1 group-hover:text-primary transition-colors line-clamp-2">
-                    {comunicado.titulo}
-                  </h4>
-                  <div className="flex items-center text-xs text-gray-500 mt-2">
-                    <Calendar className="w-3 h-3 mr-1" />
-                    {format(new Date(comunicado.data_publicacao), "dd 'de' MMM", { locale: ptBR })}
+            <Link key={comunicado.id} to={`/publicacoes/noticia/${comunicado.slug}`}>
+              <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-white overflow-hidden cursor-pointer h-full">
+                <div className="flex gap-4 p-4">
+                  <div className="w-24 h-16 flex-shrink-0 overflow-hidden rounded">
+                    <img 
+                      src={comunicado.imagem_destaque || "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"}
+                      alt={comunicado.titulo}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <Badge className={`mb-2 ${getCategoryColor(comunicado.categoria)}`}>
+                      {comunicado.categoria}
+                    </Badge>
+                    <h4 className="font-medium text-sm text-foreground mb-1 group-hover:text-primary transition-colors line-clamp-2">
+                      {comunicado.titulo}
+                    </h4>
+                    <div className="flex items-center text-xs text-gray-500 mt-2">
+                      <Calendar className="w-3 h-3 mr-1" />
+                      {format(new Date(comunicado.data_publicacao), "dd 'de' MMM", { locale: ptBR })}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </Link>
           ))}
         </div>
 
