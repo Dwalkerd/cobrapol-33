@@ -45,7 +45,7 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-bold">{config?.nome_organizacao || 'Cobrapol'}</h3>
-                <p className="text-sm text-background/70">{config?.slogan || 'Sindicato dos Policiais'}</p>
+                <p className="text-sm text-background/70">{config?.slogan || 'Confederação Brasileira dos Policiais Civis'}</p>
               </div>
             </div>
             <p className="text-background/80 mb-6 leading-relaxed">
