@@ -106,17 +106,10 @@ const Footer = () => {
           {/* Contact & Social */}
           <div>
             <h4 className="text-lg font-bold mb-6 text-gold">Conecte-se</h4>
-            <div className="space-y-4 mb-6">
+            <div className="space-y-4">
               <p className="text-background/80 text-sm">
                 Acompanhe nossas redes sociais para ficar por dentro das últimas notícias e conquistas. Visite nosso site para mais informações.
               </p>
-            </div>
-            <div className="bg-gold/10 rounded-2xl p-4 border border-gold/20">
-              <h5 className="font-semibold text-gold mb-2">Atendimento 24h</h5>
-              <p className="text-sm text-background/80 mb-2">
-                Plantão de emergência para associados
-              </p>
-              <p className="text-lg font-bold text-gold">+55 (61) 3034-3750</p>
             </div>
           </div>
         </div>
