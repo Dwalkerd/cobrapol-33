@@ -22,13 +22,22 @@ const SindicatosPage = () => {
     estado: estadoSelecionado,
     regiao: regiaoSelecionada
   });
-  const { data: estados } = useEstadosDisponiveis();
-  const { data: regioesData } = useRegioesMapeadas();
 
-  // Mapear regiões para o formato do Select
-  const regioes = [
-    { value: "Todas as Regiões", label: "Todas as Regiões" },
-    ...(regioesData?.map(regiao => ({ value: regiao, label: regiao })) || [])
+  // Arrays de opções
+  const ESTADOS_BRASIL = [
+    'Todos os Estados',
+    'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 
+    'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 
+    'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
+  ];
+
+  const REGIOES_BRASIL = [
+    'Todas as Regiões',
+    'Norte',
+    'Nordeste', 
+    'Centro-Oeste',
+    'Sudeste',
+    'Sul'
   ];
 
   const toggleExpanded = (id: number) => {
@@ -112,19 +121,15 @@ const SindicatosPage = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Filtrar por Estado/UF
                   </label>
-                  <Select value={estadoSelecionado} onValueChange={(value) => setEstadoSelecionado(value)}>
-                    <SelectTrigger className="border-gold/20">
-                      <SelectValue placeholder="Todos os Estados" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Todos os Estados">Todos os Estados</SelectItem>
-                      {estados?.map((estado: string) => (
-                        <SelectItem key={estado} value={estado}>
-                          {estado}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <select 
+                    value={estadoSelecionado}
+                    onChange={(e) => setEstadoSelecionado(e.target.value)}
+                    className="w-full px-4 py-2 border border-gold/20 rounded-lg bg-background text-foreground"
+                  >
+                    {ESTADOS_BRASIL.map(estado => (
+                      <option key={estado} value={estado}>{estado}</option>
+                    ))}
+                  </select>
                 </div>
 
                 {/* Filtro por Região */}
@@ -132,18 +137,15 @@ const SindicatosPage = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Filtrar por Região
                   </label>
-                  <Select value={regiaoSelecionada} onValueChange={(value) => setRegiaoSelecionada(value)}>
-                    <SelectTrigger className="border-gold/20">
-                      <SelectValue placeholder="Todas as Regiões" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {regioes.map((regiao: any) => (
-                        <SelectItem key={regiao.value} value={regiao.value}>
-                          {regiao.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <select 
+                    value={regiaoSelecionada}
+                    onChange={(e) => setRegiaoSelecionada(e.target.value)}
+                    className="w-full px-4 py-2 border border-gold/20 rounded-lg bg-background text-foreground"
+                  >
+                    {REGIOES_BRASIL.map(regiao => (
+                      <option key={regiao} value={regiao}>{regiao}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </CardContent>
