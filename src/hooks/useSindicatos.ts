@@ -1,70 +1,101 @@
 import { useQuery } from '@tanstack/react-query'
 import { supabase } from '@/integrations/supabase/client'
 
+interface Sindicato {
+  id: number
+  nome_fantasia: string
+  demonicacao: string
+  cnpj: string
+  email: string
+  telefone: string
+  foto: string
+  data_fundacao: string
+  contribuicao_minima: number
+  is_sindicato_ativo: boolean
+  estatuto_link: string
+  cnes_link: string
+  ata_eleicao_link: string
+  endereco?: {
+    uf: string
+    municipio: string
+    rua: string
+    bairro: string
+    numero: string
+    cep: string
+  }[]
+}
+
 interface FiltrosSindicatos {
   estado?: string
   regiao?: string
   busca?: string
-  federacao_id?: number
 }
 
-export function useSindicatos(filtros: FiltrosSindicatos = {}) {
-  const { estado, regiao, busca, federacao_id } = filtros
-  
+// Mapeamento de estados por região
+const REGIOES_BRASIL = {
+  'Norte': ['AC', 'AP', 'AM', 'PA', 'RO', 'RR', 'TO'],
+  'Nordeste': ['AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'RN', 'SE'],
+  'Centro-Oeste': ['DF', 'GO', 'MT', 'MS'],
+  'Sudeste': ['ES', 'MG', 'RJ', 'SP'],
+  'Sul': ['PR', 'RS', 'SC']
+}
+
+export function useSindicatos(filtros?: FiltrosSindicatos) {
   return useQuery({
     queryKey: ['sindicatos', filtros],
     queryFn: async () => {
-      let query = (supabase as any)
+      let query = supabase
         .from('sindicatos')
         .select(`
           *,
-          federacoes:federacao_id (
-            nome,
-            sigla,
-            regiao
-          ),
           endereco (
+            uf,
+            municipio,
             rua,
             bairro,
-            municipio,
-            uf,
+            numero,
             cep
           )
         `)
         .eq('is_sindicato_ativo', true)
-        .order('estado')
-        .order('nome_fantasia')
+        .order('nome_fantasia', { ascending: true })
 
-      // Filtro por estado
-      if (estado && estado !== 'todos') {
-        query = query.eq('estado', estado)
+      // Filtro por busca (nome ou UF)
+      if (filtros?.busca) {
+        const buscaUpper = filtros.busca.toUpperCase()
+        
+        // Se a busca tiver 2 caracteres, assume que é uma UF
+        if (buscaUpper.length === 2) {
+          query = query.or(`endereco.uf.eq.${buscaUpper}`)
+        } else {
+          // Busca por nome
+          query = query.ilike('nome_fantasia', `%${filtros.busca}%`)
+        }
       }
-      
-      // Filtro por região (via federação)
-      if (regiao && regiao !== 'todas') {
-        query = query.eq('federacoes.regiao', regiao)
+
+      // Filtro por estado específico
+      if (filtros?.estado && filtros.estado !== 'Todos os Estados') {
+        query = query.eq('endereco.uf', filtros.estado)
       }
-      
-      // Filtro por federação
-      if (federacao_id) {
-        query = query.eq('federacao_id', federacao_id)
-      }
-      
-      // Filtro por busca (nome ou denominação)
-      if (busca && busca.trim() !== '') {
-        query = query.or(`nome_fantasia.ilike.%${busca}%,demonicacao.ilike.%${busca}%`)
+
+      // Filtro por região
+      if (filtros?.regiao && filtros.regiao !== 'Todas as Regiões') {
+        const estadosDaRegiao = REGIOES_BRASIL[filtros.regiao as keyof typeof REGIOES_BRASIL]
+        if (estadosDaRegiao) {
+          query = query.in('endereco.uf', estadosDaRegiao)
+        }
       }
 
       const { data, error } = await query
-      
+
       if (error) {
         console.error('Erro ao buscar sindicatos:', error)
         throw error
       }
-      
-      return data || []
+
+      return data as Sindicato[]
     },
-    staleTime: 1000 * 60 * 10
+    staleTime: 1000 * 60 * 5, // 5 minutos
   })
 }
 
@@ -72,23 +103,19 @@ export function useEstadosDisponiveis() {
   return useQuery({
     queryKey: ['estados-sindicatos'],
     queryFn: async () => {
-      const { data, error } = await (supabase as any)
-        .from('sindicatos')
-        .select('estado')
-        // Removido filtro is_sindicato_ativo para mostrar TODOS os estados
+      const { data, error } = await supabase
+        .from('endereco')
+        .select('uf')
+        .not('uf', 'is', null)
       
       if (error) {
         console.error('Erro ao buscar estados:', error)
         throw error
       }
       
-      console.log('📊 Dados brutos dos estados:', data)
-      
-      const estados = [...new Set(data?.map((s: any) => s.estado))]
-        .filter(e => e) // Remove nulls/undefined
+      const estados = [...new Set(data?.map((e: any) => e.uf))]
+        .filter(uf => uf)
         .sort()
-      
-      console.log('✅ Estados únicos disponíveis:', estados)
       
       return estados
     },
@@ -100,14 +127,7 @@ export function useRegioesMapeadas() {
   return useQuery({
     queryKey: ['regioes-sindicatos'],
     queryFn: async () => {
-      const { data, error } = await (supabase as any)
-        .from('federacoes')
-        .select('regiao')
-      
-      if (error) throw error
-      
-      const regioes = [...new Set(data?.map((f: any) => f.regiao))].sort()
-      return regioes.filter(r => r)
+      return Object.keys(REGIOES_BRASIL)
     },
     staleTime: 1000 * 60 * 30
   })
