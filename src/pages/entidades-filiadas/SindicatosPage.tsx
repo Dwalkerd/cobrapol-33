@@ -148,6 +148,21 @@ const SindicatosPage = () => {
                   </select>
                 </div>
               </div>
+              
+              {/* Botão Limpar Filtros */}
+              <div className="mt-4 flex justify-end">
+                <Button
+                  onClick={() => {
+                    setBusca('')
+                    setEstadoSelecionado('Todos os Estados')
+                    setRegiaoSelecionada('Todas as Regiões')
+                  }}
+                  variant="outline"
+                  className="border-gold/20 hover:bg-gold/10"
+                >
+                  Limpar Filtros
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
