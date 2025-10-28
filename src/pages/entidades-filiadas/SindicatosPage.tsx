@@ -3,41 +3,64 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Users, Phone, Mail, Globe, ChevronDown, ChevronUp, Search, Building } from "lucide-react";
+import { MapPin, Users, Phone, Mail, Globe, ChevronDown, ChevronUp, Search, Building, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
-import { useSindicatos, useEstadosDisponiveis, useRegioesMapeadas } from "@/hooks/useSindicatos";
+import { useSindicatos } from "@/hooks/useSindicatos";
+import { useEstadosDisponiveis, useRegioesMapeadas } from "@/hooks/useSindicatos";
 
 const SindicatosPage = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
-  const [filtros, setFiltros] = useState({
-    estado: "todos",
-    regiao: "todas",
-    busca: ""
-  });
+  const [busca, setBusca] = useState('');
+  const [estadoSelecionado, setEstadoSelecionado] = useState('Todos os Estados');
+  const [regiaoSelecionada, setRegiaoSelecionada] = useState('Todas as Regiões');
   
   // Hooks para buscar dados do Supabase
-  const { data: sindicatos, isLoading } = useSindicatos(filtros);
+  const { data: sindicatos, isLoading, error } = useSindicatos({
+    busca,
+    estado: estadoSelecionado,
+    regiao: regiaoSelecionada
+  });
   const { data: estados } = useEstadosDisponiveis();
   const { data: regioesData } = useRegioesMapeadas();
 
-  // Debug - Console logs
-  console.log('🔍 Dados do hook useSindicatos:', sindicatos);
-  console.log('📊 Quantidade de sindicatos:', sindicatos?.length);
-  console.log('🎯 Filtros aplicados:', filtros);
-  console.log('✅ Estados disponíveis:', estados);
-  console.log('🌎 Regiões disponíveis:', regioesData);
-
   // Mapear regiões para o formato do Select
   const regioes = [
-    { value: "todas", label: "Todas as Regiões" },
+    { value: "Todas as Regiões", label: "Todas as Regiões" },
     ...(regioesData?.map(regiao => ({ value: regiao, label: regiao })) || [])
   ];
 
   const toggleExpanded = (id: number) => {
     setExpandedCard(expandedCard === id ? null : id);
   };
+
+  // Tratamento de loading
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-gold" />
+        <span className="ml-2 text-foreground">Carregando sindicatos...</span>
+      </div>
+    );
+  }
+
+  // Tratamento de error
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-600 mb-4">Erro ao carregar sindicatos</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-gold text-background rounded-lg hover:bg-gold/90"
+          >
+            Tentar Novamente
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -78,8 +101,8 @@ const SindicatosPage = () => {
                       type="text"
                       placeholder="Digite o nome do sindicato ou UF..."
                       className="pl-10 border-gold/20"
-                      value={filtros.busca}
-                      onChange={(e) => setFiltros({ ...filtros, busca: e.target.value })}
+                      value={busca}
+                      onChange={(e) => setBusca(e.target.value)}
                     />
                   </div>
                 </div>
@@ -89,12 +112,12 @@ const SindicatosPage = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Filtrar por Estado/UF
                   </label>
-                  <Select value={filtros.estado} onValueChange={(value) => setFiltros({ ...filtros, estado: value })}>
+                  <Select value={estadoSelecionado} onValueChange={(value) => setEstadoSelecionado(value)}>
                     <SelectTrigger className="border-gold/20">
                       <SelectValue placeholder="Todos os Estados" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="todos">Todos os Estados</SelectItem>
+                      <SelectItem value="Todos os Estados">Todos os Estados</SelectItem>
                       {estados?.map((estado: string) => (
                         <SelectItem key={estado} value={estado}>
                           {estado}
@@ -109,7 +132,7 @@ const SindicatosPage = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Filtrar por Região
                   </label>
-                  <Select value={filtros.regiao} onValueChange={(value) => setFiltros({ ...filtros, regiao: value })}>
+                  <Select value={regiaoSelecionada} onValueChange={(value) => setRegiaoSelecionada(value)}>
                     <SelectTrigger className="border-gold/20">
                       <SelectValue placeholder="Todas as Regiões" />
                     </SelectTrigger>
@@ -130,7 +153,7 @@ const SindicatosPage = () => {
         {/* Resultados */}
         <div className="mb-6">
           <p className="text-muted-foreground">
-            {isLoading ? 'Carregando...' : `${sindicatos?.length || 0} sindicato(s) encontrado(s)`}
+            {sindicatos?.length || 0} sindicato(s) encontrado(s)
           </p>
         </div>
 
@@ -146,13 +169,13 @@ const SindicatosPage = () => {
                     </div>
                     <div>
                       <CardTitle className="text-xl text-foreground">
-                        {sindicato.estado} • {sindicato.nome_fantasia}
+                        {sindicato.endereco?.[0]?.uf || 'UF'} • {sindicato.nome_fantasia || sindicato.demonicacao}
                       </CardTitle>
                       <CardDescription className="text-base">
                         {sindicato.demonicacao}
                       </CardDescription>
                       <Badge variant="outline" className="mt-1">
-                        {sindicato.federacoes?.regiao || 'Sem região'}
+                        {sindicato.endereco?.[0]?.uf || 'Sem UF'}
                       </Badge>
                     </div>
                   </div>
@@ -186,7 +209,11 @@ const SindicatosPage = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-gold" />
-                    <span className="text-sm text-muted-foreground">{sindicato.endereco?.municipio || sindicato.cidade || 'Não informado'}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {sindicato.endereco?.[0]?.rua && sindicato.endereco?.[0]?.numero
+                        ? `${sindicato.endereco[0].rua}, ${sindicato.endereco[0].numero} - ${sindicato.endereco[0].bairro || ''}`
+                        : 'Não informado'}
+                    </span>
                   </div>
                 </div>
 
@@ -205,8 +232,8 @@ const SindicatosPage = () => {
                             <span className="text-muted-foreground">{sindicato.cnpj || 'Não informado'}</span>
                           </div>
                           <div>
-                            <span className="font-medium text-foreground">Estado: </span>
-                            <span className="text-muted-foreground">{sindicato.estado} - {sindicato.federacoes?.regiao || 'Sem região'}</span>
+                            <span className="font-medium text-foreground">Estado/UF: </span>
+                            <span className="text-muted-foreground">{sindicato.endereco?.[0]?.uf || 'Não informado'}</span>
                           </div>
                           <div>
                             <span className="font-medium text-foreground">Data de Fundação: </span>
@@ -217,12 +244,12 @@ const SindicatosPage = () => {
                       <div>
                         <h4 className="font-semibold text-foreground mb-3">Endereço Completo</h4>
                         <div className="text-muted-foreground">
-                          {sindicato.endereco ? (
+                          {sindicato.endereco?.[0] ? (
                             <>
-                              <p>{sindicato.endereco.rua || 'Rua não informada'}</p>
-                              <p>{sindicato.endereco.bairro || ''}</p>
-                              <p>{sindicato.endereco.municipio || sindicato.cidade} - {sindicato.endereco.uf || sindicato.estado}</p>
-                              <p>CEP: {sindicato.endereco.cep || 'Não informado'}</p>
+                              <p>{sindicato.endereco[0].rua || 'Rua não informada'}, {sindicato.endereco[0].numero || 'S/N'}</p>
+                              <p>{sindicato.endereco[0].bairro || ''}</p>
+                              <p>{sindicato.endereco[0].municipio || ''} - {sindicato.endereco[0].uf || ''}</p>
+                              <p>CEP: {sindicato.endereco[0].cep || 'Não informado'}</p>
                             </>
                           ) : (
                             <p>Endereço não cadastrado</p>
