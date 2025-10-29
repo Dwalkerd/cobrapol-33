@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { MapPin, Users, Phone, Mail, Globe, ChevronDown, ChevronUp, Search, Building, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSindicatos } from "@/hooks/useSindicatos";
 import { useEstadosDisponiveis, useRegioesMapeadas } from "@/hooks/useSindicatos";
 
@@ -22,6 +22,12 @@ const SindicatosPage = () => {
     estado: estadoSelecionado,
     regiao: regiaoSelecionada
   });
+
+  useEffect(() => {
+    console.log('📱 [SindicatosPage] Dados atualizados:', sindicatos)
+    console.log('📱 [SindicatosPage] isLoading:', isLoading)
+    console.log('📱 [SindicatosPage] error:', error)
+  }, [sindicatos, isLoading, error])
 
   // Arrays de opções
   const ESTADOS_BRASIL = [

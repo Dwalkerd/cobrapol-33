@@ -44,6 +44,7 @@ export function useSindicatos(filtros?: FiltrosSindicatos) {
   return useQuery({
     queryKey: ['sindicatos', filtros],
     queryFn: async () => {
+      console.log('🔍 [useSindicatos] Iniciando busca com filtros:', filtros)
       let query = supabase
         .from('sindicatos')
         .select(`
@@ -88,8 +89,12 @@ export function useSindicatos(filtros?: FiltrosSindicatos) {
 
       const { data, error } = await query
 
+      console.log('✅ [useSindicatos] Dados recebidos:', data)
+      console.log('📊 [useSindicatos] Total de registros:', data?.length || 0)
+
       if (error) {
         console.error('Erro ao buscar sindicatos:', error)
+        console.log('❌ [useSindicatos] Detalhes do erro:', error.message, error.details, error.hint)
         throw error
       }
 
