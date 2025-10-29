@@ -37,7 +37,8 @@ export function useConfig() {
       const { data, error } = await supabase
         .from('configuracoes_site' as any)
         .select('*')
-        .single()
+        .limit(1)
+        .maybeSingle()
       
       if (error) {
         console.error('Erro ao buscar configurações:', error)
