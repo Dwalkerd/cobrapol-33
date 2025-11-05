@@ -3,7 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Send, Building, Users } from "lucide-react";
+import { 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Clock, 
+  MessageCircle,
+  Send,
+  Building,
+  Users
+} from "lucide-react";
 
 const FaleConosco = () => {
   const contactInfo = [
@@ -11,33 +20,33 @@ const FaleConosco = () => {
       icon: Building,
       title: "Sede Nacional",
       details: ["CNPJ: 37.050.804/0001-05", "Confederação registrada no MTE"],
-      highlight: "Oficial",
+      highlight: "Oficial"
     },
     {
       icon: Phone,
       title: "Telefones",
       details: ["Central de Atendimento", "WhatsApp Institucional"],
-      highlight: "24 horas",
+      highlight: "24 horas"
     },
     {
       icon: Mail,
       title: "E-mails Oficiais",
-      details: ["cobrapol@cobrapol.org.br", "juridico@cobrapol.org.br"],
-      highlight: null,
+      details: ["contato@cobrapol.org.br", "juridico@cobrapol.org.br"],
+      highlight: null
     },
     {
       icon: Clock,
       title: "Horário de Atendimento",
       details: ["Segunda à Sexta: 9h às 18h", "Plantão 24h: Emergências"],
-      highlight: null,
-    },
+      highlight: null
+    }
   ];
 
   const departments = [
     { name: "Pesquisa Jurídica", phone: "Consulte o site", email: "juridico@cobrapol.org.br" },
     { name: "Saúde Ocupacional", phone: "Consulte o site", email: "saude@cobrapol.org.br" },
     { name: "Comunicação Social", phone: "Consulte o site", email: "comunicacao@cobrapol.org.br" },
-    { name: "Mulheres Policiais", phone: "Consulte o site", email: "mulheres@cobrapol.org.br" },
+    { name: "Mulheres Policiais", phone: "Consulte o site", email: "mulheres@cobrapol.org.br" }
   ];
 
   return (
@@ -54,8 +63,8 @@ const FaleConosco = () => {
               <span className="text-gold"> Conosco</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Estamos sempre disponíveis para atender nossos associados e esclarecer dúvidas. Entre em contato através
-              dos canais abaixo.
+              Estamos sempre disponíveis para atender nossos associados e esclarecer 
+              dúvidas. Entre em contato através dos canais abaixo.
             </p>
           </div>
 
@@ -63,12 +72,11 @@ const FaleConosco = () => {
             {/* Contact Information */}
             <div className="lg:col-span-1 space-y-6">
               {contactInfo.map((info, index) => (
-                <Card
-                  key={index}
-                  className="relative group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40"
-                >
+                <Card key={index} className="relative group hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40">
                   {info.highlight && (
-                    <Badge className="absolute -top-3 left-6 bg-gold text-foreground">{info.highlight}</Badge>
+                    <Badge className="absolute -top-3 left-6 bg-gold text-foreground">
+                      {info.highlight}
+                    </Badge>
                   )}
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
@@ -78,9 +86,7 @@ const FaleConosco = () => {
                       <div>
                         <h3 className="font-bold text-foreground mb-2">{info.title}</h3>
                         {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-muted-foreground text-sm">
-                            {detail}
-                          </p>
+                          <p key={idx} className="text-muted-foreground text-sm">{detail}</p>
                         ))}
                       </div>
                     </div>
@@ -101,10 +107,7 @@ const FaleConosco = () => {
                     <Phone className="mr-2 h-4 w-4" />
                     WhatsApp
                   </Button>
-                  <Button
-                    variant="outline"
-                    className="w-full border-gold text-gold hover:bg-gold hover:text-foreground"
-                  >
+                  <Button variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-foreground">
                     <Mail className="mr-2 h-4 w-4" />
                     E-mail
                   </Button>
@@ -124,7 +127,9 @@ const FaleConosco = () => {
                 <CardContent className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Nome Completo *</label>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Nome Completo *
+                      </label>
                       <input
                         type="text"
                         className="w-full px-4 py-3 border border-gold/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
@@ -132,7 +137,9 @@ const FaleConosco = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Telefone</label>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Telefone
+                      </label>
                       <input
                         type="tel"
                         className="w-full px-4 py-3 border border-gold/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
@@ -141,7 +148,9 @@ const FaleConosco = () => {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">E-mail *</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      E-mail *
+                    </label>
                     <input
                       type="email"
                       className="w-full px-4 py-3 border border-gold/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
@@ -149,7 +158,9 @@ const FaleConosco = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Assunto</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Assunto
+                    </label>
                     <select className="w-full px-4 py-3 border border-gold/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent">
                       <option>Selecione um assunto</option>
                       <option>Associação</option>
@@ -160,14 +171,19 @@ const FaleConosco = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Mensagem *</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Mensagem *
+                    </label>
                     <textarea
                       rows={5}
                       className="w-full px-4 py-3 border border-gold/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent resize-none"
                       placeholder="Descreva sua solicitação ou dúvida..."
                     ></textarea>
                   </div>
-                  <Button className="w-full bg-gold hover:bg-gold-dark text-foreground font-semibold py-3" size="lg">
+                  <Button 
+                    className="w-full bg-gold hover:bg-gold-dark text-foreground font-semibold py-3"
+                    size="lg"
+                  >
                     <Send className="mr-2 h-5 w-5" />
                     Enviar Mensagem
                   </Button>
@@ -178,26 +194,18 @@ const FaleConosco = () => {
 
           {/* Departments */}
           <div className="bg-gradient-to-r from-secondary/50 to-secondary/30 rounded-3xl p-8 lg:p-12">
-            <h3 className="text-2xl font-bold text-center mb-8 text-foreground">Contatos por Departamento</h3>
+            <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
+              Contatos por Departamento
+            </h3>
             <div className="text-center mb-8">
               <p className="text-muted-foreground mb-4">
                 Siga nossas redes sociais oficiais para ficar por dentro das últimas novidades
               </p>
               <div className="flex justify-center gap-4">
-                <a
-                  href="https://instagram.com/cobrapolbr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-pink-600 hover:text-pink-700 transition-colors"
-                >
+                <a href="https://instagram.com/cobrapolbr" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-700 transition-colors">
                   @cobrapolbr
                 </a>
-                <a
-                  href="https://facebook.com/cobrapolbr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-700 transition-colors"
-                >
+                <a href="https://facebook.com/cobrapolbr" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 transition-colors">
                   Cobrapol Br
                 </a>
               </div>
