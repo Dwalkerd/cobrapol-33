@@ -185,9 +185,17 @@ const SindicatosPage = () => {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="bg-gold/10 p-3 rounded-full">
-                      <Building className="h-6 w-6 text-gold" />
-                    </div>
+                    {sindicato.logo_url ? (
+                      <img 
+                        src={sindicato.logo_url} 
+                        alt={`Logo ${sindicato.nome_fantasia || sindicato.denominacao}`}
+                        className="h-12 w-12 rounded-full object-cover border border-gold/20"
+                      />
+                    ) : (
+                      <div className="bg-gold/10 p-3 rounded-full">
+                        <Building className="h-6 w-6 text-gold" />
+                      </div>
+                    )}
                     <div>
                       <CardTitle className="text-xl text-foreground">
                         {sindicato.estado || 'UF'} • {sindicato.nome_fantasia || sindicato.denominacao}
