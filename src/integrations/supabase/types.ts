@@ -871,6 +871,7 @@ export type Database = {
           descricao: string | null
           icone: string | null
           id: number
+          id_sindicato: number | null
           nome: string | null
           sigilo: Database["public"]["Enums"]["sigilo_pastas"] | null
           tamanho_mg: number | null
@@ -881,6 +882,7 @@ export type Database = {
           descricao?: string | null
           icone?: string | null
           id?: number
+          id_sindicato?: number | null
           nome?: string | null
           sigilo?: Database["public"]["Enums"]["sigilo_pastas"] | null
           tamanho_mg?: number | null
@@ -891,11 +893,41 @@ export type Database = {
           descricao?: string | null
           icone?: string | null
           id?: number
+          id_sindicato?: number | null
           nome?: string | null
           sigilo?: Database["public"]["Enums"]["sigilo_pastas"] | null
           tamanho_mg?: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "sindicatos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "view_entidade_sindical"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "view_financeiro_alertas"
+            referencedColumns: ["id_sindicato"]
+          },
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "view_financeiro_ultimas_atualizacoes"
+            referencedColumns: ["id_sindicato"]
+          },
+        ]
       }
       programas_sociais: {
         Row: {
@@ -945,6 +977,7 @@ export type Database = {
           created_at: string
           id: number
           id_sindicato: number | null
+          is_aprovado: boolean | null
           update_at: string | null
           valor_final_carreira: number | null
           valor_inicio_carreira: number | null
@@ -954,6 +987,7 @@ export type Database = {
           created_at?: string
           id?: number
           id_sindicato?: number | null
+          is_aprovado?: boolean | null
           update_at?: string | null
           valor_final_carreira?: number | null
           valor_inicio_carreira?: number | null
@@ -963,6 +997,7 @@ export type Database = {
           created_at?: string
           id?: number
           id_sindicato?: number | null
+          is_aprovado?: boolean | null
           update_at?: string | null
           valor_final_carreira?: number | null
           valor_inicio_carreira?: number | null
@@ -1041,6 +1076,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "pastas"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "relacao_pasta_sub_docs_id_pasta_fkey"
+            columns: ["id_pasta"]
+            isOneToOne: false
+            referencedRelation: "vw_pasta_conteudo"
+            referencedColumns: ["pasta_id"]
           },
           {
             foreignKeyName: "relacao_pasta_sub_docs_id_pasta_fkey"
@@ -1211,6 +1253,8 @@ export type Database = {
         Row: {
           aliquota: number | null
           ata_eleicao_link: string | null
+          bairro: string | null
+          cep: string | null
           cidade: string | null
           cnes_link: string | null
           cnpj: string | null
@@ -1218,7 +1262,7 @@ export type Database = {
           created_at: string
           data_filiacao: string | null
           data_fundacao: string | null
-          demonicacao: string | null
+          denominacao: string | null
           email: string | null
           estado: string | null
           estatuto_link: string | null
@@ -1228,14 +1272,19 @@ export type Database = {
           is_contribuicao_ativa: boolean | null
           is_sindicato_ativo: boolean | null
           logo_url: string | null
+          municipio: string | null
           nome_fantasia: string | null
+          numero: string | null
           presidente_nome: string | null
+          rua: string | null
           telefone: string | null
           website: string | null
         }
         Insert: {
           aliquota?: number | null
           ata_eleicao_link?: string | null
+          bairro?: string | null
+          cep?: string | null
           cidade?: string | null
           cnes_link?: string | null
           cnpj?: string | null
@@ -1243,7 +1292,7 @@ export type Database = {
           created_at?: string
           data_filiacao?: string | null
           data_fundacao?: string | null
-          demonicacao?: string | null
+          denominacao?: string | null
           email?: string | null
           estado?: string | null
           estatuto_link?: string | null
@@ -1253,14 +1302,19 @@ export type Database = {
           is_contribuicao_ativa?: boolean | null
           is_sindicato_ativo?: boolean | null
           logo_url?: string | null
+          municipio?: string | null
           nome_fantasia?: string | null
+          numero?: string | null
           presidente_nome?: string | null
+          rua?: string | null
           telefone?: string | null
           website?: string | null
         }
         Update: {
           aliquota?: number | null
           ata_eleicao_link?: string | null
+          bairro?: string | null
+          cep?: string | null
           cidade?: string | null
           cnes_link?: string | null
           cnpj?: string | null
@@ -1268,7 +1322,7 @@ export type Database = {
           created_at?: string
           data_filiacao?: string | null
           data_fundacao?: string | null
-          demonicacao?: string | null
+          denominacao?: string | null
           email?: string | null
           estado?: string | null
           estatuto_link?: string | null
@@ -1278,8 +1332,11 @@ export type Database = {
           is_contribuicao_ativa?: boolean | null
           is_sindicato_ativo?: boolean | null
           logo_url?: string | null
+          municipio?: string | null
           nome_fantasia?: string | null
+          numero?: string | null
           presidente_nome?: string | null
+          rua?: string | null
           telefone?: string | null
           website?: string | null
         }
@@ -1459,16 +1516,6 @@ export type Database = {
           },
         ]
       }
-      view_ranking_final: {
-        Row: {
-          cargo: string | null
-          final_carreira: number | null
-          inicio_carreira: number | null
-          ranking: number | null
-          sindicato: string | null
-        }
-        Relationships: []
-      }
       view_ranking_inicio: {
         Row: {
           cargo: string | null
@@ -1476,6 +1523,7 @@ export type Database = {
           inicio_carreira: number | null
           ranking: number | null
           sindicato: string | null
+          ultima_atualizacao: string | null
         }
         Relationships: []
       }
@@ -1484,6 +1532,7 @@ export type Database = {
           media_final_carreira: number | null
           ranking: number | null
           regiao: string | null
+          ultima_atualizacao: string | null
         }
         Relationships: []
       }
@@ -1492,6 +1541,7 @@ export type Database = {
           media_inicio_carreira: number | null
           ranking: number | null
           regiao: string | null
+          ultima_atualizacao: string | null
         }
         Relationships: []
       }
@@ -1503,6 +1553,7 @@ export type Database = {
           media_carreira: number | null
           ranking: number | null
           sindicato: string | null
+          ultima_atualizacao: string | null
         }
         Relationships: []
       }
@@ -1533,16 +1584,125 @@ export type Database = {
         }
         Relationships: []
       }
+      vw_pasta_conteudo: {
+        Row: {
+          documento_id: number | null
+          documento_link: string | null
+          documento_nome: string | null
+          id_sindicato: number | null
+          pasta_id: number | null
+          pasta_nome: string | null
+          relacao_criada_em: string | null
+          subpasta_id: number | null
+          subpasta_nome: string | null
+          subpasta_tamanho_mb: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "sindicatos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "view_entidade_sindical"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "view_financeiro_alertas"
+            referencedColumns: ["id_sindicato"]
+          },
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "view_financeiro_ultimas_atualizacoes"
+            referencedColumns: ["id_sindicato"]
+          },
+          {
+            foreignKeyName: "relacao_pasta_sub_docs_id_doc_fkey"
+            columns: ["documento_id"]
+            isOneToOne: false
+            referencedRelation: "documentos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "relacao_pasta_sub_docs_id_doc_fkey"
+            columns: ["documento_id"]
+            isOneToOne: false
+            referencedRelation: "vw_conteudo_subpasta"
+            referencedColumns: ["documento_id"]
+          },
+          {
+            foreignKeyName: "relacao_pasta_sub_docs_id_subpasta_fkey"
+            columns: ["subpasta_id"]
+            isOneToOne: false
+            referencedRelation: "subpastas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "relacao_pasta_sub_docs_id_subpasta_fkey"
+            columns: ["subpasta_id"]
+            isOneToOne: false
+            referencedRelation: "vw_conteudo_subpasta"
+            referencedColumns: ["subpasta_id"]
+          },
+          {
+            foreignKeyName: "relacao_pasta_sub_docs_id_subpasta_fkey"
+            columns: ["subpasta_id"]
+            isOneToOne: false
+            referencedRelation: "vw_conteudo_subpasta"
+            referencedColumns: ["subpasta2_id"]
+          },
+        ]
+      }
       vw_pastas_principais: {
         Row: {
           created_at: string | null
           id: number | null
+          id_sindicato: number | null
           ids_subpastas: string | null
           nome: string | null
           sigilo: Database["public"]["Enums"]["sigilo_pastas"] | null
           tamanho_mg: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "sindicatos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "view_entidade_sindical"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "view_financeiro_alertas"
+            referencedColumns: ["id_sindicato"]
+          },
+          {
+            foreignKeyName: "pastas_id_sindicato_fkey"
+            columns: ["id_sindicato"]
+            isOneToOne: false
+            referencedRelation: "view_financeiro_ultimas_atualizacoes"
+            referencedColumns: ["id_sindicato"]
+          },
+        ]
       }
       vw_principais_metricas_mes: {
         Row: {
@@ -1558,6 +1718,7 @@ export type Database = {
         Row: {
           arrecadacao: number | null
           boleto_status: string | null
+          created_at: string | null
           denominacao: string | null
           id_financeiro: number | null
           id_sindicato: number | null
@@ -1636,9 +1797,84 @@ export type Database = {
           subpasta_id: number
         }[]
       }
-      atualizar_sindicato: {
-        Args:
-          | {
+      atualizar_sindicato:
+        | {
+            Args: {
+              p_aliquota: number
+              p_ata_eleicao_link: string
+              p_bairro: string
+              p_cep: string
+              p_cnes_link: string
+              p_cnpj: string
+              p_contribuicao_minima: number
+              p_data_fundacao: string
+              p_denominacao: string
+              p_email: string
+              p_estatuto_link: string
+              p_foto: string
+              p_id: number
+              p_is_contribuicao_ativa: boolean
+              p_is_sindicato_ativo: boolean
+              p_municipio: string
+              p_nome_fantasia: string
+              p_numero: string
+              p_rua: string
+              p_uf: string
+            }
+            Returns: undefined
+          }
+        | {
+            Args: {
+              p_aliquota: number
+              p_ata_eleicao_link: string
+              p_bairro: string
+              p_cnes_link: string
+              p_cnpj: string
+              p_contribuicao_minima: number
+              p_data_fundacao: string
+              p_demonincacao: string
+              p_email: string
+              p_estatuto_link: string
+              p_foto: string
+              p_id: number
+              p_is_contribuicao_ativa: boolean
+              p_is_sindicato_ativo: boolean
+              p_municipio: string
+              p_nome_fantasia: string
+              p_numero: string
+              p_rua: string
+              p_uf: string
+            }
+            Returns: undefined
+          }
+        | {
+            Args: {
+              p_aliquota: number
+              p_ata_eleicao_link: string
+              p_bairro: string
+              p_cnes_link: string
+              p_cnpj: string
+              p_contribuicao_minima: number
+              p_data_fundacao: string
+              p_demonincacao: string
+              p_email: string
+              p_estatuto_link: string
+              p_foto: string
+              p_id: number
+              p_is_contribuicao_ativa: boolean
+              p_is_sindicato_ativo: boolean
+              p_municipio: string
+              p_nome_fantasia: string
+              p_numero: string
+              p_rua: string
+              p_uf: string
+            }
+            Returns: undefined
+          }
+      generate_protocolo: { Args: never; Returns: string }
+      inserir_sindicato:
+        | {
+            Args: {
               p_aliquota: number
               p_ata_eleicao_link: string
               p_bairro: string
@@ -1651,7 +1887,6 @@ export type Database = {
               p_email: string
               p_estatuto_link: string
               p_foto: string
-              p_id: number
               p_is_contribuicao_ativa: boolean
               p_is_sindicato_ativo: boolean
               p_municipio: string
@@ -1660,7 +1895,10 @@ export type Database = {
               p_rua: string
               p_uf: string
             }
-          | {
+            Returns: number
+          }
+        | {
+            Args: {
               p_aliquota: number
               p_ata_eleicao_link: string
               p_bairro: string
@@ -1672,7 +1910,6 @@ export type Database = {
               p_email: string
               p_estatuto_link: string
               p_foto: string
-              p_id: number
               p_is_contribuicao_ativa: boolean
               p_is_sindicato_ativo: boolean
               p_municipio: string
@@ -1681,105 +1918,26 @@ export type Database = {
               p_rua: string
               p_uf: string
             }
-          | {
-              p_aliquota: number
-              p_ata_eleicao_link: string
-              p_bairro: string
-              p_cnes_link: string
-              p_cnpj: string
-              p_contribuicao_minima: number
-              p_data_fundacao: string
-              p_demonincacao: string
-              p_email: string
-              p_estatuto_link: string
-              p_foto: string
-              p_id: number
-              p_is_contribuicao_ativa: boolean
-              p_is_sindicato_ativo: boolean
-              p_municipio: string
-              p_nome_fantasia: string
-              p_numero: string
-              p_rua: string
-              p_uf: string
-            }
-        Returns: undefined
+            Returns: number
+          }
+      inserir_sindicatos_planilha: {
+        Args: never
+        Returns: {
+          total_atualizados: number
+          total_erros: number
+          total_inseridos: number
+        }[]
       }
-      generate_protocolo: {
-        Args: Record<PropertyKey, never>
-        Returns: string
+      popular_sindicatos: {
+        Args: never
+        Returns: {
+          acao: string
+          total: number
+        }[]
       }
-      inserir_sindicato: {
-        Args:
-          | {
-              p_aliquota: number
-              p_ata_eleicao_link: string
-              p_bairro: string
-              p_cep: string
-              p_cnes_link: string
-              p_cnpj: string
-              p_contribuicao_minima: number
-              p_data_fundacao: string
-              p_demonincacao: string
-              p_email: string
-              p_estatuto_link: string
-              p_foto: string
-              p_is_contribuicao_ativa: boolean
-              p_is_sindicato_ativo: boolean
-              p_municipio: string
-              p_nome_fantasia: string
-              p_numero: string
-              p_rua: string
-              p_uf: string
-            }
-          | {
-              p_aliquota: number
-              p_ata_eleicao_link: string
-              p_bairro: string
-              p_cnes_link: string
-              p_cnpj: string
-              p_contribuicao_minima: number
-              p_data_fundacao: string
-              p_demonincacao: string
-              p_email: string
-              p_estatuto_link: string
-              p_foto: string
-              p_is_contribuicao_ativa: boolean
-              p_is_sindicato_ativo: boolean
-              p_municipio: string
-              p_nome_fantasia: string
-              p_numero: string
-              p_rua: string
-              p_uf: string
-            }
-        Returns: number
-      }
-      rpc_update_financeiro: {
-        Args:
-          | {
-              p_adm_aprove?: string
-              p_aliquota?: string
-              p_ano?: string
-              p_competencia?: string
-              p_descricao?: string
-              p_dias_atraso?: string
-              p_doc_url?: string
-              p_dtivama?: string
-              p_dtp?: string
-              p_dtvec?: string
-              p_dtvei?: string
-              p_dvp?: string
-              p_id?: string
-              p_id_sindicato?: string
-              p_mes?: string
-              p_referencia?: string
-              p_status?: string
-              p_valor_arrecadacao?: string
-              p_valor_contribuicao?: string
-              p_vama?: string
-              p_vcm?: string
-              p_vpc?: string
-            }
-          | {
+      rpc_update_financeiro:
+        | {
+            Args: {
               p_adm_aprove_t?: string
               p_aliquota_t?: string
               p_ano?: string
@@ -1803,7 +1961,10 @@ export type Database = {
               p_vcm_t?: string
               p_vpc_t?: string
             }
-          | {
+            Returns: undefined
+          }
+        | {
+            Args: {
               p_adm_aprove_t?: string
               p_aliquota_t?: string
               p_ano?: string
@@ -1827,8 +1988,35 @@ export type Database = {
               p_vcm_t?: string
               p_vpc_t?: string
             }
-        Returns: undefined
-      }
+            Returns: undefined
+          }
+        | {
+            Args: {
+              p_adm_aprove?: string
+              p_aliquota?: string
+              p_ano?: string
+              p_competencia?: string
+              p_descricao?: string
+              p_dias_atraso?: string
+              p_doc_url?: string
+              p_dtivama?: string
+              p_dtp?: string
+              p_dtvec?: string
+              p_dtvei?: string
+              p_dvp?: string
+              p_id?: string
+              p_id_sindicato?: string
+              p_mes?: string
+              p_referencia?: string
+              p_status?: string
+              p_valor_arrecadacao?: string
+              p_valor_contribuicao?: string
+              p_vama?: string
+              p_vcm?: string
+              p_vpc?: string
+            }
+            Returns: undefined
+          }
     }
     Enums: {
       estados:
@@ -1863,11 +2051,12 @@ export type Database = {
       redes_sociais: "Instagram" | "Linkedin" | "Facebook"
       sigilo_pastas: "Público" | "Restrito" | "Sigiloso"
       status_financeiro:
-        | "Informou a Recadação e pagou"
-        | "Informou a Recadação e possui boleto pendente"
-        | "Não informou a Recadação e pagou"
-        | "Não informou a Recadação, mas possui boleto"
-        | "Não Informou a Recadação e não Pagou"
+        | "Informou a arrecadação e pagou"
+        | "Informou a arrecadação e possui boleto pendente"
+        | "Não informou a arrecadação e pagou"
+        | "Não informou a arrecadação, mas possui boleto"
+        | "Não Informou a arrecadação e não pagou"
+        | "informou a arrecadação e não possui boleto"
         | "null"
       tipo_telefone: "Corporativo" | "Pessoal"
       tipo_usuario: "Usuario externo" | "Dirigente sindical"
@@ -2031,11 +2220,12 @@ export const Constants = {
       redes_sociais: ["Instagram", "Linkedin", "Facebook"],
       sigilo_pastas: ["Público", "Restrito", "Sigiloso"],
       status_financeiro: [
-        "Informou a Recadação e pagou",
-        "Informou a Recadação e possui boleto pendente",
-        "Não informou a Recadação e pagou",
-        "Não informou a Recadação, mas possui boleto",
-        "Não Informou a Recadação e não Pagou",
+        "Informou a arrecadação e pagou",
+        "Informou a arrecadação e possui boleto pendente",
+        "Não informou a arrecadação e pagou",
+        "Não informou a arrecadação, mas possui boleto",
+        "Não Informou a arrecadação e não pagou",
+        "informou a arrecadação e não possui boleto",
         "null",
       ],
       tipo_telefone: ["Corporativo", "Pessoal"],

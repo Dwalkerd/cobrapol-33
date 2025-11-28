@@ -2,13 +2,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Users, Phone, Mail, Globe, ChevronDown, ChevronUp, Search, Building, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
 import { useSindicatos } from "@/hooks/useSindicatos";
-import { useEstadosDisponiveis, useRegioesMapeadas } from "@/hooks/useSindicatos";
 
 const SindicatosPage = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
@@ -16,7 +14,7 @@ const SindicatosPage = () => {
   const [estadoSelecionado, setEstadoSelecionado] = useState('Todos os Estados');
   const [regiaoSelecionada, setRegiaoSelecionada] = useState('Todas as Regiões');
   
-  // Hooks para buscar dados do Supabase
+  // Hook para buscar dados do Supabase
   const { data: sindicatos, isLoading, error } = useSindicatos({
     busca,
     estado: estadoSelecionado,
@@ -192,13 +190,13 @@ const SindicatosPage = () => {
                     </div>
                     <div>
                       <CardTitle className="text-xl text-foreground">
-                        {sindicato.endereco?.[0]?.uf || 'UF'} • {sindicato.nome_fantasia || sindicato.demonicacao}
+                        {sindicato.estado || 'UF'} • {sindicato.nome_fantasia || sindicato.denominacao}
                       </CardTitle>
                       <CardDescription className="text-base">
-                        {sindicato.demonicacao}
+                        {sindicato.denominacao}
                       </CardDescription>
                       <Badge variant="outline" className="mt-1">
-                        {sindicato.endereco?.[0]?.uf || 'Sem UF'}
+                        {sindicato.estado || 'Sem UF'}
                       </Badge>
                     </div>
                   </div>
@@ -233,8 +231,10 @@ const SindicatosPage = () => {
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-gold" />
                     <span className="text-sm text-muted-foreground">
-                      {sindicato.endereco?.[0]?.rua && sindicato.endereco?.[0]?.numero
-                        ? `${sindicato.endereco[0].rua}, ${sindicato.endereco[0].numero} - ${sindicato.endereco[0].bairro || ''}`
+                      {sindicato.rua && sindicato.numero
+                        ? `${sindicato.rua}, ${sindicato.numero} - ${sindicato.bairro || ''}`
+                        : sindicato.cidade && sindicato.estado
+                        ? `${sindicato.cidade} - ${sindicato.estado}`
                         : 'Não informado'}
                     </span>
                   </div>
@@ -256,7 +256,7 @@ const SindicatosPage = () => {
                           </div>
                           <div>
                             <span className="font-medium text-foreground">Estado/UF: </span>
-                            <span className="text-muted-foreground">{sindicato.endereco?.[0]?.uf || 'Não informado'}</span>
+                            <span className="text-muted-foreground">{sindicato.estado || 'Não informado'}</span>
                           </div>
                           <div>
                             <span className="font-medium text-foreground">Data de Fundação: </span>
@@ -267,12 +267,12 @@ const SindicatosPage = () => {
                       <div>
                         <h4 className="font-semibold text-foreground mb-3">Endereço Completo</h4>
                         <div className="text-muted-foreground">
-                          {sindicato.endereco?.[0] ? (
+                          {sindicato.rua || sindicato.cidade ? (
                             <>
-                              <p>{sindicato.endereco[0].rua || 'Rua não informada'}, {sindicato.endereco[0].numero || 'S/N'}</p>
-                              <p>{sindicato.endereco[0].bairro || ''}</p>
-                              <p>{sindicato.endereco[0].municipio || ''} - {sindicato.endereco[0].uf || ''}</p>
-                              <p>CEP: {sindicato.endereco[0].cep || 'Não informado'}</p>
+                              <p>{sindicato.rua || 'Rua não informada'}, {sindicato.numero || 'S/N'}</p>
+                              <p>{sindicato.bairro || ''}</p>
+                              <p>{sindicato.municipio || sindicato.cidade || ''} - {sindicato.estado || ''}</p>
+                              <p>CEP: {sindicato.cep || 'Não informado'}</p>
                             </>
                           ) : (
                             <p>Endereço não cadastrado</p>
