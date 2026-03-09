@@ -36,6 +36,10 @@ import SindicatosPage from "./pages/entidades-filiadas/SindicatosPage";
 import OrcamentoAnual from "./pages/orcamento/OrcamentoAnual";
 import PrestacaoContas from "./pages/orcamento/PrestacaoContas";
 import RelatoriosFinanceiros from "./pages/transparencia/RelatoriosFinanceiros";
+import LoginEditorial from "./pages/painel-editorial/Login";
+import PainelEditorial from "./pages/painel-editorial/PainelEditorial";
+import NoticiaForm from "./pages/painel-editorial/NoticiaForm";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
