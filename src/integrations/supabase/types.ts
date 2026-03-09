@@ -1380,6 +1380,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       view_entidade_sindical: {
@@ -1803,6 +1824,54 @@ export type Database = {
               p_aliquota: number
               p_ata_eleicao_link: string
               p_bairro: string
+              p_cnes_link: string
+              p_cnpj: string
+              p_contribuicao_minima: number
+              p_data_fundacao: string
+              p_demonincacao: string
+              p_email: string
+              p_estatuto_link: string
+              p_foto: string
+              p_id: number
+              p_is_contribuicao_ativa: boolean
+              p_is_sindicato_ativo: boolean
+              p_municipio: string
+              p_nome_fantasia: string
+              p_numero: string
+              p_rua: string
+              p_uf: string
+            }
+            Returns: undefined
+          }
+        | {
+            Args: {
+              p_aliquota: number
+              p_ata_eleicao_link: string
+              p_bairro: string
+              p_cnes_link: string
+              p_cnpj: string
+              p_contribuicao_minima: number
+              p_data_fundacao: string
+              p_demonincacao: string
+              p_email: string
+              p_estatuto_link: string
+              p_foto: string
+              p_id: number
+              p_is_contribuicao_ativa: boolean
+              p_is_sindicato_ativo: boolean
+              p_municipio: string
+              p_nome_fantasia: string
+              p_numero: string
+              p_rua: string
+              p_uf: string
+            }
+            Returns: undefined
+          }
+        | {
+            Args: {
+              p_aliquota: number
+              p_ata_eleicao_link: string
+              p_bairro: string
               p_cep: string
               p_cnes_link: string
               p_cnpj: string
@@ -1823,55 +1892,14 @@ export type Database = {
             }
             Returns: undefined
           }
-        | {
-            Args: {
-              p_aliquota: number
-              p_ata_eleicao_link: string
-              p_bairro: string
-              p_cnes_link: string
-              p_cnpj: string
-              p_contribuicao_minima: number
-              p_data_fundacao: string
-              p_demonincacao: string
-              p_email: string
-              p_estatuto_link: string
-              p_foto: string
-              p_id: number
-              p_is_contribuicao_ativa: boolean
-              p_is_sindicato_ativo: boolean
-              p_municipio: string
-              p_nome_fantasia: string
-              p_numero: string
-              p_rua: string
-              p_uf: string
-            }
-            Returns: undefined
-          }
-        | {
-            Args: {
-              p_aliquota: number
-              p_ata_eleicao_link: string
-              p_bairro: string
-              p_cnes_link: string
-              p_cnpj: string
-              p_contribuicao_minima: number
-              p_data_fundacao: string
-              p_demonincacao: string
-              p_email: string
-              p_estatuto_link: string
-              p_foto: string
-              p_id: number
-              p_is_contribuicao_ativa: boolean
-              p_is_sindicato_ativo: boolean
-              p_municipio: string
-              p_nome_fantasia: string
-              p_numero: string
-              p_rua: string
-              p_uf: string
-            }
-            Returns: undefined
-          }
       generate_protocolo: { Args: never; Returns: string }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
       inserir_sindicato:
         | {
             Args: {
@@ -2019,6 +2047,7 @@ export type Database = {
           }
     }
     Enums: {
+      app_role: "admin" | "editor" | "user"
       estados:
         | "AC"
         | "AL"
@@ -2187,6 +2216,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      app_role: ["admin", "editor", "user"],
       estados: [
         "AC",
         "AL",
