@@ -1803,60 +1803,60 @@ export type Database = {
               p_aliquota: number
               p_ata_eleicao_link: string
               p_bairro: string
+              p_cnes_link: string
+              p_cnpj: string
+              p_contribuicao_minima: number
+              p_data_fundacao: string
+              p_demonincacao: string
+              p_email: string
+              p_estatuto_link: string
+              p_foto: string
+              p_id: number
+              p_is_contribuicao_ativa: boolean
+              p_is_sindicato_ativo: boolean
+              p_municipio: string
+              p_nome_fantasia: string
+              p_numero: string
+              p_rua: string
+              p_uf: string
+            }
+            Returns: undefined
+          }
+        | {
+            Args: {
+              p_aliquota: number
+              p_ata_eleicao_link: string
+              p_bairro: string
+              p_cnes_link: string
+              p_cnpj: string
+              p_contribuicao_minima: number
+              p_data_fundacao: string
+              p_demonincacao: string
+              p_email: string
+              p_estatuto_link: string
+              p_foto: string
+              p_id: number
+              p_is_contribuicao_ativa: boolean
+              p_is_sindicato_ativo: boolean
+              p_municipio: string
+              p_nome_fantasia: string
+              p_numero: string
+              p_rua: string
+              p_uf: string
+            }
+            Returns: undefined
+          }
+        | {
+            Args: {
+              p_aliquota: number
+              p_ata_eleicao_link: string
+              p_bairro: string
               p_cep: string
               p_cnes_link: string
               p_cnpj: string
               p_contribuicao_minima: number
               p_data_fundacao: string
               p_denominacao: string
-              p_email: string
-              p_estatuto_link: string
-              p_foto: string
-              p_id: number
-              p_is_contribuicao_ativa: boolean
-              p_is_sindicato_ativo: boolean
-              p_municipio: string
-              p_nome_fantasia: string
-              p_numero: string
-              p_rua: string
-              p_uf: string
-            }
-            Returns: undefined
-          }
-        | {
-            Args: {
-              p_aliquota: number
-              p_ata_eleicao_link: string
-              p_bairro: string
-              p_cnes_link: string
-              p_cnpj: string
-              p_contribuicao_minima: number
-              p_data_fundacao: string
-              p_demonincacao: string
-              p_email: string
-              p_estatuto_link: string
-              p_foto: string
-              p_id: number
-              p_is_contribuicao_ativa: boolean
-              p_is_sindicato_ativo: boolean
-              p_municipio: string
-              p_nome_fantasia: string
-              p_numero: string
-              p_rua: string
-              p_uf: string
-            }
-            Returns: undefined
-          }
-        | {
-            Args: {
-              p_aliquota: number
-              p_ata_eleicao_link: string
-              p_bairro: string
-              p_cnes_link: string
-              p_cnpj: string
-              p_contribuicao_minima: number
-              p_data_fundacao: string
-              p_demonincacao: string
               p_email: string
               p_estatuto_link: string
               p_foto: string
