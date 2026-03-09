@@ -82,6 +82,10 @@ const App = () => (
           <Route path="/legais/estatuto" element={<Estatuto />} />
           <Route path="/legais/regimento-interno" element={<RegimentoInterno />} />
           <Route path="/area-associado" element={<AreaAssociado />} />
+          <Route path="/painel-editorial/login" element={<LoginEditorial />} />
+          <Route path="/painel-editorial" element={<ProtectedRoute><PainelEditorial /></ProtectedRoute>} />
+          <Route path="/painel-editorial/nova" element={<ProtectedRoute><NoticiaForm /></ProtectedRoute>} />
+          <Route path="/painel-editorial/editar/:id" element={<ProtectedRoute><NoticiaForm /></ProtectedRoute>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
